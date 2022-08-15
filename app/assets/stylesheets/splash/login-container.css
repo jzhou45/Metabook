@@ -7,12 +7,24 @@
     font-family: 'Helvetica';
 }
 
+#login-container form {
+    display: flex;
+    flex-direction: column;
+}
 #login-container input {
-    margin: 5px;
+    width: 360px;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid #dde0e3;
+    margin-bottom: 15px;
 }
 
 .login-button {
     background-color: #1977f2;
     color: white;
     font-weight: bold;
+    width: 365px;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
 }
