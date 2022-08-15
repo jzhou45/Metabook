@@ -56,7 +56,7 @@ class LoginForm extends React.Component{
         if (!this.state.loggedIn){
             return(
                 <div>
-                    <div>
+                    <div id="login-container">
                         <form onSubmit={this.handleSubmitLogin}>
                             <label>Email
                                 <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')}/>
