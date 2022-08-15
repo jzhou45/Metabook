@@ -1,9 +1,10 @@
 import React from "react";
 import LoginForm from "./session/login_form_container";
+import Greetings from "./greetings/greetings";
 
 const App = () => (
   <div>
-    <h1>Metabook</h1>
+    <Greetings />
     <LoginForm />
   </div>
 );
