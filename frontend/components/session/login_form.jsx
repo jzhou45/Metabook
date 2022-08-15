@@ -61,6 +61,9 @@ class LoginForm extends React.Component{
                             <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
                             <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')} placeholder="Password" required/>
                             <button type="submit" className="login-button">Log In</button>
+
+                            <div id="demo-login">Login as Demo User?</div>
+
                             <button onClick={this.openModal}>Create an Account</button>
                         </form>
                     </div>

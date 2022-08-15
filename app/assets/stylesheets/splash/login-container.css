@@ -32,7 +32,7 @@
 #login-container form :last-child{
     background-color: #42b729;
     color: white;
-    margin-top: 80px;
+    /* margin-top: 80px; */
     height: 50px;
     width: 195px;
     border: none;
@@ -65,4 +65,15 @@
 ::placeholder{
     font-size: larger;
     padding-left: 10px ;
+}
+
+#demo-login{
+    margin-top: 20px;
+    color: #1977f2;
+    font-size: 13px;
+}
+
+#demo-login:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
