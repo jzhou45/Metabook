@@ -66,7 +66,7 @@ class LoginForm extends React.Component{
 
                             <hr />
 
-                            <button onClick={this.openModal}>Create an Account</button>
+                            <button onClick={this.openModal}>Create new account</button>
                         </form>
                         <div className="create-a-page">
                             <p><span>Create a Page </span> for a celebrity, brand or business.</p>
