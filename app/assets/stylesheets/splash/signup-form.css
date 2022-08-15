@@ -1,0 +1,9 @@
+.invisible{
+    display: none;
+}
+
+.openModal{
+    position: absolute;
+    color: red;
+    
+}
