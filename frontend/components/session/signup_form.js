@@ -9,7 +9,8 @@ class SignupForm extends React.Component{
             first_name: '',
             last_name: '',
             birthday: '',
-            gender: ''
+            gender: '',
+            loggedIn: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -25,9 +26,15 @@ class SignupForm extends React.Component{
         if (state) this.setState({loggedIn: true});
     }
 
+    logout(){
+        this.props.logout();
+        this.setState({loggedIn: false});
+    }
+
     render(){
-        return(
-            <div id="modal">
+        if (!this.state.loggedIn){
+            return(
+                <div id="modal">
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <div>
@@ -42,7 +49,14 @@ class SignupForm extends React.Component{
                     <button type="submit">Sign Up</button>
                 </form>       
             </div>
-        )
+            )
+        } else{
+            return(
+                <div>
+                    <button onClick={this.logout}>Logout</button>
+                </div>
+            )
+        }
     }
 }
 
