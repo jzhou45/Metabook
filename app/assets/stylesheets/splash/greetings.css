@@ -16,6 +16,10 @@
     color: #1977f2;
 }
 
+#greetings h1:hover{
+    cursor: default;
+}
+
 #greetings h2{
     font-family: Helvetica, sans-serif;
     font-size: 30px;

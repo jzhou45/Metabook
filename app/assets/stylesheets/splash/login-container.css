@@ -71,9 +71,32 @@
     margin-top: 20px;
     color: #1977f2;
     font-size: 13px;
+    margin-bottom: 0px;
 }
 
 #demo-login:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+hr{
+    width: 365px;
+    border: 0.5px solid #dde0e3;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.create-a-page{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.create-a-page span{
+    font-weight: bold;
+}
+
+.create-a-page span:hover{
     cursor: pointer;
     text-decoration: underline;
 }

@@ -64,8 +64,13 @@ class LoginForm extends React.Component{
 
                             <div id="demo-login">Login as Demo User?</div>
 
+                            <hr />
+
                             <button onClick={this.openModal}>Create an Account</button>
                         </form>
+                        <div className="create-a-page">
+                            <p><span>Create a Page </span> for a celebrity, brand or business.</p>
+                        </div>
                     </div>
                     <div id="modal" className="invisible">
                         <form onSubmit={this.handleSubmitSignup}>
