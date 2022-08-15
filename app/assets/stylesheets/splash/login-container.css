@@ -11,6 +11,8 @@
     margin: 5px;
 }
 
-#login-button {
-    background-color: blue;
+.login-button {
+    background-color: #1977f2;
+    color: white;
+    font-weight: bold;
 }
