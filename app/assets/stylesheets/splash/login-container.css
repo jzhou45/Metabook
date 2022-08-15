@@ -7,6 +7,7 @@
     font-family: 'Helvetica';
     position: absolute;
     left: 56vw;
+    top: 17vh;
 }
 
 #login-container form {
@@ -33,6 +34,23 @@
     margin-bottom: 15px;
 }
 
+#login-container form :last-child{
+    background-color: #42b729;
+    color: white;
+    margin-top: 80px;
+    height: 50px;
+    width: 195px;
+    border: none;
+    border-radius: 8px;
+    font-size: large;
+    font-weight: 500;
+}
+
+#login-container form :last-child:hover{
+    cursor: pointer;
+    background-color: #3ca424;
+}
+
 .login-button {
     background-color: #1977f2;
     color: white;
@@ -42,4 +60,14 @@
     border-radius: 8px;
     border: none;
     font-size: large;
+}
+
+.login-button:hover{
+    cursor: pointer;
+    background-color: #176edf;
+}
+
+::placeholder{
+    font-size: larger;
+    padding-left: 10px ;
 }
