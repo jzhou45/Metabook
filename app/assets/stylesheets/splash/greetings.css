@@ -3,6 +3,9 @@
     flex-direction: column;
     width: 500px;
     height: 258px;
+    position: absolute;
+    margin-top: 26vh;
+    left: 14.5vw;
 }
 
 #greetings h1{

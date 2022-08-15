@@ -4,8 +4,8 @@ import Greetings from "./greetings/greetings";
 
 const App = () => (
   <div>
-    <Greetings />
-    <LoginForm />
+      <Greetings />
+      <LoginForm />
   </div>
 );
 
