@@ -1,4 +1,5 @@
 import React from "react";
+import SignupForm from "./signup_form_container";
 
 class LoginForm extends React.Component{
     constructor(props){
@@ -6,11 +7,12 @@ class LoginForm extends React.Component{
         this.state = {
             email: '',
             password: '',
-            loggedIn: false
+            loggedIn: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.logout = this.logout.bind(this);
+        this.openModal = this.openModal.bind(this);
     }
 
     handleUpdate(field){
@@ -28,19 +30,33 @@ class LoginForm extends React.Component{
         this.setState({loggedIn: false});
     }
 
+    openModal(){
+        const modal = document.getElementById("modal");
+        modal.classList.add("openModal");
+    }
+
+    closeModal(){
+        const modal = document.getElementById("modal");
+        modal.classList.remove("openModal");
+    }
+
     render(){
         if (!this.state.loggedIn){
             return(
                 <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Email
-                            <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')}/>
-                        </label>
-                        <label>Password
-                            <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')}/>
-                        </label>
-                        <button type="submit">Log In</button>
-                    </form>
+                    <div>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>Email
+                                <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')}/>
+                            </label>
+                            <label>Password
+                                <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')}/>
+                            </label>
+                            <button type="submit">Log In</button>
+                        </form>
+                    </div>
+                    <button onClick={this.openModal}>Create an Account</button>
+                    <SignupForm />
                 </div>
             )
         } else{
