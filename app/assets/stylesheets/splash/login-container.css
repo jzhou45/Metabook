@@ -5,12 +5,26 @@
 
 #login-container {
     font-family: 'Helvetica';
+    position: absolute;
+    left: 56vw;
 }
 
 #login-container form {
     display: flex;
     flex-direction: column;
+    width: 400px;
+    height: 350px;
+    border: 1px solid #dde0e3;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px #dde0e3;
+    background-color: white;
 }
+
+#login-container form :first-child{
+    margin-top: 15px;
+}
+
 #login-container input {
     width: 360px;
     height: 50px;
@@ -27,4 +41,5 @@
     height: 50px;
     border-radius: 8px;
     border: none;
+    font-size: large;
 }
