@@ -1,0 +1,20 @@
+#greetings{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 258px;
+}
+
+#greetings h1{
+    font-family: klavika-web, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    color: #1977f2;
+}
+
+#greetings h2{
+    font-family: Helvetica, sans-serif;
+    font-size: 30px;
+    margin-top: 25px;
+}

@@ -5,7 +5,7 @@ class Greetings extends React.Component{
         return(
             <div id="greetings">
                 <h1>metabook</h1>
-                <h2>Connect with friends and the world around you on Facebook.</h2>
+                <h2>Connect with friends and the world around you on Metabook.</h2>
             </div>
         )
     }
