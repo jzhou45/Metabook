@@ -81,6 +81,29 @@
     border: 1px solid #dde0e3;
 }
 
+.openModal input[type="radio" i]{
+    width: 15px;
+}
+
+.openModal label div{
+    height: 30px;
+    width: 390px;
+}
+
+.openModal label div div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #dde0e3;
+}
+
+.openModal label div div input[type="text"]{
+    height: 30px;
+    width: 100px;
+}
+
 .openModal button{
     background-color: #00a401;
     height: 35px;

@@ -17,6 +17,7 @@ class LoginForm extends React.Component{
         this.handleUpdate = this.handleUpdate.bind(this);
         this.logout = this.logout.bind(this);
         this.openModal = this.openModal.bind(this);
+        this.loginAsDemoUser = this.loginAsDemoUser.bind(this);
     }
 
     handleUpdate(field){
@@ -58,6 +59,11 @@ class LoginForm extends React.Component{
         whiteBackground.classList.add("invisible");
     }
 
+    loginAsDemoUser(){
+        this.props.login({email:"demouser@email.com", password: "password"});
+        this.setState({loggedIn:true});
+    }
+
     render(){
         if (!store.getState().session.id){
             return(
@@ -75,7 +81,7 @@ class LoginForm extends React.Component{
                             <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')} placeholder="Password" required/>
                             <button type="submit" className="login-button">Log In</button>
 
-                            <div id="demo-login">Login as Demo User?</div>
+                            <div id="demo-login" onClick={this.loginAsDemoUser}>Login as Demo User?</div>
 
                             <hr />
 
@@ -100,8 +106,24 @@ class LoginForm extends React.Component{
                                 </div>
                                 <input type="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
                                 <input type="password" value={this.state.password} onChange={this.handleUpdate('password')} placeholder="New password" required/>
-                                <input type="text" value={this.state.birthday} onChange={this.handleUpdate('birthday')} placeholder="Birthday" required/>
-                                <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} placeholder="Gender" required/>
+                                <label>
+                                    <h3>Birthday</h3>
+                                    <input type="date" value={this.state.birthday} onChange={this.handleUpdate('birthday')} placeholder="Birthday" required/>
+                                </label>
+                                <label>
+                                        <h3>Gender</h3>
+                                    <div>
+                                        <div>Male
+                                            <input type="radio" value={this.state.gender} onChange={this.handleUpdate('gender')} />
+                                        </div>
+                                        <div>Female
+                                            <input type="radio" value={this.state.gender} onChange={this.handleUpdate('gender')} />
+                                        </div>
+                                        <div>
+                                            <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} placeholder="Custom"/>
+                                        </div>
+                                    </div>
+                                </label>
                             </div>
                             <button type="submit">Sign Up</button>
                         </form>       
