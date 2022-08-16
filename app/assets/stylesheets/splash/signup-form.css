@@ -21,9 +21,20 @@
     position: absolute;
     background-color: white;
     border-radius: 8px;
-    margin-top: 18vh;
+    margin-top: 23.5vh;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     z-index: 2;
+}
+
+.openModal form div div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.openModal img{
+    height: 24px;
+    width: 24px;
+    margin-top: 18px;
 }
 
 .openModal h1{
@@ -70,6 +81,33 @@
     border: 1px solid #dde0e3;
 }
 
+.openModal h3{
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #606770;
+}
+
+.openModal h4{
+    font-size: 11px;
+    color: #777;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.openModal h4:nth-last-child(2){
+    margin-bottom: 20px;
+}
+
+.openModal h4 span{
+    color: #385898;
+}
+
+.openModal h4 span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .openModal button{
     background-color: #00a401;
     height: 35px;
@@ -80,6 +118,10 @@
     font-weight: 700;
     font-size: larger;
     border-radius: 8px;
+}
+
+.openModal button:hover{
+    background-image: linear-gradient(#8fd58f8d, #749674);
 }
 
 #login-signup-forms{

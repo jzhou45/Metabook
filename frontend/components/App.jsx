@@ -4,7 +4,6 @@ import Greetings from "./greetings/greetings";
 
 const App = () => (
   <div>
-      <Greetings />
       <LoginForm />
   </div>
 );
