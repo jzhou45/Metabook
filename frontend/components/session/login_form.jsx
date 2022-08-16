@@ -114,10 +114,10 @@ class LoginForm extends React.Component{
                                         <h3>Gender</h3>
                                     <div>
                                         <div>Male
-                                            <input type="radio" value={this.state.gender} onChange={this.handleUpdate('gender')} />
+                                            <input type="radio" value={this.state.gender = "Male"} onChange={this.handleUpdate('gender')} />
                                         </div>
                                         <div>Female
-                                            <input type="radio" value={this.state.gender} onChange={this.handleUpdate('gender')} />
+                                            <input type="radio" value={this.state.gender = "Female"} onChange={this.handleUpdate('gender')} />
                                         </div>
                                         <div>
                                             <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} placeholder="Custom"/>
