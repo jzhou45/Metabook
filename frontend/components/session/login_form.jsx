@@ -44,6 +44,9 @@ class LoginForm extends React.Component{
         const modal = document.getElementById("modal");
         modal.classList.remove("invisible");
         modal.classList.add("openModal");
+        const whiteBackground = document.getElementById("white-background");
+        whiteBackground.classList.remove("invisible");
+        whiteBackground.classList.add("white-background")
     }
 
     closeModal(){
@@ -55,7 +58,8 @@ class LoginForm extends React.Component{
     render(){
         if (!this.state.loggedIn){
             return(
-                <div>
+                <div id="login-signup-forms" className="invisible">
+                    <div id="white-background"></div>
                     <div id="login-container">
                         <form onSubmit={this.handleSubmitLogin}>
                             <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
@@ -75,6 +79,9 @@ class LoginForm extends React.Component{
                     <div id="modal" className="invisible">
                         <form onSubmit={this.handleSubmitSignup}>
                             <div>
+                                <h1>Sign Up</h1>
+                                <h2>It's quick and easy.</h2>
+                                <hr />
                                 <div>
                                     <input type="text" value={this.state.first_name}  onChange={this.handleUpdate('first_name')} placeholder="First name" required/>
                                     <input type="text" value={this.state.last_name} onChange={this.handleUpdate('last_name')} placeholder="Last name" required/>
