@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
         first_name: '',
         last_name: '',
         gender: ''
-    },
+    }, errors: state.errors.session
 })
 
 const mapDispatchToProps = dispatch => ({

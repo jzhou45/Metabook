@@ -28,6 +28,7 @@ class LoginForm extends React.Component{
         e.preventDefault();
         this.props.login(this.state);
         if (store.getState().session.id) this.setState({loggedIn: true});
+        
     }
 
     handleSubmitSignup(e){
@@ -64,6 +65,13 @@ class LoginForm extends React.Component{
         this.setState({loggedIn:true});
     }
 
+    componentDidUpdate(){
+        const loginErrorsDiv = document.getElementById("login-errors");
+        const sessionErrors = Object.values(store.getState().errors.session);
+        let errorMessage = sessionErrors.join(" ");
+        loginErrorsDiv.innerHTML = errorMessage;
+    }
+
     render(){
         if (!store.getState().session.id){
             return(
@@ -79,12 +87,14 @@ class LoginForm extends React.Component{
                         <form onSubmit={this.handleSubmitLogin}>
                             <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
                             <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')} placeholder="Password" required/>
+
+                            <div id="login-errors"></div>
+
                             <button type="submit" className="login-button">Log In</button>
 
                             <div id="demo-login" onClick={this.loginAsDemoUser}>Login as Demo User?</div>
 
                             <hr />
-
                             <button onClick={this.openModal}>Create new account</button>
                         </form>
                         <div className="create-a-page">
