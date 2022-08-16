@@ -26,10 +26,7 @@ class LoginForm extends React.Component{
     handleSubmitLogin(e){
         e.preventDefault();
         this.props.login(this.state);
-        if (store.getState().session.id){
-            this.setState({loggedIn: true});
-            this.forceUpdate();
-        };
+        if (store.getState().session.id) this.setState({loggedIn: true});
     }
 
     handleSubmitSignup(e){
@@ -63,6 +60,12 @@ class LoginForm extends React.Component{
             return(
                 <div id="login-signup-forms" className="invisible">
                     <div id="white-background"></div>
+
+                    <div id="greetings">
+                        <h1>metabook</h1>
+                        <h2>Connect with friends and the world around you on Metabook.</h2>
+                    </div>
+
                     <div id="login-container">
                         <form onSubmit={this.handleSubmitLogin}>
                             <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
