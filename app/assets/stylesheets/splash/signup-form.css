@@ -22,7 +22,7 @@
     background-color: white;
     border-radius: 8px;
     margin-top: 23.5vh;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .10), 0 8px 16px rgba(0, 0, 0, .10);
     z-index: 2;
 }
 
