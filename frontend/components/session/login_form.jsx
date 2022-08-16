@@ -25,14 +25,17 @@ class LoginForm extends React.Component{
 
     handleSubmitLogin(e){
         e.preventDefault();
-        const state = this.props.login(this.state);
-        if (state) this.setState({loggedIn: true});
+        this.props.login(this.state);
+        if (store.getState().session.id){
+            this.setState({loggedIn: true});
+            this.forceUpdate();
+        };
     }
 
     handleSubmitSignup(e){
         e.preventDefault();
-        const state = this.props.signup(this.state);
-        if (state) this.setState({loggedIn: true});
+        this.props.signup(this.state);
+        if (store.getState().session.id) this.setState({loggedIn: true});
     }
 
     logout(){
@@ -56,7 +59,7 @@ class LoginForm extends React.Component{
     }
 
     render(){
-        if (!this.state.loggedIn){
+        if (!store.getState().session.id){
             return(
                 <div id="login-signup-forms" className="invisible">
                     <div id="white-background"></div>
