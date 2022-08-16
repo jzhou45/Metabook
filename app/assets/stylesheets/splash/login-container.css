@@ -69,6 +69,13 @@
     color: #8e9296c2;
 }
 
+#login-errors{
+    color: #f02849;
+    font-size: 13px;
+    width: 360px;
+    padding-bottom: 10px;
+}
+
 #demo-login{
     margin-top: 20px;
     color: #1977f2;

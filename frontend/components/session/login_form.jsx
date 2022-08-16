@@ -70,6 +70,10 @@ class LoginForm extends React.Component{
         const sessionErrors = Object.values(store.getState().errors.session);
         let errorMessage = sessionErrors.join(" ");
         loginErrorsDiv.innerHTML = errorMessage;
+        if (loginErrorsDiv.innerHTML !== ""){
+            loginErrorsDiv.innerHTML += ".";
+            document.getElementById("login-container").firstChild.style.height = "380px"
+        };
     }
 
     render(){
