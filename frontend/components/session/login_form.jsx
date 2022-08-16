@@ -112,19 +112,11 @@ class LoginForm extends React.Component{
                                 </label>
                                 <label>
                                         <h3>Gender</h3>
-                                    <div>
-                                        <div>Male
-                                            <input type="radio" value={this.state.gender = "Male"} onChange={this.handleUpdate('gender')} />
-                                        </div>
-                                        <div>Female
-                                            <input type="radio" value={this.state.gender = "Female"} onChange={this.handleUpdate('gender')} />
-                                        </div>
-                                        <div>
-                                            <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} placeholder="Custom"/>
-                                        </div>
-                                    </div>
+                                        <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} placeholder="Gender"/>
                                 </label>
                             </div>
+                            <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>
+                            <h4>By clicking Sign Up, you agree to our <span>Terms</span>, <span>Privacy Policy</span>, and <span>Cookies Policy</span>. You will not receive SMS Notifications from us and can not opt out any time.</h4>
                             <button type="submit">Sign Up</button>
                         </form>       
                     </div>

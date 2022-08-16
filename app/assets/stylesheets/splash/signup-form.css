@@ -81,27 +81,31 @@
     border: 1px solid #dde0e3;
 }
 
-.openModal input[type="radio" i]{
-    width: 15px;
+.openModal h3{
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #606770;
 }
 
-.openModal label div{
-    height: 30px;
-    width: 390px;
+.openModal h4{
+    font-size: 11px;
+    color: #777;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
-.openModal label div div{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100px;
-    height: 30px;
-    border: 1px solid #dde0e3;
+.openModal h4:nth-last-child(2){
+    margin-bottom: 20px;
 }
 
-.openModal label div div input[type="text"]{
-    height: 30px;
-    width: 100px;
+.openModal h4 span{
+    color: #385898;
+}
+
+.openModal h4 span:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .openModal button{
@@ -114,6 +118,10 @@
     font-weight: 700;
     font-size: larger;
     border-radius: 8px;
+}
+
+.openModal button:hover{
+    background-image: linear-gradient(#8fd58f8d, #749674);
 }
 
 #login-signup-forms{
