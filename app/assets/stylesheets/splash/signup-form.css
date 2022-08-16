@@ -26,6 +26,17 @@
     z-index: 2;
 }
 
+.openModal form div div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.openModal img{
+    height: 24px;
+    width: 24px;
+    margin-top: 18px;
+}
+
 .openModal h1{
     margin-top: 18px;
     font-size: 30px;

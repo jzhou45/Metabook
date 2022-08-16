@@ -53,6 +53,9 @@ class LoginForm extends React.Component{
         const modal = document.getElementById("modal");
         modal.classList.remove("openModal");
         modal.classList.add("invisible");
+        const whiteBackground = document.getElementById("white-background");
+        whiteBackground.classList.remove("white-background")
+        whiteBackground.classList.add("invisible");
     }
 
     render(){
@@ -85,7 +88,10 @@ class LoginForm extends React.Component{
                     <div id="modal" className="invisible">
                         <form onSubmit={this.handleSubmitSignup}>
                             <div>
-                                <h1>Sign Up</h1>
+                                <div>
+                                    <h1>Sign Up</h1>
+                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/11W0xEwKS62.png" alt="X" onClick={this.closeModal}/>
+                                </div>
                                 <h2>It's quick and easy.</h2>
                                 <hr />
                                 <div>
