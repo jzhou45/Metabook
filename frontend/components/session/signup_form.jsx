@@ -38,14 +38,16 @@ class SignupForm extends React.Component{
     }
 
     componentDidUpdate(){
-        const loginErrorsDiv = document.getElementById("login-errors");
-        const sessionErrors = Object.values(store.getState().errors.session);
-        let errorMessage = sessionErrors.join(" ");
-        loginErrorsDiv.innerHTML = errorMessage;
-        if (loginErrorsDiv.innerHTML !== ""){
-            loginErrorsDiv.innerHTML += ".";
-            document.getElementById("login-container").firstChild.style.height = "380px"
-        };
+        if (!store.getState().session.id){
+            const loginErrorsDiv = document.getElementById("login-errors");
+            const sessionErrors = Object.values(store.getState().errors.session);
+            let errorMessage = sessionErrors.join(" ");
+            loginErrorsDiv.innerHTML = errorMessage;
+            if (loginErrorsDiv.innerHTML !== ""){
+                loginErrorsDiv.innerHTML += ".";
+                document.getElementById("login-container").firstChild.style.height = "380px"
+            };
+        }
     }
 
     render(){
