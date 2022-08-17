@@ -123,8 +123,3 @@
 .openModal button:hover{
     background-image: linear-gradient(#8fd58f8d, #749674);
 }
-
-#login-signup-forms{
-    display: flex;
-    justify-content: center;
-}

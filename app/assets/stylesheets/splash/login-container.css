@@ -1,3 +1,8 @@
+#login-signup-forms{
+    display: flex;
+    justify-content: center;
+}
+
 #login-container {
     font-family: 'Helvetica';
     position: absolute;
