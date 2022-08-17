@@ -13,7 +13,7 @@ class SignupForm extends React.Component{
             gender: ''
         };
         this.closeModal = this.closeModal.bind(this);
-        this.handleSubmitSignup = this.handleSubmitSignup.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
     }
 
@@ -21,7 +21,7 @@ class SignupForm extends React.Component{
         return e => this.setState({[field]: e.currentTarget.value});
     }
 
-    handleSubmitSignup(e){
+    handleSubmit(e){
         e.preventDefault();
         this.props.signup(this.state);
         if (store.getState().session.id) this.setState({loggedIn: true});
@@ -54,7 +54,7 @@ class SignupForm extends React.Component{
             return(
                 <div id="signup-form">
                     <div id="modal" className="invisible">
-                        <form onSubmit={this.handleSubmitSignup}>
+                        <form onSubmit={this.handleSubmit}>
                             <div>
                                 <div>
                                     <h1>Sign Up</h1>

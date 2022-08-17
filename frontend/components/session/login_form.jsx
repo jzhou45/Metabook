@@ -12,7 +12,7 @@ class LoginForm extends React.Component{
             birthday: '',
             gender: ''
         };
-        this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.logout = this.logout.bind(this);
         this.openModal = this.openModal.bind(this);
@@ -23,7 +23,7 @@ class LoginForm extends React.Component{
         return e => this.setState({[field]: e.currentTarget.value});
     }
 
-    handleSubmitLogin(e){
+    handleSubmit(e){
         e.preventDefault();
         this.props.login(this.state);
         if (store.getState().session.id) this.setState({loggedIn: true});
@@ -75,7 +75,7 @@ class LoginForm extends React.Component{
                     </div>
 
                     <div id="login-container">
-                        <form onSubmit={this.handleSubmitLogin}>
+                        <form onSubmit={this.handleSubmit}>
                             <input type="email" name="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
                             <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')} placeholder="Password" required/>
 
