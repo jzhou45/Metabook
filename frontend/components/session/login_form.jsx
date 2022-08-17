@@ -94,12 +94,6 @@ class LoginForm extends React.Component{
                     </div>
                 </div>
             )
-        } else{
-            return(
-                <div>
-                    <button onClick={this.logout}>Logout</button>
-                </div>
-            )
         }
     }
 }
