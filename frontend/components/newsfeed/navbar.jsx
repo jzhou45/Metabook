@@ -14,7 +14,7 @@ class NavBar extends React.Component{
         return(
             <header id="navbar">
                 <h1>metabook</h1>
-                <input type="text" id="search-bar"/>
+                <input type="text" id="search-bar" placeholder="Search Metabook"/>
                 <div>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/2048px-LinkedIn_icon_circle.svg.png" alt="linkedin link" />
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github link" />
