@@ -13,7 +13,6 @@ class LoginForm extends React.Component{
             gender: ''
         };
         this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
-        this.handleSubmitSignup = this.handleSubmitSignup.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.logout = this.logout.bind(this);
         this.openModal = this.openModal.bind(this);
@@ -31,33 +30,19 @@ class LoginForm extends React.Component{
         
     }
 
-    handleSubmitSignup(e){
-        e.preventDefault();
-        this.props.signup(this.state);
-        if (store.getState().session.id) this.setState({loggedIn: true});
-    }
-
     logout(){
         this.props.logout();
         this.setState({loggedIn: false});
     }
 
     openModal(){
+        this.props.openModal("modal");
         const modal = document.getElementById("modal");
         modal.classList.remove("invisible");
         modal.classList.add("openModal");
         const whiteBackground = document.getElementById("white-background");
         whiteBackground.classList.remove("invisible");
-        whiteBackground.classList.add("white-background")
-    }
-
-    closeModal(){
-        const modal = document.getElementById("modal");
-        modal.classList.remove("openModal");
-        modal.classList.add("invisible");
-        const whiteBackground = document.getElementById("white-background");
-        whiteBackground.classList.remove("white-background")
-        whiteBackground.classList.add("invisible");
+        whiteBackground.classList.add("white-background");
     }
 
     loginAsDemoUser(){
@@ -66,14 +51,16 @@ class LoginForm extends React.Component{
     }
 
     componentDidUpdate(){
-        const loginErrorsDiv = document.getElementById("login-errors");
-        const sessionErrors = Object.values(store.getState().errors.session);
-        let errorMessage = sessionErrors.join(" ");
-        loginErrorsDiv.innerHTML = errorMessage;
-        if (loginErrorsDiv.innerHTML !== ""){
-            loginErrorsDiv.innerHTML += ".";
-            document.getElementById("login-container").firstChild.style.height = "380px"
-        };
+        if (!store.getState().session.id){
+            const loginErrorsDiv = document.getElementById("login-errors");
+            const sessionErrors = Object.values(store.getState().errors.session);
+            let errorMessage = sessionErrors.join(" ");
+            loginErrorsDiv.innerHTML = errorMessage;
+            if (loginErrorsDiv.innerHTML !== ""){
+                loginErrorsDiv.innerHTML += ".";
+                document.getElementById("login-container").firstChild.style.height = "380px"
+            };
+        }
     }
 
     render(){
@@ -104,35 +91,6 @@ class LoginForm extends React.Component{
                         <div className="create-a-page">
                             <p><span>Create a Page </span> for a celebrity, brand or business.</p>
                         </div>
-                    </div>
-                    <div id="modal" className="invisible">
-                        <form onSubmit={this.handleSubmitSignup}>
-                            <div>
-                                <div>
-                                    <h1>Sign Up</h1>
-                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/11W0xEwKS62.png" alt="X" onClick={this.closeModal}/>
-                                </div>
-                                <h2>It's quick and easy.</h2>
-                                <hr />
-                                <div>
-                                    <input type="text" value={this.state.first_name}  onChange={this.handleUpdate('first_name')} placeholder="First name" required/>
-                                    <input type="text" value={this.state.last_name} onChange={this.handleUpdate('last_name')} placeholder="Last name" required/>
-                                </div>
-                                <input type="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
-                                <input type="password" value={this.state.password} onChange={this.handleUpdate('password')} placeholder="New password" required/>
-                                <label>
-                                    <h3>Birthday</h3>
-                                    <input type="date" value={this.state.birthday} onChange={this.handleUpdate('birthday')} placeholder="Birthday" required/>
-                                </label>
-                                <label>
-                                        <h3>Gender</h3>
-                                        <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} placeholder="Gender"/>
-                                </label>
-                            </div>
-                            <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>
-                            <h4>By clicking Sign Up, you agree to our <span>Terms</span>, <span>Privacy Policy</span>, and <span>Cookies Policy</span>. You will not receive SMS Notifications from us and can not opt out any time.</h4>
-                            <button type="submit">Sign Up</button>
-                        </form>       
                     </div>
                 </div>
             )

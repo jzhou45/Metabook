@@ -1,10 +1,12 @@
 import React from "react";
 import LoginForm from "./session/login_form_container";
-import Greetings from "./greetings/greetings";
+import SignupForm from "./session/signup_form_container";
 
 const App = () => (
+  
   <div>
       <LoginForm />
+      <SignupForm />
   </div>
 );
 

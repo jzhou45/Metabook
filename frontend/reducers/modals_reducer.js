@@ -1,5 +1,4 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const preloadedState = {
     modal: false
@@ -14,7 +13,7 @@ const modalsReducer = (state = null, action) => {
             nextState.modal = true;
             return nextState;
         case CLOSE_MODAL:
-            nextState.modal = false;
+            nextState.modal = null;
             return nextState;
         default:
             return state;
