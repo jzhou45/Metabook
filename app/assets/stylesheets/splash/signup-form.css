@@ -11,6 +11,14 @@
     z-index: 1;
 }
 
+#signup-form{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
 .openModal{
     font-family: Helvetica, sans-serif;
     width: 430px;

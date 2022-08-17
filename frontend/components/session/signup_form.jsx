@@ -52,6 +52,7 @@ class SignupForm extends React.Component{
 
     render(){
             return(
+                <div id="signup-form">
                     <div id="modal" className="invisible">
                         <form onSubmit={this.handleSubmitSignup}>
                             <div>
@@ -81,6 +82,7 @@ class SignupForm extends React.Component{
                             <button type="submit">Sign Up</button>
                         </form>       
                     </div>
+                </div>
             )
     }
 }
