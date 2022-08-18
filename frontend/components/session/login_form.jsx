@@ -55,12 +55,12 @@ class LoginForm extends React.Component{
         if (this.state.email.length === 0){
             document.getElementById("login-email").style.border = "1px solid #f02849";
             document.getElementById("login-email-error-message").innerHTML = "The email you entered isn't connected to an account.";
-            document.getElementById("login-container").firstChild.style.height = "370px";
+            document.getElementById("login-container").firstChild.style.height = "420px";
         }
         if (this.state.password.length === 0){
             document.getElementById("login-password").style.border = "1px solid #f02849";
             document.getElementById("login-password-error-message").innerHTML = "The password you've entered is incorrect";
-            document.getElementById("login-container").firstChild.style.height = "370px";
+            document.getElementById("login-container").firstChild.style.height = "420px";
         }
     }
 
