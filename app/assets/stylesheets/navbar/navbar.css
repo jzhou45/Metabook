@@ -43,6 +43,11 @@
     width: 35px;
 }
 
+#navbar img:hover{
+    cursor: pointer;
+    filter: brightness(1.2);
+}
+
 #navbar div{
     display: flex;
     align-items: center;
@@ -54,9 +59,18 @@
     filter: brightness(0) invert(1);
 }
 
+#navbar div :nth-child(2):hover{
+    filter: brightness(0) invert(0.8);
+}
+
 #navbar button{
     border: none;
     height: 35px;
     width: 35px;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+#navbar button:hover{
+    filter: brightness(1.2);
 }
