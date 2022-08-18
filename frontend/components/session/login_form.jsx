@@ -12,6 +12,7 @@ class LoginForm extends React.Component{
             birthday: '',
             gender: ''
         };
+        document.body.style.backgroundColor = "white";
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.logout = this.logout.bind(this);

@@ -2,8 +2,9 @@ import React from "react";
 
 class NavBar extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
         this.logout = this.logout.bind(this);
+        document.body.style.backgroundColor = "#1c1e21";
     }
 
     logout(){
