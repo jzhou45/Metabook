@@ -25,6 +25,7 @@ class SignupForm extends React.Component{
         e.preventDefault();
         this.props.signup(this.state);
         if (store.getState().session.id) this.setState({loggedIn: true});
+        this.handleErrors();
     }
 
     closeModal(){
@@ -35,6 +36,15 @@ class SignupForm extends React.Component{
         const whiteBackground = document.getElementById("white-background");
         whiteBackground.classList.remove("white-background")
         whiteBackground.classList.add("invisible");
+    }
+
+    handleErrors(){
+        if (this.state.first_name.length === 0) document.getElementById("signup-first-name").style.border = "1px solid #f02849";
+        if (this.state.last_name.length === 0) document.getElementById("signup-last-name").style.border = "1px solid #f02849";
+        if (this.state.email.length === 0) document.getElementById("signup-email").style.border = "1px solid #f02849";
+        if (this.state.password.length === 0) document.getElementById("signup-password").style.border = "1px solid #f02849";
+        if (this.state.birthday.length === 0) document.getElementById("signup-birthday").style.border = "1px solid #f02849";
+        if (this.state.gender.length === 0) document.getElementById("signup-gender").style.border = "1px solid #f02849";
     }
 
     render(){
@@ -50,18 +60,18 @@ class SignupForm extends React.Component{
                                 <h2>It's quick and easy.</h2>
                                 <hr />
                                 <div>
-                                    <input type="text" value={this.state.first_name}  onChange={this.handleUpdate('first_name')} placeholder="First name" required/>
-                                    <input type="text" value={this.state.last_name} onChange={this.handleUpdate('last_name')} placeholder="Last name" required/>
+                                    <input type="text" value={this.state.first_name}  onChange={this.handleUpdate('first_name')} id="signup-first-name" placeholder="First name"/>
+                                    <input type="text" value={this.state.last_name} onChange={this.handleUpdate('last_name')} id="signup-last-name" placeholder="Last name"/>
                                 </div>
-                                <input type="email" value={this.state.email} onChange={this.handleUpdate('email')} placeholder="Email" required/>
-                                <input type="password" value={this.state.password} onChange={this.handleUpdate('password')} placeholder="New password" required/>
+                                <input type="text" value={this.state.email} onChange={this.handleUpdate('email')} id="signup-email" placeholder="Email"/>
+                                <input type="password" value={this.state.password} onChange={this.handleUpdate('password')} id="signup-password" placeholder="New password"/>
                                 <label>
                                     <h3>Birthday</h3>
-                                    <input type="date" value={this.state.birthday} onChange={this.handleUpdate('birthday')} placeholder="Birthday" required/>
+                                    <input type="date" value={this.state.birthday} onChange={this.handleUpdate('birthday')} id="signup-birthday" placeholder="Birthday"/>
                                 </label>
                                 <label>
                                         <h3>Gender</h3>
-                                        <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} placeholder="Gender"/>
+                                        <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} id="signup-gender" placeholder="Gender"/>
                                 </label>
                             </div>
                             <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>
