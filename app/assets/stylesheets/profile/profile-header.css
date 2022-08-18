@@ -22,3 +22,30 @@
 #cover-photo img:hover{
     cursor: pointer;
 }
+
+#profile-photo{
+    display: flex;
+    justify-content: center;
+    margin-top: -28px;
+    margin-right: 37.5em;
+}
+
+#profile-photo img{
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    border: 3px solid #242526;
+}
+
+#profile-photo img:hover{
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+#user-name{
+    margin-top: 75px;
+    margin-left: 25px;
+    color: #e3e6ea;
+    font-family: Helvetica, sans-serif;
+    font-size: 38px;
+}

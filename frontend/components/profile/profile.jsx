@@ -8,7 +8,7 @@ class Profile extends React.Component{
     componentDidMount(){
         this.props.fetchUser(this.props.usersId).then(
             () => {
-                document.getElementById("test").innerHTML = this.props.users.first_name + " " + this.props.users.last_name;
+                document.getElementById("user-name").innerHTML = this.props.users.first_name + " " + this.props.users.last_name;
             })
     }
 
@@ -19,13 +19,11 @@ class Profile extends React.Component{
                     <div id="cover-photo">
                         <img src="https://swall.teahub.io/photos/small/51-512779_dream-imagine-believe-facebook-cover.jpg" alt="cover photo" />
                     </div>
+                    <div id="profile-photo">
+                        <img src="https://s167.daydaynews.cc/?url=http%3A%2F%2Fp1.pstatp.com%2Flarge%2Fpgc-image%2F82530511de2a45dfadee9614bb407187" alt="profile photo" />
+                        <h1 id="user-name"></h1>
+                    </div>
                 </div>
-                <h1>Profile is working</h1>
-                <h1 id="test"></h1>
-                <button
-
-                 onClick={() => {document.getElementById("test").innerHTML = this.props.users.first_name}}>
-                </button>
             </div>
         )
     }
