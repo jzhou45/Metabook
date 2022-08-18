@@ -1,0 +1,62 @@
+#navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 56px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #242526;
+}
+
+#navbar h1{
+    margin-left: 20px;
+    font-family: klavika-web, sans-serif;;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+#navbar h1:hover{
+    cursor: pointer;
+}
+
+#navbar input{
+    width: 680px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: #3a3b3c;
+    border: none;
+}
+
+#navbar ::placeholder{
+    font-weight: normal;
+    font-size: 15px;
+    padding-left: 15px;
+}
+
+#navbar input:hover{
+    background-color: #4f5052;
+}
+
+#navbar img{
+    height: 35px;
+    width: 35px;
+}
+
+#navbar div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+}
+
+#navbar div :nth-child(2){
+    filter: brightness(0) invert(1);
+}
+
+#navbar button{
+    border: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}
