@@ -7,6 +7,6 @@ const receive_user = user => ({
     user
 });
 
-export const getUser = user => dispatch => (
-    APIUtil.getUser(user.id).then(user => dispatch(receive_user(user)))
+export const getUser = userId => dispatch => (
+    APIUtil.getUser(userId).then(user => dispatch(receive_user(user)))
 );
