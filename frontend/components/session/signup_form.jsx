@@ -75,7 +75,7 @@ class SignupForm extends React.Component{
                                 </label>
                             </div>
                             <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>
-                            <h4>By clicking Sign Up, you agree to our <span>Terms</span>, <span>Privacy Policy</span>, and <span>Cookies Policy</span>. You will not receive SMS Notifications from us and can not opt out any time.</h4>
+                            <h4>By clicking Sign Up, you agree to our <span>Terms</span>, <span>Privacy Policy</span>, and <span>Cookies Policy</span> which does not exist. You will not receive SMS Notifications from us and can not opt in any time.</h4>
                             <button type="submit">Sign Up</button>
                         </form>       
                     </div>
