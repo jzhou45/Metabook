@@ -17,6 +17,7 @@ class LoginForm extends React.Component{
         this.logout = this.logout.bind(this);
         this.openModal = this.openModal.bind(this);
         this.loginAsDemoUser = this.loginAsDemoUser.bind(this);
+        this.handleErrors = this.handleErrors.bind(this);
     }
 
     handleUpdate(field){
@@ -86,7 +87,9 @@ class LoginForm extends React.Component{
                             <div id="demo-login" onClick={this.loginAsDemoUser}>Login as Demo User?</div>
 
                             <hr />
-                            <button onClick={this.openModal}>Create new account</button>
+                            <div onClick={this.openModal} className="signup-button">
+                                <p>Create new account</p>
+                            </div>
                         </form>
                         <div className="create-a-page">
                             <p><span>Create a Page </span> for a celebrity, brand or business.</p>

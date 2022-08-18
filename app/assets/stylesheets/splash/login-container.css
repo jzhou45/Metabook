@@ -46,6 +46,14 @@
     border-radius: 8px;
     font-size: large;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-container form :last-child p{
+    margin: 0;
+    padding: 0;
 }
 
 #login-container form :last-child:hover{
@@ -62,6 +70,7 @@
     border-radius: 8px;
     border: none;
     font-size: large;
+
 }
 
 .login-button:hover{
