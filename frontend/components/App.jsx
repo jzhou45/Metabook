@@ -8,7 +8,7 @@ const App = () => (
   <div>
     <AuthRoute exact path="/" component={LoginForm} />
     <AuthRoute exact path="/" component={SignupForm} />
-    <ProtectedRoute exact path="/feed" component={NavBar} />
+    <ProtectedRoute exact path="/" component={NavBar} />
   </div>
 );
 
