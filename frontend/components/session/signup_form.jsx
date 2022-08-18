@@ -42,7 +42,7 @@ class SignupForm extends React.Component{
         if (this.state.first_name.length === 0) document.getElementById("signup-first-name").style.border = "1px solid #f02849";
         if (this.state.last_name.length === 0) document.getElementById("signup-last-name").style.border = "1px solid #f02849";
         if (this.state.email.length === 0) document.getElementById("signup-email").style.border = "1px solid #f02849";
-        if (this.state.password.length === 0) document.getElementById("signup-password").style.border = "1px solid #f02849";
+        if (this.state.password.length < 8) document.getElementById("signup-password").style.border = "1px solid #f02849";
         if (this.state.birthday.length === 0) document.getElementById("signup-birthday").style.border = "1px solid #f02849";
         if (this.state.gender.length === 0) document.getElementById("signup-gender").style.border = "1px solid #f02849";
     }
