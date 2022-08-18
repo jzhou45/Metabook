@@ -27,7 +27,7 @@ class NavBar extends React.Component{
                 <div>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/2048px-LinkedIn_icon_circle.svg.png" alt="linkedin link" onClick={this.openLinkedIn} />
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github link" onClick={this.openGithub}/>
-                    <button onClick={this.logout}>Logout</button>
+                    <button onClick={this.logout}>Exit</button>
                 </div>
             </header>
         )
