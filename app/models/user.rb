@@ -23,6 +23,8 @@ class User < ApplicationRecord
     validates :email, :session_token, uniqueness: true
     validates :password, length: { minimum: 8 }, allow_nil: true
 
+    has_many_attached :photos
+
     attr_reader :password
 
     def password=(password)
