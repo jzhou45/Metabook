@@ -1,0 +1,106 @@
+#navbar-modal{
+    position: absolute;
+    right: 20px;
+    width: 360px;
+    height: 443px;
+    background-color: #232425;
+    color: #e4e6eb;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+
+#navbar-modal > div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#navbar-modal-name{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 60px;
+    border-radius: 5px;
+    font-weight: 550;
+}
+
+#navbar-modal-name:hover{
+    background-color: #3a3b3c;
+    cursor: pointer;
+}
+
+#navbar-modal > :first-child{
+    width: 90%;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);;
+    height: 120px;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+#navbar-modal div hr{
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #3d4042;
+}
+
+#navbar-modal > div > p{
+    color: #2e89ff;
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: smaller;
+}
+
+#navbar-modal > div > p:hover{
+    cursor: pointer;
+    background-color: #3a3b3c;
+}
+
+#profile-image.square{
+    margin-left: 5px;
+}
+
+#profile-image.square + p{
+    margin-left: 7px;
+}
+
+#navbar-modal .fake-links{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+#navbar-modal .fake-links:hover{
+    background-color: #3a3b3c;
+}
+
+#navbar-modal .fake-links span{
+    width: 90%;
+    font-size: smaller;
+}
+
+#navbar-modal .fake-text{
+    display: inline;
+    font-size: small;
+    width: 90%;
+    margin-left: 30px;
+    line-height: 1.3;
+    color: #a0a3a7;
+}
+
+#navbar-modal .fake-text span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#navbar-modal .fake-text span:last-child:hover{
+    cursor: text;
+    text-decoration: none;
+}

@@ -63,14 +63,23 @@
     filter: brightness(0) invert(0.8);
 }
 
-#navbar button{
-    border: none;
+#navbar>div{
+    margin-right: 20px;
+}
+
+#profile-button.square, #profile-image.square{
     height: 35px;
     width: 35px;
     border-radius: 50%;
     cursor: pointer;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#navbar button:hover{
+#profile-button:hover{
     filter: brightness(1.2);
 }
