@@ -50,3 +50,46 @@
     font-family: Helvetica, sans-serif;
     font-size: 38px;
 }
+
+#profile-header input{
+    position: absolute;
+    
+}
+
+#profile-photo-change{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: absolute;
+    margin-top: -50px;
+    width: 175px;
+}
+
+#profile-header label{
+    width: 40px;
+    height: 40px;
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #242526;
+}
+
+#profile-header label img:hover{
+    filter:brightness(0) invert(1);
+}
+
+#profile-header label:hover{
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+#profile-header label img{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    filter: brightness(0) invert(1);
+    border: none;
+    border-radius: 0;
+}

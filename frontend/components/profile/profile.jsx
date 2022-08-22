@@ -24,7 +24,8 @@ class Profile extends React.Component{
                 coverPhoto: user.user.coverPhoto,
                 profilePhoto: user.user.profilePhoto,
                 firstName: user.user.first_name,
-                lastName: user.user.last_name
+                lastName: user.user.last_name,
+                id: user.user.id
             })
         })
     }
@@ -50,9 +51,16 @@ class Profile extends React.Component{
                     <div id="cover-photo">
                         <img src={this.state.coverPhoto} alt="cover photo" />
                     </div>
-                    <input type="file" onChange={this.handleSubmitProfilePhoto} id="profile-photo-input"/>
                     <div id="profile-photo">
-                        <img src={this.state.profilePhoto} alt="profile photo"/>
+                        <div>
+                            <img src={this.state.profilePhoto} alt="profile photo"/>
+                            {(parseInt(location.href[location.href.length -1]) === store.getState().session.id) ? 
+                            <div id="profile-photo-change">
+                                <input type="file" onChange={this.handleSubmitProfilePhoto} id="profile-photo-input" className="invisible"/>
+                                <label htmlFor="profile-photo-input"><img src="https://cdn-icons-png.flaticon.com/512/83/83574.png" alt="Change Profile Picture" /></label>
+                            </div>
+                             : null}
+                        </div>
                         <h1 id="user-name">{this.state.firstName} {this.state.lastName}</h1>
                     </div>
                 </div>
