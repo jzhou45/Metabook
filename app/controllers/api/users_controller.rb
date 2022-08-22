@@ -1,6 +1,14 @@
+require 'open-uri'
+
 class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
+
+        profile_photo = open("https://metabook-seed.s3.amazonaws.com/default_pfp.webp")
+        @user.profile_photo.attach(io: profile_photo, filename: 'default_pfp.webp')
+
+        cover_photo = open("https://metabook-seed.s3.amazonaws.com/default_cover_photo.jpeg")
+        @user.cover_photo.attach(io: cover_photo, filename: 'default_cover_photo.jpeg')
 
         if @user.save
             login(@user)
