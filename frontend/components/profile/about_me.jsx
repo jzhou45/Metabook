@@ -5,17 +5,21 @@ class AboutMe extends React.Component{
         super(props);
         this.state = {
             aboutMe: "",
-            modalOpened: false
+            modalOpened: false,
+            id: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleCancelSubmit = this.handleCancelSubmit.bind(this);
+        this.handleSaveSubmit = this.handleSaveSubmit.bind(this);
     };
 
     componentDidMount(){
         this.props.fetchUser(this.props.usersId).then(user => {
             this.setState({
-                aboutMe: user.user.about_me
+                aboutMe: user.user.about_me,
+                id: user.user.id
             });
             (this.state.aboutMe) ? document.getElementById("about-me-button").innerHTML = "Edit bio" : document.getElementById("about-me-button").innerHTML = "Add bio";
         });
@@ -23,7 +27,7 @@ class AboutMe extends React.Component{
 
     handleUpdate(field){
         return e => this.setState({[field]: e.currentTarget.value});
-    }
+    };
 
     handleSubmit(e){
         if (this.state.modalOpened){
@@ -49,6 +53,22 @@ class AboutMe extends React.Component{
         this.state.modalOpened = false;
     };
 
+    handleCancelSubmit(){
+        this.closeModal();
+        this.setState({
+            aboutMe: ""
+        });
+    };
+
+    handleSaveSubmit(){
+        $.ajax({
+            url: `api/users/${this.state.id}`,
+            method: 'PATCH',
+            data: {'user[about_me]': this.state.aboutMe},
+        });
+        this.closeModal();
+    }
+
     render(){
         return(
             <div id="about-me">
@@ -56,10 +76,11 @@ class AboutMe extends React.Component{
                 <h2 id="bio">{this.state.aboutMe}</h2>
                 <div id="biomodal" className="invisible">
                     <textarea placeholder="Describe who you are" onChange={this.handleUpdate('aboutMe')} value={this.state.aboutMe}></textarea>
-                    <button onClick={this.handleSubmit}>Cancel</button>
-                    <button onClick={this.handleSubmit}>Save</button>
+                    <button onClick={this.handleCancelSubmit}>Cancel</button>
+                    <button onClick={this.handleSaveSubmit}>Save</button>
                 </div>
                 <button id="about-me-button" onClick={this.handleSubmit}></button>
+                <button onClick={()=>{console.log(this.state)}}></button>
             </div>
         );
     };
