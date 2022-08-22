@@ -3,7 +3,6 @@ import React from "react";
 class Profile extends React.Component{
     constructor(props){
         super(props);
-
         this.state = {
             id: this.props.id,
             aboutMe: this.props.about_me,
@@ -15,6 +14,19 @@ class Profile extends React.Component{
         };
 
         this.handleSubmitProfilePhoto = this.handleSubmitProfilePhoto.bind(this);
+    }
+
+    componentDidMount(){
+        this.props.fetchUser(this.props.usersId).then(user => {
+            this.setState({
+                aboutMe: user.user.about_me,
+                email: user.user.email,
+                coverPhoto: user.user.coverPhoto,
+                profilePhoto: user.user.profilePhoto,
+                firstName: user.user.first_name,
+                lastName: user.user.last_name
+            })
+        })
     }
 
     handleSubmitProfilePhoto(e){
