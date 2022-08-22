@@ -6,10 +6,10 @@ class Api::UsersController < ApplicationController
 
         @user.about_me = ""
 
-        profile_photo = open("https://metabook-seed.s3.amazonaws.com/default_pfp.webp")
+        profile_photo = URI.open("https://metabook-seed.s3.amazonaws.com/default_pfp.webp")
         @user.profile_photo.attach(io: profile_photo, filename: 'default_pfp.webp')
 
-        cover_photo = open("https://metabook-seed.s3.amazonaws.com/default_cover_photo.jpeg")
+        cover_photo = URI.open("https://metabook-seed.s3.amazonaws.com/default_cover_photo.jpeg")
         @user.cover_photo.attach(io: cover_photo, filename: 'default_cover_photo.jpeg')
 
         if @user.save
@@ -37,6 +37,6 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :password, :first_name, :last_name, :birthday, :gender, :profile_photo, :cover_photo)
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :birthday, :gender, :profile_photo, :cover_photo, :about_me)
     end
 end

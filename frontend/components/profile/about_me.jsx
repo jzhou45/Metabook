@@ -9,6 +9,7 @@ class AboutMe extends React.Component{
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
     };
 
     componentDidMount(){
@@ -19,6 +20,10 @@ class AboutMe extends React.Component{
             (this.state.aboutMe) ? document.getElementById("about-me-button").innerHTML = "Edit bio" : document.getElementById("about-me-button").innerHTML = "Add bio";
         });
     };
+
+    handleUpdate(field){
+        return e => this.setState({[field]: e.currentTarget.value});
+    }
 
     handleSubmit(e){
         if (this.state.modalOpened){
@@ -32,6 +37,7 @@ class AboutMe extends React.Component{
         this.props.openModal("bioModal");
         document.getElementById("biomodal").classList.remove("invisible");
         document.getElementById("about-me-button").classList.add("invisible");
+        document.getElementById("bio").classList.add("invisible");
         this.state.modalOpened = true;
     };
 
@@ -39,6 +45,7 @@ class AboutMe extends React.Component{
         this.props.closeModal("bioModal");
         document.getElementById("biomodal").classList.add("invisible");
         document.getElementById("about-me-button").classList.remove("invisible");
+        document.getElementById("bio").classList.remove("invisible");
         this.state.modalOpened = false;
     };
 
@@ -48,7 +55,7 @@ class AboutMe extends React.Component{
                 <h1>Intro</h1>
                 <h2 id="bio">{this.state.aboutMe}</h2>
                 <div id="biomodal" className="invisible">
-                    <textarea placeholder="Describe who you are"></textarea>
+                    <textarea placeholder="Describe who you are" onChange={this.handleUpdate('aboutMe')} value={this.state.aboutMe}></textarea>
                     <button onClick={this.handleSubmit}>Cancel</button>
                     <button onClick={this.handleSubmit}>Save</button>
                 </div>
