@@ -93,3 +93,22 @@
     border: none;
     border-radius: 0;
 }
+
+#cover-photo-change label{
+    background-color: white;
+    border-radius: 7px;
+    width: 165px;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#cover-photo-change{
+    position: absolute;
+    margin-top: 350px;
+    margin-right: -860px;
+}
+
+#cover-photo-change:hover{
+    filter: brightness(0.9);
+}

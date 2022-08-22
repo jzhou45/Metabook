@@ -14,6 +14,7 @@ class Profile extends React.Component{
         };
 
         this.handleSubmitProfilePhoto = this.handleSubmitProfilePhoto.bind(this);
+        this.handleSubmitCoverPhoto = this.handleSubmitCoverPhoto.bind(this);
     }
 
     componentDidMount(){
@@ -44,12 +45,32 @@ class Profile extends React.Component{
         }).then(() => {location.reload()});
     }
 
+    handleSubmitCoverPhoto(e){
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('user[cover_photo]', e.target.files[0]);
+
+        $.ajax({
+            url: `api/users/${this.state.id}`,
+            method: 'PATCH',
+            data: formData,
+            contentType: false,
+            processData: false
+        }).then(() => {location.reload()});
+    }
+
     render(){
         return(
             <div>
                 <div id="profile-header">
                     <div id="cover-photo">
                         <img src={this.state.coverPhoto} alt="cover photo" />
+                        {(parseInt(location.href[location.href.length -1]) === store.getState().session.id) ? 
+                            <div id="cover-photo-change">
+                                <input type="file" onChange={this.handleSubmitCoverPhoto} id="cover-photo-input" className="invisible"/>
+                                <label htmlFor="cover-photo-input">Edit cover photo</label>
+                            </div>
+                             : null}
                     </div>
                     <div id="profile-photo">
                         <div>
