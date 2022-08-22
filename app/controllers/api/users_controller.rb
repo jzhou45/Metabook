@@ -4,6 +4,8 @@ class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
 
+        @user.about_me = ""
+
         profile_photo = open("https://metabook-seed.s3.amazonaws.com/default_pfp.webp")
         @user.profile_photo.attach(io: profile_photo, filename: 'default_pfp.webp')
 
