@@ -35,6 +35,7 @@
     width: 180px;
     border-radius: 50%;
     border: 3px solid #242526;
+    object-fit: cover;
 }
 
 #profile-photo img:hover{
