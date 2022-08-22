@@ -1,16 +1,18 @@
 import { connect } from "react-redux";
+import { openModal } from "../../actions/modal_actions";
 import { fetchUser } from "../../actions/user_actions";
-import Profile from "./profile";
+import AboutMe from "./about_me";
 
 const mapStateToProps = (state, ownProps) => {
     const usersId = parseInt(ownProps.location.pathname.split("/")[2]);
     return({
         usersId: usersId
-    })
-}
+    });
+};
 
 const mapDispatchToProps = dispatch => ({
-    fetchUser: userId => dispatch(fetchUser(userId))
-})
+    fetchUser: userId => dispatch(fetchUser(userId)),
+    openModal: modal => dispatch(openModal(modal))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(AboutMe);
