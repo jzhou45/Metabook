@@ -21,26 +21,37 @@ class AboutMe extends React.Component{
     };
 
     handleSubmit(e){
-        alert("dwa")
         if (this.state.modalOpened){
             this.closeModal();
         } else{
             this.openModal();
-        }
+        };
     };
 
     openModal(){
         this.props.openModal("bioModal");
-        const textarea = document.createElement("textarea");
-        document.getElementById("biomodal").appendChild(textarea);
-    }
+        document.getElementById("biomodal").classList.remove("invisible");
+        document.getElementById("about-me-button").classList.add("invisible");
+        this.state.modalOpened = true;
+    };
+
+    closeModal(){
+        this.props.closeModal("bioModal");
+        document.getElementById("biomodal").classList.add("invisible");
+        document.getElementById("about-me-button").classList.remove("invisible");
+        this.state.modalOpened = false;
+    };
 
     render(){
         return(
             <div id="about-me">
                 <h1>Intro</h1>
                 <h2 id="bio">{this.state.aboutMe}</h2>
-                <div id="biomodal"></div>
+                <div id="biomodal" className="invisible">
+                    <textarea placeholder="Describe who you are"></textarea>
+                    <button onClick={this.handleSubmit}>Cancel</button>
+                    <button onClick={this.handleSubmit}>Save</button>
+                </div>
                 <button id="about-me-button" onClick={this.handleSubmit}></button>
             </div>
         );

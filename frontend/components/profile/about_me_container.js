@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { openModal } from "../../actions/modal_actions";
+import { closeModal, openModal } from "../../actions/modal_actions";
 import { fetchUser } from "../../actions/user_actions";
 import AboutMe from "./about_me";
 
@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchUser: userId => dispatch(fetchUser(userId)),
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
+    closeModal: modal => dispatch(closeModal(modal))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AboutMe);
