@@ -28,7 +28,6 @@ gem 'activestorage'
 gem 'jquery-rails'
 gem 'aws-sdk-s3', require: false
 
-gem 'open-uri'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

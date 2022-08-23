@@ -26,6 +26,10 @@ class User < ApplicationRecord
     has_one_attached :profile_photo
     has_one_attached :cover_photo
 
+    has_many :posts,
+        foreign_key: :user_id,
+        class_name: :Post
+
     attr_reader :password
 
     def password=(password)
