@@ -28,10 +28,10 @@ class NavBarModal extends React.Component{
                 <div>
                     <div onClick={this.goToProfilePage} id="navbar-modal-name">
                         <div id="profile-image" className="square">
-                            <span> {this.props.currentUser.first_name[0]} {this.props.currentUser.last_name[0]}</span>
+                            <img src={this.props.profilePhoto} alt="profile Photo" />
                         </div>
                         <p>
-                            {this.props.currentUser.first_name} {this.props.currentUser.last_name}
+                            {this.props.firstName} {this.props.lastName}
                         </p>
                     </div>
                     <hr />

@@ -3,9 +3,13 @@ import NavBarModal from "./navbar_modal";
 import {logout} from "../../actions/session_actions";
 import { closeNavbar } from "../../actions/modal_actions";
 
-const mapStateToProps = ({session, entities: {users}}) => {
+const mapStateToProps = state => {
+    const currentUserId = state.session.id;
     return {
-        currentUser: users[session.id]
+        currentUser: currentUserId,
+        profilePhoto: state.entities.users[currentUserId].profilePhoto,
+        firstName: state.entities.users[currentUserId].first_name,
+        lastName: state.entities.users[currentUserId].last_name
     };
 };
 

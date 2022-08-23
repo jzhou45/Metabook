@@ -112,3 +112,8 @@
     cursor: text;
     text-decoration: none;
 }
+
+#navbar-modal img{
+    height: 40px;
+    width: 40px;
+}

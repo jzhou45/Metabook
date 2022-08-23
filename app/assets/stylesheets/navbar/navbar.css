@@ -83,6 +83,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#profile-button:hover{
-    filter: brightness(1.2);
+#profile-button > img, #profile-image > img{
+    border-radius: 50%;
 }

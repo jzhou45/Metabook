@@ -54,9 +54,7 @@ class NavBar extends React.Component{
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/2048px-LinkedIn_icon_circle.svg.png" alt="linkedin link" onClick={this.openLinkedIn} />
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github link" onClick={this.openGithub}/>
                     <div id="profile-button" className="square" onClick={this.modalControls}>
-                        <span>
-                            {this.props.firstName[0]} {this.props.lastName[0]}
-                        </span>
+                        <img src={this.props.profilePhoto} alt="profile photo" />
                     </div>
                 </div>
             </header>
