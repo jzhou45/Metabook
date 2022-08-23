@@ -2,9 +2,14 @@ import { connect } from "react-redux";
 import { fetchPost, fetchPosts } from "../../actions/post_actions";
 import Newsfeed from "./newsfeed";
 
-const mapStateToProps = state => ({
-    userId: state.session.id
-});
+const mapStateToProps = state => {
+    const currentUserId = state.session.id
+    return({
+        userId: currentUserId,
+        profilePhoto: state.entities.users[currentUserId].profilePhoto,
+        firstName: state.entities.users[currentUserId].first_name
+    });
+};
 
 const mapDispatchToProps = dispatch => ({
     fetchPosts: () => dispatch(fetchPosts()),

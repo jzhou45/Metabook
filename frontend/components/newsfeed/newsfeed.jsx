@@ -11,6 +11,7 @@ class Newsfeed extends React.Component{
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.goToProfilePage = this.goToProfilePage.bind(this);
     };
 
     componentDidMount(){
@@ -18,12 +19,6 @@ class Newsfeed extends React.Component{
             this.setState({posts: posts.posts})
         });
     };
-
-    // componentDidUpdate(){
-    //     this.props.fetchPosts().then(posts => {
-    //         this.setState({posts: posts.posts})
-    //     });
-    // }
 
     handleUpdate(field){
         return e => this.setState({[field]: e.currentTarget.value});
@@ -50,11 +45,17 @@ class Newsfeed extends React.Component{
         });
     };
 
+    goToProfilePage(){
+        this.props.history.push(`/users/${this.props.userId}`);
+    };
+
     render(){
         return(
-            <div>
-                <button onClick={()=>{console.log(this.state)}}>STATE</button>
-                <button onClick={()=>{console.log(this.props)}}>PROPS</button>
+            <div id="newsfeed">
+                <div id="make-posts">
+                    <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
+                    <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} />
+                </div>
 
                 <form onSubmit={this.handleSubmit}>
                     <textarea value={this.state.content} onChange={this.handleUpdate('content')}></textarea>
