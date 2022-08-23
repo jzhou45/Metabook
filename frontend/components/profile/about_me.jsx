@@ -5,6 +5,7 @@ class AboutMe extends React.Component{
         super(props);
         this.state = {
             aboutMe: "",
+            previousAboutMe: "",
             modalOpened: false,
             id: ""
         };
@@ -13,6 +14,7 @@ class AboutMe extends React.Component{
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleCancelSubmit = this.handleCancelSubmit.bind(this);
         this.handleSaveSubmit = this.handleSaveSubmit.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     };
 
     componentDidMount(){
@@ -38,6 +40,7 @@ class AboutMe extends React.Component{
     };
 
     openModal(){
+        this.state.previousAboutMe = this.state.aboutMe;
         this.props.openModal("bioModal");
         document.getElementById("biomodal").classList.remove("invisible");
         document.getElementById("about-me-button").classList.add("invisible");
@@ -46,18 +49,18 @@ class AboutMe extends React.Component{
     };
 
     closeModal(){
-        this.props.closeModal("bioModal");
         document.getElementById("biomodal").classList.add("invisible");
         document.getElementById("about-me-button").classList.remove("invisible");
         document.getElementById("bio").classList.remove("invisible");
         this.state.modalOpened = false;
+        this.props.closeModal("bioModal");
     };
 
     handleCancelSubmit(){
-        this.closeModal();
         this.setState({
-            aboutMe: ""
+            aboutMe: this.state.previousAboutMe
         });
+        this.closeModal();
     };
 
     handleSaveSubmit(){
@@ -72,15 +75,20 @@ class AboutMe extends React.Component{
     render(){
         return(
             <div id="about-me">
-                <h1>Intro</h1>
-                <h2 id="bio">{this.state.aboutMe}</h2>
-                <div id="biomodal" className="invisible">
-                    <textarea placeholder="Describe who you are" onChange={this.handleUpdate('aboutMe')} value={this.state.aboutMe}></textarea>
-                    <button onClick={this.handleCancelSubmit}>Cancel</button>
-                    <button onClick={this.handleSaveSubmit}>Save</button>
+                <div>
+                    <h1>Intro</h1>
+                    <div>
+                        <h2 id="bio">{this.state.aboutMe}</h2>
+                        <div id="biomodal" className="invisible">
+                            <textarea placeholder="Describe who you are" onChange={this.handleUpdate('aboutMe')} value={this.state.aboutMe}></textarea>
+                            <div>
+                                <button onClick={this.handleCancelSubmit}>Cancel</button>
+                                <button onClick={this.handleSaveSubmit}>Save</button>
+                            </div>
+                        </div>
+                        <button id="about-me-button" onClick={this.handleSubmit}></button>
+                    </div>
                 </div>
-                <button id="about-me-button" onClick={this.handleSubmit}></button>
-                <button onClick={()=>{console.log(this.state)}}></button>
             </div>
         );
     };
