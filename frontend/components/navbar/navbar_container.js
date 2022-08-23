@@ -2,10 +2,14 @@ import { connect } from "react-redux";
 import NavBar from "./navbar";
 import { closeNavbar, openNavbar } from "../../actions/modal_actions";
 
-const mapStateToProps = ({session, entities: {users}}) => {
-    return{
-        currentUser: users[session.id]
-    };
+const mapStateToProps = state => {
+    const currentUserId = state.session.id;
+    console.log(state)
+    return({
+        id: currentUserId,
+        firstName: state.entities.users[currentUserId].first_name,
+        lastName: state.entities.users[currentUserId].last_name,
+    })
 };
 
 const mapDispatchToProps = dispatch => ({

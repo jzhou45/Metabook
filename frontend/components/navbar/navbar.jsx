@@ -3,7 +3,7 @@ import React from "react";
 class NavBar extends React.Component{
     constructor(props){
         super(props);
-
+        console.log(props);
         this.state = {
             modalOpened: false,
         };
@@ -24,11 +24,11 @@ class NavBar extends React.Component{
 
     modalControls(){
         if (this.state.modalOpened){
-            this.setState({modalOpened: false});
-            this.openModal();
-        } else{
-            this.setState({modalOpened: true});
             this.closeModal();
+            this.setState({modalOpened: false});
+        } else{
+            this.openModal();
+            this.setState({modalOpened: true});
         };
     };
 
@@ -56,7 +56,7 @@ class NavBar extends React.Component{
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github link" onClick={this.openGithub}/>
                     <div id="profile-button" className="square" onClick={this.modalControls}>
                         <span>
-                            {this.props.currentUser.first_name[0]} {this.props.currentUser.last_name[0]}
+                            {this.props.firstName[0]} {this.props.lastName[0]}
                         </span>
                     </div>
                 </div>

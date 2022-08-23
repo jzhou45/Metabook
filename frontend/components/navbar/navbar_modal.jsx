@@ -14,6 +14,7 @@ class NavBarModal extends React.Component{
 
     logout(){
         this.props.logout();
+        console.log("logged out")
     };
 
     goToProfilePage(){
