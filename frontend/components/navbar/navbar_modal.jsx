@@ -52,7 +52,7 @@ class NavBarModal extends React.Component{
                     <span>Give feedback</span>
                 </div>
 
-                <div onClick={this.props.logout} className="fake-links">
+                <div onClick={this.props.logout} className="fake-links" id="logout">
                     <span>Log Out</span>
                 </div>
 

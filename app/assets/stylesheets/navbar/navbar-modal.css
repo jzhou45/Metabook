@@ -82,6 +82,11 @@
 
 #navbar-modal .fake-links:hover{
     background-color: #3a3b3c;
+    cursor: not-allowed;
+}
+
+#navbar-modal .fake-links#logout:hover{
+    cursor: pointer;
 }
 
 #navbar-modal .fake-links span{
