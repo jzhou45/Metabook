@@ -19,6 +19,12 @@ class Newsfeed extends React.Component{
         });
     };
 
+    // componentDidUpdate(){
+    //     this.props.fetchPosts().then(posts => {
+    //         this.setState({posts: posts.posts})
+    //     });
+    // }
+
     handleUpdate(field){
         return e => this.setState({[field]: e.currentTarget.value});
     };
@@ -28,13 +34,19 @@ class Newsfeed extends React.Component{
         const formData = new FormData();
         formData.append('post[content]', this.state.content);
         formData.append('post[user_id]', this.state.userId);
-
         $.ajax({
             url: 'api/posts',
             method: "POST",
             data: formData,
             contentType: false,
             processData: false
+        }).then(() => {
+            this.setState({
+                content: ""
+            });
+            this.props.fetchPosts().then(posts => {
+                this.setState({posts: posts.posts})
+            });
         });
     };
 

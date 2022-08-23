@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchPosts } from "../../actions/post_actions";
+import { fetchPost, fetchPosts } from "../../actions/post_actions";
 import Newsfeed from "./newsfeed";
 
 const mapStateToProps = state => ({
@@ -7,7 +7,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchPosts: () => dispatch(fetchPosts())
+    fetchPosts: () => dispatch(fetchPosts()),
+    fetchPost: post => dispatch(fetchPost(post))
 });
 
 
