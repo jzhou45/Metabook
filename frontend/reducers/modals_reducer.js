@@ -1,10 +1,6 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
 
-const preloadedState = {
-    modal: false
-}
-
-const modalsReducer = (state = null, action) => {
+const modalsReducer = (state = {}, action) => {
     Object.freeze(state);
     const nextState = Object.assign({}, state);
 
@@ -17,7 +13,7 @@ const modalsReducer = (state = null, action) => {
             return nextState;
         default:
             return state;
-    }
-}
+    };
+};
 
 export default modalsReducer;

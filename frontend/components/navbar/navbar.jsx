@@ -34,10 +34,12 @@ class NavBar extends React.Component{
 
     openModal(){
         document.getElementById("navbar-modal").style.display = "flex";
+        this.props.openNavbar();
     }
 
     closeModal(){
         document.getElementById("navbar-modal").style.display = "none";
+        this.props.closeNavbar();
     }
 
     goToHomePage(){
