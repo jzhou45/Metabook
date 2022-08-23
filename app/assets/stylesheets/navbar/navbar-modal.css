@@ -1,5 +1,7 @@
 #navbar-modal{
-    position: absolute;
+    overflow: hidden;
+    position: fixed;
+    top: 60px;
     right: 20px;
     width: 360px;
     height: 443px;

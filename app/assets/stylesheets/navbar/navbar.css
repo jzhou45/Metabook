@@ -6,6 +6,9 @@
     align-items: center;
     justify-content: space-between;
     background-color: #242526;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
 }
 
 #navbar h1{
