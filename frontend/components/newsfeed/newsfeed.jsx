@@ -1,11 +1,13 @@
 import React from "react";
+import PostItem from "./post_item";
 
 class Newsfeed extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             content: "",
-            userId: this.props.userId
+            userId: this.props.userId,
+            posts: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -13,7 +15,7 @@ class Newsfeed extends React.Component{
 
     componentDidMount(){
         this.props.fetchPosts().then(posts => {
-            console.log(posts.posts)
+            this.setState({posts: posts.posts})
         });
     };
 
@@ -26,8 +28,6 @@ class Newsfeed extends React.Component{
         const formData = new FormData();
         formData.append('post[content]', this.state.content);
         formData.append('post[user_id]', this.state.userId);
-
-        console.log(formData);
 
         $.ajax({
             url: 'api/posts',
@@ -48,7 +48,11 @@ class Newsfeed extends React.Component{
                     <textarea value={this.state.content} onChange={this.handleUpdate('content')}></textarea>
                     <button type="submit">SUBMIT</button>
                 </form>
-                <div id="all-posts"></div>
+                <div id="all-posts">
+                    {Object.values(this.state.posts).map(post => (
+                        <PostItem key={post.id} post={post} />
+                    ))}
+                </div>
             </div>
         );
     };
