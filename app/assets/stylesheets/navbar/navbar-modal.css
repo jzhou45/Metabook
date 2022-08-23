@@ -104,7 +104,7 @@
 }
 
 #navbar-modal .fake-text span:hover{
-    cursor: pointer;
+    cursor: not-allowed;
     text-decoration: underline;
 }
 
