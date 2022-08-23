@@ -9,6 +9,7 @@ const mapStateToProps = state => {
         id: currentUserId,
         firstName: state.entities.users[currentUserId].first_name,
         lastName: state.entities.users[currentUserId].last_name,
+        navbar: state.ui.navbar
     })
 };
 

@@ -4,15 +4,16 @@ class NavBar extends React.Component{
     constructor(props){
         super(props);
         console.log(props);
-        this.state = {
-            modalOpened: false,
-        };
 
         document.body.style.backgroundColor = "#1c1e21";
 
         this.modalControls = this.modalControls.bind(this);
         this.goToHomePage = this.goToHomePage.bind(this);
     };
+
+    componentDidMount(){
+        this.props.closeNavbar();
+    }
 
     openLinkedIn(){
         window.open("https://www.linkedin.com/in/jonathanzhou77/");
@@ -23,12 +24,10 @@ class NavBar extends React.Component{
     };
 
     modalControls(){
-        if (this.state.modalOpened){
+        if (this.props.navbar.navbar){
             this.closeModal();
-            this.setState({modalOpened: false});
         } else{
             this.openModal();
-            this.setState({modalOpened: true});
         };
     };
 
@@ -44,6 +43,7 @@ class NavBar extends React.Component{
 
     goToHomePage(){
         this.props.history.push("/");
+        this.closeModal();
     }
 
     render(){

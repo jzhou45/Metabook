@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import NavBarModal from "./navbar_modal";
 import {logout} from "../../actions/session_actions";
+import { closeNavbar } from "../../actions/modal_actions";
 
 const mapStateToProps = ({session, entities: {users}}) => {
     return {
@@ -10,6 +11,7 @@ const mapStateToProps = ({session, entities: {users}}) => {
 
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
+    closeNavbar: () => dispatch(closeNavbar())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBarModal);
