@@ -7,6 +7,7 @@ import Profile from "./profile/profile_container";
 import { Route } from "react-router-dom";
 import NavBarModal from "./navbar/navbar_modal_container";
 import AboutMe from "./profile/about_me_container";
+import Newsfeed from "./newsfeed/newsfeed_container";
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
     <AuthRoute exact path="/" component={SignupForm} />
     <ProtectedRoute path="/" component={NavBar} />
     <ProtectedRoute path="/" component={NavBarModal} />
+    <ProtectedRoute exact path="/" component={Newsfeed} />
     <ProtectedRoute path="/users/:usersId" component={Profile} />
     <ProtectedRoute path="/users/:usersId" component={AboutMe} />
   </div>

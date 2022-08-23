@@ -3,7 +3,6 @@ import React from "react";
 class NavBar extends React.Component{
     constructor(props){
         super(props);
-        console.log(props);
 
         document.body.style.backgroundColor = "#1c1e21";
 

@@ -4,7 +4,6 @@ import { closeNavbar, openNavbar } from "../../actions/modal_actions";
 
 const mapStateToProps = state => {
     const currentUserId = state.session.id;
-    console.log(state)
     return({
         id: currentUserId,
         firstName: state.entities.users[currentUserId].first_name,
