@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
-        @post.save ? render "api/posts/show" : render json: @post.errors.full_messages, status: 422
+        @post.save ? (render :show) : (render json: @post.errors.full_messages, status: 422)
     end
 
     def index
@@ -16,7 +16,7 @@ class Api::PostsController < ApplicationController
 
     def update
         @post = Post.find(params[:id])
-        @post.update(post_params) ? render :show : render json: @post.errors.full_messages, status: 422
+        @post.update(post_params) ? (render :show) : (render json: @post.errors.full_messages, status: 422)
     end
 
     private
