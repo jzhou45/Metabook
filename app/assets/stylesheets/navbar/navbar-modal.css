@@ -60,7 +60,7 @@
 }
 
 #navbar-modal > div > p:hover{
-    cursor: pointer;
+    cursor: not-allowed;
     background-color: #3a3b3c;
 }
 
