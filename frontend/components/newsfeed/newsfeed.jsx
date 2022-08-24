@@ -12,6 +12,9 @@ class Newsfeed extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.goToProfilePage = this.goToProfilePage.bind(this);
+        this.modalControls = this.modalControls.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.openModal = this.openModal.bind(this);
     };
 
     componentDidMount(){
@@ -49,18 +52,34 @@ class Newsfeed extends React.Component{
         this.props.history.push(`/users/${this.props.userId}`);
     };
 
+    modalControls(){
+        (this.props.modal.modal) ? (this.closeModal()) : (this.openModal());
+    }
+
+    openModal(){
+        document.getElementById("posts-modal").classList.remove("invisible");
+        this.props.openModal("posts-modal");
+    };
+
+    closeModal(){
+        document.getElementById("posts-modal").classList.add("invisible");
+        this.props.closeModal();
+    }
+
     render(){
         return(
             <div id="newsfeed">
                 <div id="make-posts">
                     <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
-                    <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} />
+                    <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} />
                 </div>
 
-                <form onSubmit={this.handleSubmit}>
-                    <textarea value={this.state.content} onChange={this.handleUpdate('content')}></textarea>
-                    <button type="submit">SUBMIT</button>
-                </form>
+                <div id="posts-modal" className="invisible">
+                    <form onSubmit={this.handleSubmit}>
+                        <textarea value={this.state.content} onChange={this.handleUpdate('content')}></textarea>
+                        <button type="submit">SUBMIT</button>
+                    </form>
+                </div>
                 <div id="all-posts">
                     {Object.values(this.state.posts).map(post => (
                         <PostItem key={post.id} post={post} />
