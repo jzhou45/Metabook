@@ -17,3 +17,13 @@ export const createPost = post => (
         data: {post}
     })
 )
+
+export const editPost = post => {
+    return $.ajax({
+        url: `api/posts/${post.id}`,
+        method: 'PATCH',
+        data: {post},
+        contentType: false,
+        processData: false
+    })
+};

@@ -8,10 +8,18 @@ class PostItem extends React.Component{
             firstName: "",
             lastName: "",
             profilePhoto: "",
-            userId: ""
+            userId: "",
+            modalOpened: false,
+            editingPost: false,
+            content: this.props.post.content,
+            previousContent: this.props.post.content
         };
 
         this.goToProfilePage = this.goToProfilePage.bind(this);
+        this.handleClickEdit = this.handleClickEdit.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleClickCancel = this.handleClickCancel.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     componentDidMount(){
@@ -29,15 +37,65 @@ class PostItem extends React.Component{
         this.props.history.push(`/users/${this.state.userId}`);
     };
 
+    handleClickEdit(){
+        this.setState({
+            editingPost: true  
+        });
+    };
+
+    handleUpdate(field){
+        return e => this.setState({[field]: e.currentTarget.value});
+    };
+
+    handleClickCancel(){
+        this.setState({
+            content: this.state.previousContent,
+            editingPost: false
+        });
+    };
+
+    handleSubmit(e){
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('post[content]', this.state.content);
+        // if (e.target[1].files[0]) formData.append('post[photo]', e.target[1].files[0]);
+        $.ajax({
+            method: "PATCH",
+            url: `api/posts/${this.props.post.id}`,
+            data: formData,
+            contentType: false,
+            processData: false
+        }).then(
+            this.props.fetchPost(this.props.post.id)
+        ).then(
+            this.setState({
+                editingPost: false
+            })
+        );
+    };
+
     render(){
         return(
             <div id="post-content">
-                <div>
-                    <img src={this.state.profilePhoto} alt="profile photo of poster" onClick={this.goToProfilePage} />
-                    <span onClick={this.goToProfilePage}>{this.state.firstName} {this.state.lastName}</span>
+                <div className="post-header">
+                    <div>
+                        <img src={this.state.profilePhoto} alt="profile photo of poster" onClick={this.goToProfilePage} />
+                        <span onClick={this.goToProfilePage}>{this.state.firstName} {this.state.lastName}</span>
+                    </div>
+                    <div id="edit-delete-post">
+                        <div onClick={this.handleClickEdit}><img src="https://cdn0.iconfinder.com/data/icons/outline-icons/320/Pen-512.png" alt="edit" /></div>
+                        <div><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" alt="trash" /></div>
+                    </div>
                 </div>
-                <p>{this.props.post.content}</p>
-                {(this.props.post.photo) ? <img src={this.props.post.photo}/> : null}
+                {(this.state.editingPost) ?  
+                    (<form onSubmit={this.handleSubmit}>
+                        <textarea value={this.state.content} onChange={this.handleUpdate("content")}></textarea>
+                        <div onClick={this.handleClickCancel}>Cancel</div>
+                        <button type="submit">Save</button>
+                    </form>) :
+                    (<p>{this.state.content}</p>)
+                }
+                {(this.props.post.photo) ? <img className="post-images" src={this.props.post.photo}/> : null}
             </div>
         );
     };
