@@ -62,6 +62,7 @@ class Newsfeed extends React.Component{
         document.getElementById("posts-modal").classList.remove("invisible");
         document.getElementById("posts-modal").classList.add("flex");
         document.getElementById("gray-screen").classList.remove("invisible");
+        document.body.style.overflow = "hidden";
         this.props.openModal("posts-modal");
     };
 
@@ -69,6 +70,7 @@ class Newsfeed extends React.Component{
         document.getElementById("posts-modal").classList.add("invisible");
         document.getElementById("posts-modal").classList.remove("flex");
         document.getElementById("gray-screen").classList.add("invisible");
+        document.body.style.overflow = "scroll";
         this.props.closeModal();
     }
 
