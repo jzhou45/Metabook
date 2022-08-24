@@ -19,7 +19,6 @@ class Newsfeed extends React.Component{
 
     componentDidMount(){
         this.props.fetchPosts().then(posts => {
-            console.log(posts)
             this.setState({posts: posts.posts})
         });
     };
@@ -33,7 +32,7 @@ class Newsfeed extends React.Component{
         const formData = new FormData();
         formData.append('post[content]', this.state.content);
         formData.append('post[user_id]', this.state.userId);
-        formData.append('post[photo]', e.target[1].files[0]);
+        if (e.target[1].files[0]) formData.append('post[photo]', e.target[1].files[0]);
         $.ajax({
             url: 'api/posts',
             method: "POST",
@@ -78,7 +77,7 @@ class Newsfeed extends React.Component{
             <div id="newsfeed">
                 <div id="make-posts">
                     <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
-                    <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} />
+                    <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} value={this.state.content} />
                 </div>
 
                 <div id="gray-screen" className="invisible" onClick={this.closeModal}></div>
@@ -88,9 +87,9 @@ class Newsfeed extends React.Component{
                         <h1>Create post</h1>
                         <div onClick={this.closeModal}>X</div>
                     </div>
-                    <div onClick={this.goToProfilePage}>
-                        <img src={this.props.profilePhoto} alt="profile photo" />
-                        <p>{this.props.firstName} {this.props.lastName}</p>
+                    <div>
+                        <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
+                        <p onClick={this.goToProfilePage}>{this.props.firstName} {this.props.lastName}</p>
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <textarea value={this.state.content} onChange={this.handleUpdate('content')} placeholder={`What's on your mind, ${this.props.firstName}?`}></textarea>
@@ -104,7 +103,7 @@ class Newsfeed extends React.Component{
 
                 <div id="all-posts">
                     {Object.values(this.state.posts).map(post => (
-                        <PostItem key={post.id} post={post} />
+                        <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history}/>
                     ))}
                 </div>
             </div>

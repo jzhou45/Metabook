@@ -17,6 +17,8 @@
     background-color: #3a3b3c;
     border: none;
     margin-left: 8px;
+    color: #e3e6ea;
+    padding-left: 10px;
 }
 
 #make-posts > input:hover{
