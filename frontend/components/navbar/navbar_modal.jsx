@@ -17,7 +17,7 @@ class NavBarModal extends React.Component{
     };
 
     goToProfilePage(){
-        this.props.history.push(`/users/${this.props.currentUser.id}`);
+        this.props.history.push(`/users/${this.props.currentUser}`);
         document.getElementById("navbar-modal").style.display = "none";
         this.props.closeNavbar();
     }
