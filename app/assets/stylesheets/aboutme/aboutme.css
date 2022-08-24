@@ -2,8 +2,13 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    align-self: flex-start;
     margin-right: 37.5em;
     font-family: Arial, Helvetica, sans-serif;
+    position: sticky;
+    overflow: hidden;
+    height: 360px;
+    top: 60px;
 }
 
 #about-me > div{

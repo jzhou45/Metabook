@@ -4,10 +4,12 @@ import { fetchPost, fetchPosts } from "../../actions/post_actions";
 import { fetchUser } from "../../actions/user_actions";
 import ProfilePosts from "./profile_posts";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     const currentUserId = state.session.id
+    const usersId = parseInt(ownProps.location.pathname.split("/")[2]);
     return({
-        userId: currentUserId,
+        currentUserId: currentUserId,
+        usersId: usersId,
         profilePhoto: state.entities.users[currentUserId].profilePhoto,
         firstName: state.entities.users[currentUserId].first_name,
         lastName: state.entities.users[currentUserId].last_name,
