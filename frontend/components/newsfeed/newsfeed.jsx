@@ -94,7 +94,9 @@ class Newsfeed extends React.Component{
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <textarea value={this.state.content} onChange={this.handleUpdate('content')} placeholder={`What's on your mind, ${this.props.firstName}?`}></textarea>
-                        <input type="file" onChange={e => {this.setState({file: e.target.files}); console.log(e.target.files)}}/>
+                        <div>Add image to your post
+                            <input type="file" onChange={e => {this.setState({file: e.target.files})}} className="invisible" />
+                        </div>
                         <button type="submit">Post</button>
                     </form>
                 </div>

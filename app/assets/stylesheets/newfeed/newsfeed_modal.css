@@ -108,6 +108,12 @@
     color: #afb2b7;
 }
 
+#posts-modal > form > div{
+    width: 470px;
+    height: 40px;
+    background-color: red;
+}
+
 #posts-modal > form > button{
     width: 470px;
     height: 40px;
