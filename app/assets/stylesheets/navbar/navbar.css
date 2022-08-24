@@ -44,6 +44,7 @@
 #navbar img{
     height: 35px;
     width: 35px;
+    object-fit: cover;
 }
 
 #navbar img:hover{

@@ -23,6 +23,7 @@
     width: 45px;
     border-radius: 50%;
     margin-left: 15px;
+    object-fit: cover;
 }
 
 #post-content :first-child > img:hover{
