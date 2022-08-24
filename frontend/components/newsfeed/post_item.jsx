@@ -89,13 +89,15 @@ class PostItem extends React.Component{
                 </div>
                 {(this.state.editingPost) ?  
                     (<form onSubmit={this.handleSubmit}>
-                        <textarea value={this.state.content} onChange={this.handleUpdate("content")}></textarea>
-                        <div onClick={this.handleClickCancel}>Cancel</div>
-                        <button type="submit">Save</button>
+                        <textarea value={this.state.content} onChange={this.handleUpdate("content")} placeholder="Post can't be blank!"></textarea>
+                        <div>
+                            <button onClick={this.handleClickCancel}>Cancel</button>
+                            <button type="submit">Save</button>
+                        </div>
                     </form>) :
                     (<p>{this.state.content}</p>)
                 }
-                {(this.props.post.photo) ? <img className="post-images" src={this.props.post.photo}/> : null}
+                {(this.props.post.photo) ? <img className="post-images" src={this.props.post.photo} /> : null}
             </div>
         );
     };
