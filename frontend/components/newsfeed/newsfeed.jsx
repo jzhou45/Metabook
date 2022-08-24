@@ -93,10 +93,8 @@ class Newsfeed extends React.Component{
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <textarea value={this.state.content} onChange={this.handleUpdate('content')} placeholder={`What's on your mind, ${this.props.firstName}?`}></textarea>
-                        <div>
-                            <span>Add image to your post</span>
-                            <input type="file" onChange={e => {this.setState({file: e.target.files})}} className="invisible" />
-                        </div>
+                        <label htmlFor="create-post-file">Add image to your post</label>
+                        <input type="file" onChange={e => {this.setState({file: e.target.files})}} className="invisible" id="create-post-file"/>
                         <button type="submit">Post</button>
                     </form>
                 </div>

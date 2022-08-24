@@ -4,7 +4,6 @@
     background-color: #030303;
     position: absolute;
     top: 0;
-    overflow: hidden;
     opacity: 75%;
 }
 
@@ -108,7 +107,7 @@
     color: #afb2b7;
 }
 
-#posts-modal > form > div{
+#posts-modal > form > label{
     width: 470px;
     height: 60px;
     border: 1px solid #3e3f41;
@@ -120,7 +119,7 @@
     border-radius: 7px;
 }
 
-#posts-modal > form > div:hover{
+#posts-modal > form > label:hover{
     cursor: pointer;
 }
 
