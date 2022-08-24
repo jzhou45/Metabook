@@ -41,14 +41,14 @@
 }
 
 #post-content > p{
-    width: 685px;
-    padding-left: 20px;
+    width: 645px;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: lighter;
+    margin-bottom: 20px;
+    line-height: normal;
 }
 
 #post-content > p + img{
-    margin-top: 20px;
     margin-bottom: 20px;
     max-width: 685px;
     max-height: auto;
