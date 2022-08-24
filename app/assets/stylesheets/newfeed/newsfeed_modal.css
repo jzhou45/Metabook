@@ -110,8 +110,18 @@
 
 #posts-modal > form > div{
     width: 470px;
-    height: 40px;
-    background-color: red;
+    height: 60px;
+    border: 1px solid #3e3f41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e3e6ea;
+    margin-bottom: 15px;
+    border-radius: 7px;
+}
+
+#posts-modal > form > div:hover{
+    cursor: pointer;
 }
 
 #posts-modal > form > button{
@@ -126,4 +136,9 @@
 #posts-modal > form > button:hover{
     filter: brightness(1.2);
     cursor: pointer;
+}
+
+#all-posts{
+    display: flex;
+    flex-direction: column-reverse;
 }
