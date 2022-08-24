@@ -86,7 +86,7 @@ class AboutMe extends React.Component{
                                 <button onClick={this.handleSaveSubmit}>Save</button>
                             </div>
                         </div>
-                        <button id="about-me-button" onClick={this.handleSubmit}></button>
+                        {(this.props.currentUserId === this.props.usersId) ? (<button id="about-me-button" onClick={this.handleSubmit}></button>) : null}
                     </div>
                 </div>
             </div>

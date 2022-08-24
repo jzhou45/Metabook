@@ -6,7 +6,8 @@ import AboutMe from "./about_me";
 const mapStateToProps = (state, ownProps) => {
     const usersId = parseInt(ownProps.location.pathname.split("/")[2]);
     return({
-        usersId: usersId
+        usersId: usersId,
+        currentUserId: state.session.id
     });
 };
 
