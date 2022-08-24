@@ -8,6 +8,7 @@ import { Route } from "react-router-dom";
 import NavBarModal from "./navbar/navbar_modal_container";
 import AboutMe from "./profile/about_me_container";
 import Newsfeed from "./newsfeed/newsfeed_container";
+import ProfilePosts from "./profile/profile_posts_container";
 
 const App = () => (
   <div>
@@ -18,6 +19,7 @@ const App = () => (
     <ProtectedRoute exact path="/" component={Newsfeed} />
     <ProtectedRoute path="/users/:usersId" component={Profile} />
     <ProtectedRoute path="/users/:usersId" component={AboutMe} />
+    <ProtectedRoute path="/users/:usersId" component={ProfilePosts} />
   </div>
 );
 
