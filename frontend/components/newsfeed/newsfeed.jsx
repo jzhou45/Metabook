@@ -19,6 +19,7 @@ class Newsfeed extends React.Component{
 
     componentDidMount(){
         this.props.fetchPosts().then(posts => {
+            console.log(posts)
             this.setState({posts: posts.posts})
         });
     };
@@ -32,6 +33,7 @@ class Newsfeed extends React.Component{
         const formData = new FormData();
         formData.append('post[content]', this.state.content);
         formData.append('post[user_id]', this.state.userId);
+        formData.append('post[photo]', e.target[1].files[0]);
         $.ajax({
             url: 'api/posts',
             method: "POST",
@@ -46,6 +48,7 @@ class Newsfeed extends React.Component{
                 this.setState({posts: posts.posts})
             });
         });
+        this.closeModal();
     };
 
     goToProfilePage(){
@@ -78,8 +81,8 @@ class Newsfeed extends React.Component{
                     <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} />
                 </div>
 
-                <div id="gray-screen" className="flex" onClick={this.closeModal}></div>
-                <div id="posts-modal" className="flex">
+                <div id="gray-screen" className="invisible" onClick={this.closeModal}></div>
+                <div id="posts-modal" className="invisible">
                     <div className="create-post">
                         <div></div>
                         <h1>Create post</h1>
@@ -91,6 +94,7 @@ class Newsfeed extends React.Component{
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <textarea value={this.state.content} onChange={this.handleUpdate('content')} placeholder={`What's on your mind, ${this.props.firstName}?`}></textarea>
+                        <input type="file" onChange={e => {this.setState({file: e.target.files}); console.log(e.target.files)}}/>
                         <button type="submit">Post</button>
                     </form>
                 </div>
