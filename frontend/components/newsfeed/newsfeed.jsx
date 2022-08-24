@@ -7,7 +7,8 @@ class Newsfeed extends React.Component{
         this.state = {
             content: "",
             userId: this.props.userId,
-            posts: {}
+            posts: {},
+            rerender: 0
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -15,6 +16,7 @@ class Newsfeed extends React.Component{
         this.modalControls = this.modalControls.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.openModal = this.openModal.bind(this);
+        this.rerenderParentCallback = this.rerenderParentCallback.bind(this);
     };
 
     componentDidMount(){
@@ -74,6 +76,12 @@ class Newsfeed extends React.Component{
         this.props.closeModal();
     }
 
+    rerenderParentCallback(){
+        this.props.fetchPosts().then(posts => {
+            this.setState({posts: posts.posts})
+        });
+    };
+
     render(){
         return(
             <div id="newsfeed">
@@ -103,7 +111,7 @@ class Newsfeed extends React.Component{
 
                 <div id="all-posts">
                     {Object.values(this.state.posts).map(post => (
-                        <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} />
+                        <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} rerenderParentCallback={this.rerenderParentCallback}/>
                     ))}
                 </div>
             </div>

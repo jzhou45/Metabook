@@ -20,6 +20,7 @@ class PostItem extends React.Component{
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleClickCancel = this.handleClickCancel.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClickDelete = this.handleClickDelete.bind(this);
     };
 
     componentDidMount(){
@@ -58,7 +59,6 @@ class PostItem extends React.Component{
         e.preventDefault();
         const formData = new FormData();
         formData.append('post[content]', this.state.content);
-        // if (e.target[1].files[0]) formData.append('post[photo]', e.target[1].files[0]);
         $.ajax({
             method: "PATCH",
             url: `api/posts/${this.props.post.id}`,
@@ -74,9 +74,18 @@ class PostItem extends React.Component{
         );
     };
 
+    handleClickDelete(){
+        $.ajax({
+            method: "DELETE",
+            url: `api/posts/${this.props.post.id}`
+        }).then(() => {
+            this.props.rerenderParentCallback();
+        });
+    };
+
     render(){
         return(
-            <div id="post-content">
+            <div id={`post-content${this.props.key}`} className="post-content">
                 <div className="post-header">
                     <div>
                         <img src={this.state.profilePhoto} alt="profile photo of poster" onClick={this.goToProfilePage} />
@@ -84,7 +93,7 @@ class PostItem extends React.Component{
                     </div>
                     <div id="edit-delete-post">
                         <div onClick={this.handleClickEdit}><img src="https://cdn0.iconfinder.com/data/icons/outline-icons/320/Pen-512.png" alt="edit" /></div>
-                        <div><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" alt="trash" /></div>
+                        <div onClick={this.handleClickDelete}><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" alt="trash" /></div>
                     </div>
                 </div>
                 {(this.state.editingPost) ?  

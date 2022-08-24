@@ -1,4 +1,4 @@
-#post-content{
+.post-content{
     color: #e3e6ea;
     width: 685px;
     background-color: #242526;
@@ -11,13 +11,13 @@
     align-items: center;
 }
 
-#post-content .post-header > div {
+.post-content .post-header > div {
     display: flex;
     align-items: center;
     height: 65px;
 }
 
-#post-content .post-header > div > img {
+.post-content .post-header > div > img {
     height: 45px;
     width: 45px;
     border-radius: 50%;
@@ -25,22 +25,22 @@
     object-fit: cover;
 }
 
-#post-content :first-child > img:hover{
+.post-content :first-child > img:hover{
     cursor: pointer;
 }
 
-#post-content :first-child > span{
+.post-content :first-child > span{
     margin-left: 10px;
     font-weight: 500;
     font-size: 17px;
 }
 
-#post-content :first-child > span:hover{
+.post-content :first-child > span:hover{
     cursor: pointer;
     text-decoration: underline;
 }
 
-#post-content > p{
+.post-content > p{
     width: 645px;
     font-size: 15px;
     font-weight: lighter;
@@ -48,7 +48,7 @@
     line-height: 1.35;
 }
 
-#post-content > p + img{
+.post-content > p + img{
     margin-bottom: 20px;
     max-width: 685px;
     max-height: auto;
@@ -76,13 +76,13 @@
     margin-left: 5px;
 }
 
-#post-content #edit-delete-post > div > img {
+.post-content #edit-delete-post > div > img {
     height: 25px;
     width: 25px;
     filter: brightness(0) invert(0.5);
 }
 
-#post-content #edit-delete-post > div:hover{
+.post-content #edit-delete-post > div:hover{
     filter: brightness(1.5);
     cursor: pointer;
 } 
@@ -98,7 +98,7 @@
     margin-bottom: 20px;
 }
 
-#post-content form textarea{
+.post-content form textarea{
     width: 655px;
     height: 170px;
     background-color: #242526;
@@ -109,16 +109,16 @@
     padding: 15px;
 }
 
-#post-content form textarea:focus{
+.post-content form textarea:focus{
     outline: none;
 }
 
-#post-content form textarea::placeholder{
+.post-content form textarea::placeholder{
     color: #636669;
     font-size: 22px;
 }
 
-#post-content form > div{
+.post-content form > div{
     display: flex;
     justify-content: center;
     width: 685px;
@@ -128,18 +128,18 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#post-content > form > div > :first-child{
+.post-content > form > div > :first-child{
     margin-right: 5px;
     background-color: #505151;
     color: #858686;
 }
 
-#post-content > form > div > :last-child{
+.post-content > form > div > :last-child{
     background-color: #2374e1;
     color: white;
 }
 
-#post-content form > div > button{
+.post-content form > div > button{
     font-size: 16px;
     height: 35px;
     width: 325px;
@@ -147,7 +147,7 @@
     border-radius: 7px;
 }
 
-#post-content form > div > button:hover{
+.post-content form > div > button:hover{
     filter: brightness(1.1);
     cursor: pointer;
 }
