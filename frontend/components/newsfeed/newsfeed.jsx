@@ -58,11 +58,15 @@ class Newsfeed extends React.Component{
 
     openModal(){
         document.getElementById("posts-modal").classList.remove("invisible");
+        document.getElementById("posts-modal").classList.add("flex");
+        document.getElementById("gray-screen").classList.remove("invisible");
         this.props.openModal("posts-modal");
     };
 
     closeModal(){
         document.getElementById("posts-modal").classList.add("invisible");
+        document.getElementById("posts-modal").classList.remove("flex");
+        document.getElementById("gray-screen").classList.add("invisible");
         this.props.closeModal();
     }
 
@@ -74,12 +78,23 @@ class Newsfeed extends React.Component{
                     <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} />
                 </div>
 
-                <div id="posts-modal" className="invisible">
+                <div id="gray-screen" className="flex" onClick={this.closeModal}></div>
+                <div id="posts-modal" className="flex">
+                    <div className="create-post">
+                        <div></div>
+                        <h1>Create post</h1>
+                        <div onClick={this.closeModal}>X</div>
+                    </div>
+                    <div onClick={this.goToProfilePage}>
+                        <img src={this.props.profilePhoto} alt="profile photo" />
+                        <p>{this.props.firstName} {this.props.lastName}</p>
+                    </div>
                     <form onSubmit={this.handleSubmit}>
-                        <textarea value={this.state.content} onChange={this.handleUpdate('content')}></textarea>
-                        <button type="submit">SUBMIT</button>
+                        <textarea value={this.state.content} onChange={this.handleUpdate('content')} placeholder={`What's on your mind, ${this.props.firstName}?`}></textarea>
+                        <button type="submit">Post</button>
                     </form>
                 </div>
+
                 <div id="all-posts">
                     {Object.values(this.state.posts).map(post => (
                         <PostItem key={post.id} post={post} />

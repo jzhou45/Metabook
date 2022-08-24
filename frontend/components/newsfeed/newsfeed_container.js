@@ -9,6 +9,7 @@ const mapStateToProps = state => {
         userId: currentUserId,
         profilePhoto: state.entities.users[currentUserId].profilePhoto,
         firstName: state.entities.users[currentUserId].first_name,
+        lastName: state.entities.users[currentUserId].last_name,
         modal: state.ui.modal
     });
 };
