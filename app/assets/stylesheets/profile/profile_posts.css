@@ -4,6 +4,8 @@
     justify-content: center;
     margin-left: 30em;
     font-family: Arial, Helvetica, sans-serif;
+    flex-direction: column;
+    align-items: center;
 }
 
 #profile-make-posts{
@@ -35,6 +37,8 @@
     border-radius: 25px;
     border: none;
     background-color: #3a3b3c;
+    color: white;
+    padding-left: 10px;
 }
 
 #profile-make-posts > input::placeholder{
@@ -120,5 +124,42 @@
     top: 0px;
     left: 0px;
     position: fixed;
-    z-index: 4;
+    z-index: 3;
+}
+
+#profile-all-posts{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 15px;
+    align-items: center;
+    position: relative;
+}
+
+#profile-all-posts > div{
+    width: 617px;
+}
+
+#profile-all-posts div.post-header{
+    width: 617px;
+}
+
+#profile-all-posts .post-content > p{
+    width: 577px;
+}
+
+#profile-all-posts .post-content form {
+    width: 617px;
+}
+
+#profile-all-posts .post-content form textarea{
+    width: 587px;
+}
+
+#profile-all-posts .post-content form > div{
+    width: 617px;
+}
+
+#profile-all-posts .post-content > p + img{
+    max-width: 617px;
+    background-color: black;
 }

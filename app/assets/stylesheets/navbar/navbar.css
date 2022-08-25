@@ -9,6 +9,7 @@
     position: sticky;
     top: 0;
     overflow: hidden;
+    z-index: 5;
 }
 
 #navbar h1{

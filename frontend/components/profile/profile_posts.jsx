@@ -114,11 +114,11 @@ class ProfilePosts extends React.Component{
                     </form>
                 </div>
 
-                {/* <div id="profile-all-posts">
+                <div id="profile-all-posts">
                     {Object.values(this.state.posts).map(post => (
                         <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} rerenderParentCallback={this.rerenderParentCallback}/>
                     ))}
-                </div> */}
+                </div>
             </div>
         );
     };
