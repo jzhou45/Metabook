@@ -91,6 +91,7 @@ class PostItem extends React.Component{
                         <img src={this.state.profilePhoto} alt="profile photo of poster" onClick={this.goToProfilePage} />
                         <span onClick={this.goToProfilePage}>{this.state.firstName} {this.state.lastName}</span>
                     </div>
+                    {console.log(this.props)}
                     {(this.props.currentUser === this.props.post.user_id) ? 
                         (<div id="edit-delete-post">
                             <div onClick={this.handleClickEdit}><img src="https://cdn0.iconfinder.com/data/icons/outline-icons/320/Pen-512.png" alt="edit" /></div>

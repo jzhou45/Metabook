@@ -120,7 +120,7 @@ class ProfilePosts extends React.Component{
 
                 <div id="profile-all-posts">
                     {Object.values(this.state.posts).map(post => (
-                        <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} rerenderParentCallback={this.rerenderParentCallback}/>
+                        <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} rerenderParentCallback={this.rerenderParentCallback} currentUser={this.props.currentUserId} />
                     ))}
                 </div>
             </div>
