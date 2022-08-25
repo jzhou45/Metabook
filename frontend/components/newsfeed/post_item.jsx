@@ -91,10 +91,12 @@ class PostItem extends React.Component{
                         <img src={this.state.profilePhoto} alt="profile photo of poster" onClick={this.goToProfilePage} />
                         <span onClick={this.goToProfilePage}>{this.state.firstName} {this.state.lastName}</span>
                     </div>
-                    <div id="edit-delete-post">
-                        <div onClick={this.handleClickEdit}><img src="https://cdn0.iconfinder.com/data/icons/outline-icons/320/Pen-512.png" alt="edit" /></div>
-                        <div onClick={this.handleClickDelete}><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" alt="trash" /></div>
-                    </div>
+                    {(this.props.currentUser === this.props.post.user_id) ? 
+                        (<div id="edit-delete-post">
+                            <div onClick={this.handleClickEdit}><img src="https://cdn0.iconfinder.com/data/icons/outline-icons/320/Pen-512.png" alt="edit" /></div>
+                            <div onClick={this.handleClickDelete}><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" alt="trash" /></div>
+                        </div>) : null
+                    }
                 </div>
                 {(this.state.editingPost) ?  
                     (<form onSubmit={this.handleSubmit}>
