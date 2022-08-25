@@ -66,7 +66,7 @@ class LoginForm extends React.Component{
     }
 
     render(){
-        if (!store.getState().session.id){
+        if (!this.props.sessionid){
             return(
                 <div id="login-signup-forms" className="invisible">
                     <div id="white-background"></div>
