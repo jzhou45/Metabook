@@ -39,6 +39,7 @@
 
 #navbar input:hover{
     background-color: #4f5052;
+    cursor: not-allowed;
 }
 
 #navbar img{

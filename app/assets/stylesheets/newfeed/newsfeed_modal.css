@@ -2,7 +2,7 @@
     width: 100vw;
     height: 100vh;
     background-color: #030303;
-    position: absolute;
+    position: fixed;
     top: 0;
     opacity: 75%;
 }
@@ -10,7 +10,8 @@
 #posts-modal{
     border-radius: 7px;
     border: 1px solid #2f3031;
-    position: absolute;
+    position: fixed;
+    bottom: 31.25vh;
     z-index: 5;
     width: 500px;
     height: 430px;

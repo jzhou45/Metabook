@@ -111,7 +111,7 @@ class Newsfeed extends React.Component{
 
                 <div id="all-posts">
                     {Object.values(this.state.posts).map(post => (
-                        <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} rerenderParentCallback={this.rerenderParentCallback}/>
+                        <PostItem post={post} key={post.id} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} rerenderParentCallback={this.rerenderParentCallback}/>
                     ))}
                 </div>
             </div>

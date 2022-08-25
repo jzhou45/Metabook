@@ -7,12 +7,118 @@
 }
 
 #profile-make-posts{
-    background-color: red;
+    z-index: 2;
+    background-color: #242526;
     width: 617px;
     height: 123px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
 }
 
-#profile-posts img{
+#profile-make-posts > img{
     height: 50px;
     width: 50px;
+    margin-left: 15px;
+    border-radius: 50%;
+}
+
+#profile-make-posts > img:hover{
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+
+#profile-make-posts > input{
+    width: 520px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 25px;
+    border: none;
+    background-color: #3a3b3c;
+}
+
+#profile-make-posts > input::placeholder{
+    padding-left: 10px;
+    color: #a3a6ab;
+}
+
+#profile-make-posts > input:hover{
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+#profile-posts-modal{
+    position: fixed;
+    bottom: 31.25vh;
+    z-index: 5;
+    background-color: #242526;
+    margin-left: -30em;
+    border-radius: 7px;
+}
+
+#profile-posts-modal > div > img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+#profile-posts-modal > div > p{
+    margin-left: 5px;
+}
+
+#profile-posts-modal > form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile-posts-modal > form > textarea{
+    width: 480px;
+    height: 155px;
+    background-color: #242526;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    font-size: 23px;
+    color: #e3e6ea;
+}
+
+#profile-posts-modal > form > textarea::placeholder{
+    font-size: 23px;
+}
+
+#profile-posts-modal > form > textarea:focus{
+    outline: none;
+}
+
+#profile-posts-modal > form > label{
+    width: 470px;
+    height: 60px;
+    border: 1px solid #3e3f41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e3e6ea;
+    margin-bottom: 15px;
+    border-radius: 7px;
+}
+
+#profile-posts-modal > form > button{
+    width: 470px;
+    height: 40px;
+    color: white;
+    background-color: #2473e1;
+    border: none;
+    border-radius: 7px;
+}
+
+#profile-gray-screen{
+    width: 100vw;
+    height: 100vw;
+    background-color: #030303;
+    opacity: 75%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 4;
 }

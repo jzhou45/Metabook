@@ -4,7 +4,7 @@ class NavBar extends React.Component{
     constructor(props){
         super(props);
 
-        document.body.style.backgroundColor = "#1c1e21";
+        document.getElementsByTagName("html")[0].style.backgroundColor = "#1c1e21";
 
         this.modalControls = this.modalControls.bind(this);
         this.goToHomePage = this.goToHomePage.bind(this);
@@ -49,7 +49,7 @@ class NavBar extends React.Component{
         return(
             <header id="navbar">
                 <h1 onClick={this.goToHomePage}>metabook</h1>
-                <input type="text" id="search-bar" placeholder="Search Metabook"/>
+                <input type="text" id="search-bar" placeholder="Metabook"/>
                 <div>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/2048px-LinkedIn_icon_circle.svg.png" alt="linkedin link" onClick={this.openLinkedIn} />
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github link" onClick={this.openGithub}/>

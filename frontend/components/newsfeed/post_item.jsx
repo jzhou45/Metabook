@@ -12,7 +12,7 @@ class PostItem extends React.Component{
             modalOpened: false,
             editingPost: false,
             content: this.props.post.content,
-            previousContent: this.props.post.content
+            previousContent: this.props.post.content,
         };
 
         this.goToProfilePage = this.goToProfilePage.bind(this);
@@ -85,7 +85,7 @@ class PostItem extends React.Component{
 
     render(){
         return(
-            <div id={`post-content${this.props.key}`} className="post-content">
+            <div id={`post-content${this.props.post.id}`} className="post-content">
                 <div className="post-header">
                     <div>
                         <img src={this.state.profilePhoto} alt="profile photo of poster" onClick={this.goToProfilePage} />

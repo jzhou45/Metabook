@@ -68,16 +68,14 @@ class ProfilePosts extends React.Component{
 
     openModal(){
         document.getElementById("profile-posts-modal").classList.remove("invisible");
-        document.getElementById("profile-posts-modal").classList.add("flex");
-        document.getElementById("gray-screen").classList.remove("invisible");
+        document.getElementById("profile-gray-screen").classList.remove("invisible");
         document.body.style.overflow = "hidden";
         this.props.openModal("profile-posts-modal");
     };
 
     closeModal(){
         document.getElementById("profile-posts-modal").classList.add("invisible");
-        document.getElementById("profile-posts-modal").classList.remove("flex");
-        document.getElementById("gray-screen").classList.add("invisible");
+        document.getElementById("profile-gray-screen").classList.add("invisible");
         document.body.style.overflow = "scroll";
         this.props.closeModal();
     }
@@ -91,13 +89,14 @@ class ProfilePosts extends React.Component{
     render(){
         return(
             <div id="profile-posts">
+                {/* {{this.props.currentUserId === this.props.usersId}} */}
                 <div id="profile-make-posts">
                     <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
                     <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} value={this.state.content} />
                 </div>
 
-                <div id="gray-screen" className="invisible" onClick={this.closeModal}></div>
-                <div id="posts-modal" className="invisible">
+                <div id="profile-gray-screen" className="invisible" onClick={this.closeModal}></div>
+                <div id="profile-posts-modal" className="invisible">
                     <div className="create-post">
                         <div></div>
                         <h1>Create post</h1>
