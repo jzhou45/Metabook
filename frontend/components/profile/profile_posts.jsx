@@ -89,30 +89,34 @@ class ProfilePosts extends React.Component{
     render(){
         return(
             <div id="profile-posts">
-                {/* {{this.props.currentUserId === this.props.usersId}} */}
-                <div id="profile-make-posts">
-                    <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
-                    <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} value={this.state.content} />
-                </div>
-
-                <div id="profile-gray-screen" className="invisible" onClick={this.closeModal}></div>
-                <div id="profile-posts-modal" className="invisible">
-                    <div className="create-post">
-                        <div></div>
-                        <h1>Create post</h1>
-                        <div onClick={this.closeModal}>X</div>
-                    </div>
-                    <div>
+                {(this.props.currentUserId === this.props.usersId) ?
+                    (<div id="profile-make-posts">
                         <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
-                        <p onClick={this.goToProfilePage}>{this.props.firstName} {this.props.lastName}</p>
-                    </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <textarea value={this.state.content} onChange={this.handleUpdate('content')} placeholder={`What's on your mind, ${this.props.firstName}?`}></textarea>
-                        <label htmlFor="create-post-file">Add image to your post</label>
-                        <input type="file" onChange={e => {this.setState({file: e.target.files})}} className="invisible" id="create-post-file"/>
-                        <button type="submit">Post</button>
-                    </form>
-                </div>
+                        <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} value={this.state.content} />
+                    </div>) : null
+                }
+
+                {(this.props.currentUserId === this.props.usersId) ? (<div id="profile-gray-screen" className="invisible" onClick={this.closeModal}></div>) : null }
+
+                {(this.props.currentUserId === this.props.usersId) ?
+                    (<div id="profile-posts-modal" className="invisible">
+                        <div className="create-post">
+                            <div></div>
+                            <h1>Create post</h1>
+                            <div onClick={this.closeModal}>X</div>
+                        </div>
+                        <div>
+                            <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
+                            <p onClick={this.goToProfilePage}>{this.props.firstName} {this.props.lastName}</p>
+                        </div>
+                        <form onSubmit={this.handleSubmit}>
+                            <textarea value={this.state.content} onChange={this.handleUpdate('content')} placeholder={`What's on your mind, ${this.props.firstName}?`}></textarea>
+                            <label htmlFor="create-post-file">Add image to your post</label>
+                            <input type="file" onChange={e => {this.setState({file: e.target.files})}} className="invisible" id="create-post-file"/>
+                            <button type="submit">Post</button>
+                        </form>
+                    </div>) : null 
+                }
 
                 <div id="profile-all-posts">
                     {Object.values(this.state.posts).map(post => (

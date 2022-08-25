@@ -107,6 +107,10 @@
     border-radius: 7px;
 }
 
+#profile-posts-modal > form > label{
+    cursor: pointer;
+}
+
 #profile-posts-modal > form > button{
     width: 470px;
     height: 40px;
@@ -114,6 +118,12 @@
     background-color: #2473e1;
     border: none;
     border-radius: 7px;
+    margin-bottom: 20px;
+}
+
+#profile-posts-modal > form > button:hover{
+    cursor: pointer;
+    filter: brightness(1.1);
 }
 
 #profile-gray-screen{
