@@ -88,7 +88,7 @@ class SignupForm extends React.Component{
                                 </label>
                                 <label>
                                     <h3>Gender</h3>
-                                    <select onChange={this.handleUpdate('gender')}>
+                                    <select id="signup-gender" onChange={this.handleUpdate('gender')}>
                                         <option disabled selected>Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
