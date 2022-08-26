@@ -15,16 +15,18 @@ class SignupForm extends React.Component{
         this.closeModal = this.closeModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     handleUpdate(field){
+        console.log(this.state)
         return e => this.setState({[field]: e.currentTarget.value});
     }
 
     handleSubmit(e){
         e.preventDefault();
         this.props.signup(this.state);
-        if (store.getState().session.id) this.setState({loggedIn: true});
+        if (this.props.sessionId) this.setState({loggedIn: true});
         this.handleErrors();
     }
 
@@ -47,6 +49,16 @@ class SignupForm extends React.Component{
         if (this.state.gender.length === 0) document.getElementById("signup-gender").style.border = "1px solid #f02849";
     }
 
+    clearErrors(){
+        this.props.clearSessionErrors();
+        document.getElementById("signup-first-name").style.border = "1px solid #dde0e3";
+        document.getElementById("signup-last-name").style.border = "1px solid #dde0e3";
+        document.getElementById("signup-email").style.border = "1px solid #dde0e3";
+        document.getElementById("signup-password").style.border = "1px solid #dde0e3";
+        document.getElementById("signup-birthday").style.border = "1px solid #dde0e3";
+        document.getElementById("signup-gender").style.border = "1px solid #dde0e3";
+    }
+
     render(){
             return(
                 <div id="signup-form">
@@ -58,20 +70,31 @@ class SignupForm extends React.Component{
                                     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/11W0xEwKS62.png" alt="X" onClick={this.closeModal}/>
                                 </div>
                                 <h2>It's quick and easy.</h2>
+                                {(this.props.errors.length > 0) ?
+                                    <div className="signup-errors">
+                                        {this.props.errors.join(". ")}
+                                    </div> : null
+                                }
                                 <hr />
                                 <div>
-                                    <input type="text" value={this.state.first_name}  onChange={this.handleUpdate('first_name')} id="signup-first-name" placeholder="First name"/>
-                                    <input type="text" value={this.state.last_name} onChange={this.handleUpdate('last_name')} id="signup-last-name" placeholder="Last name"/>
+                                    <input type="text" value={this.state.first_name}  onChange={this.handleUpdate('first_name')} id="signup-first-name" placeholder="First name" onFocus={this.clearErrors}/>
+                                    <input type="text" value={this.state.last_name} onChange={this.handleUpdate('last_name')} id="signup-last-name" placeholder="Last name" onFocus={this.clearErrors}/>
                                 </div>
-                                <input type="text" value={this.state.email} onChange={this.handleUpdate('email')} id="signup-email" placeholder="Email"/>
-                                <input type="password" value={this.state.password} onChange={this.handleUpdate('password')} id="signup-password" placeholder="New password"/>
+                                <input type="text" value={this.state.email} onChange={this.handleUpdate('email')} id="signup-email" placeholder="Email" onFocus={this.clearErrors}/>
+                                <input type="password" value={this.state.password} onChange={this.handleUpdate('password')} id="signup-password" placeholder="New password" onFocus={this.clearErrors}/>
                                 <label>
                                     <h3>Birthday</h3>
-                                    <input type="date" value={this.state.birthday} onChange={this.handleUpdate('birthday')} id="signup-birthday" placeholder="Birthday"/>
+                                    <input type="date" value={this.state.birthday} onChange={this.handleUpdate('birthday')} id="signup-birthday" placeholder="Birthday" onFocus={this.clearErrors}/>
                                 </label>
                                 <label>
-                                        <h3>Gender</h3>
-                                        <input type="text" value={this.state.gender} onChange={this.handleUpdate('gender')} id="signup-gender" placeholder="Gender"/>
+                                    <h3>Gender</h3>
+                                    <select onChange={this.handleUpdate('gender')}>
+                                        <option disabled selected>Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Other">Prefer not to say</option>
+                                    </select>
                                 </label>
                             </div>
                             <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>

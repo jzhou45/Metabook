@@ -28,7 +28,7 @@ class LoginForm extends React.Component{
     handleSubmit(e){
         e.preventDefault();
         this.props.login(this.state);
-        if (store.getState().session.id) this.setState({loggedIn: true});
+        if (this.props.sessionid) this.setState({loggedIn: true});
         this.handleErrors();
     }
 
@@ -45,6 +45,13 @@ class LoginForm extends React.Component{
         const whiteBackground = document.getElementById("white-background");
         whiteBackground.classList.remove("invisible");
         whiteBackground.classList.add("white-background");
+        console.log(this.props);
+        this.props.clearSessionErrors()
+        document.getElementById("login-email").style.border = "0.5px solid #dde0e3";
+        document.getElementById("login-email-error-message").innerHTML = "";
+        document.getElementById("login-container").firstChild.style.height = "390px";
+        document.getElementById("login-password").style.border = "0.5px solid #dde0e3";
+        document.getElementById("login-password-error-message").innerHTML = "";
     }
 
     loginAsDemoUser(){

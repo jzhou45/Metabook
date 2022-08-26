@@ -4,11 +4,13 @@
 
 .white-background{
     background-color: rgba(255, 255, 255, 0.8);
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
     z-index: 1;
+    overflow: hidden;
+    position: fixed;
 }
 
 #signup-form{
@@ -22,7 +24,6 @@
 .openModal{
     font-family: Helvetica, sans-serif;
     width: 430px;
-    height: 540px;
     border: 1px solid #edf0f4;
     display: flex;
     justify-content: center;
@@ -64,17 +65,21 @@
     width: 405px;
 }
 
-.openModal form input{
+.openModal form input, .openModal select{
     margin-bottom: 10px;
     background-color: #f5f6f7;
     padding-left: 14px;
 }
 
-.openModal form div input{
+.openModal form div input, .openModal select {
     width: 390px;
     height: 30px;
     border-radius: 8px;
     border: 1px solid #dde0e3;
+}
+
+.openModal select{
+    width: 406px;
 }
 
 .openModal form div div{
@@ -117,6 +122,7 @@
 }
 
 .openModal button{
+    margin-bottom: 20px;
     background-color: #00a401;
     height: 35px;
     width: 195px;
@@ -130,4 +136,10 @@
 
 .openModal button:hover{
     background-image: linear-gradient(#8fd58f8d, #749674);
+}
+
+.openModal .signup-errors{
+    font-size: 12px;
+    color: rgb(240, 40, 73);
+    margin-bottom: -10px;
 }
