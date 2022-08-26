@@ -28,6 +28,7 @@ class Profile extends React.Component{
                 lastName: user.user.last_name,
                 id: user.user.id
             })
+            console.log(this.state);
         })
     }
 
