@@ -19,23 +19,24 @@ class LoginForm extends React.Component{
         this.openModal = this.openModal.bind(this);
         this.loginAsDemoUser = this.loginAsDemoUser.bind(this);
         this.handleErrors = this.handleErrors.bind(this);
-    }
+        this.clearErrors = this.clearErrors.bind(this);
+    };
 
     handleUpdate(field){
         return e => this.setState({[field]: e.currentTarget.value});
-    }
+    };
 
     handleSubmit(e){
         e.preventDefault();
         this.props.login(this.state);
         if (this.props.sessionid) this.setState({loggedIn: true});
         this.handleErrors();
-    }
+    };
 
     logout(){
         this.props.logout();
         this.setState({loggedIn: false});
-    }
+    };
 
     openModal(){
         this.props.openModal("modal");
@@ -45,32 +46,35 @@ class LoginForm extends React.Component{
         const whiteBackground = document.getElementById("white-background");
         whiteBackground.classList.remove("invisible");
         whiteBackground.classList.add("white-background");
-        console.log(this.props);
+        this.clearErrors();
+    };
+
+    clearErrors(){
         this.props.clearSessionErrors()
         document.getElementById("login-email").style.border = "0.5px solid #dde0e3";
         document.getElementById("login-email-error-message").innerHTML = "";
         document.getElementById("login-container").firstChild.style.height = "390px";
         document.getElementById("login-password").style.border = "0.5px solid #dde0e3";
         document.getElementById("login-password-error-message").innerHTML = "";
-    }
+    };
 
     loginAsDemoUser(){
         this.props.login({email:"demouser@email.com", password: "password"});
         this.setState({loggedIn:true});
-    }
+    };
 
     handleErrors(){
         if (this.state.email.length === 0){
             document.getElementById("login-email").style.border = "1px solid #f02849";
             document.getElementById("login-email-error-message").innerHTML = "The email you entered isn't connected to an account.";
             document.getElementById("login-container").firstChild.style.height = "420px";
-        }
+        };
         if (this.state.password.length === 0){
             document.getElementById("login-password").style.border = "1px solid #f02849";
             document.getElementById("login-password-error-message").innerHTML = "The password you've entered is incorrect";
             document.getElementById("login-container").firstChild.style.height = "420px";
-        }
-    }
+        };
+    };
 
     render(){
         if (!this.props.sessionid){
@@ -85,9 +89,9 @@ class LoginForm extends React.Component{
 
                     <div id="login-container">
                         <form onSubmit={this.handleSubmit}>
-                            <input type="text" name="email" value={this.state.email} onChange={this.handleUpdate('email')} id="login-email" placeholder="Email" />
+                            <input type="text" name="email" value={this.state.email} onChange={this.handleUpdate('email')} id="login-email" placeholder="Email" onFocus={this.clearErrors}/>
                             <p id="login-email-error-message" className="login-errors"></p>
-                            <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')} id="login-password" placeholder="Password" />
+                            <input type="password" name="password" value={this.state.password} onChange={this.handleUpdate('password')} id="login-password" placeholder="Password" onFocus={this.clearErrors}/>
                             <p id="login-password-error-message" className="login-errors"></p>
 
                             <button type="submit" className="login-button">Log In</button>
@@ -104,9 +108,9 @@ class LoginForm extends React.Component{
                         </div>
                     </div>
                 </div>
-            )
-        }
-    }
-}
+            );
+        };
+    };
+};
 
 export default LoginForm;

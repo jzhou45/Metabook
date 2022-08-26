@@ -15,7 +15,7 @@ class Profile extends React.Component{
 
         this.handleSubmitProfilePhoto = this.handleSubmitProfilePhoto.bind(this);
         this.handleSubmitCoverPhoto = this.handleSubmitCoverPhoto.bind(this);
-    }
+    };
 
     componentDidMount(){
         this.props.fetchUser(this.props.usersId).then(user => {
@@ -27,10 +27,9 @@ class Profile extends React.Component{
                 firstName: user.user.first_name,
                 lastName: user.user.last_name,
                 id: user.user.id
-            })
-            console.log(this.state);
-        })
-    }
+            });
+        });
+    };
 
     handleSubmitProfilePhoto(e){
         e.preventDefault();
@@ -44,7 +43,7 @@ class Profile extends React.Component{
             contentType: false,
             processData: false
         }).then(() => {location.reload()});
-    }
+    };
 
     handleSubmitCoverPhoto(e){
         e.preventDefault();
@@ -58,7 +57,7 @@ class Profile extends React.Component{
             contentType: false,
             processData: false
         }).then(() => {location.reload()});
-    }
+    };
 
     render(){
         return(
@@ -87,8 +86,8 @@ class Profile extends React.Component{
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 };
 
 export default Profile;
