@@ -60,7 +60,7 @@
 }
 
 #navbar-modal > div > p:hover{
-    cursor: not-allowed;
+    cursor: pointer;
     background-color: #3a3b3c;
 }
 
@@ -82,7 +82,7 @@
 
 #navbar-modal .fake-links:hover{
     background-color: #3a3b3c;
-    cursor: not-allowed;
+    cursor: pointer;
 }
 
 #navbar-modal .fake-links#logout:hover{

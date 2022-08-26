@@ -22,6 +22,26 @@ class NavBarModal extends React.Component{
         this.props.closeNavbar();
     }
 
+    goToGithub(){
+        window.open("https://github.com/jzhou45/Metabook", '_blank');
+    };
+
+    goToLinkedIn(){
+        window.open("https://www.linkedin.com/in/jonathanzhou77/", "_blank");
+    };
+
+    goToFacebook(){
+        window.open("https://www.facebook.com", "_blank");
+    };
+
+    goToEmail(){
+        window.open('mailto:jonathanzhou77@gmail.com', "_blank");
+    };
+
+    surpriseMe(){
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_blank');
+    };
+
     render(){
         return(
             <div id="navbar-modal">
@@ -35,23 +55,23 @@ class NavBarModal extends React.Component{
                         </p>
                     </div>
                     <hr />
-                    <p>See all profiles</p>
+                    <p onClick={this.surpriseMe}>Surprise me!</p>
                 </div>
 
-                <div className="fake-links">
-                    <span>Settings & privacy</span>
+                <div className="fake-links" onClick={this.goToGithub}>
+                    <span>Metabook's GitHub</span>
                 </div>
 
-                <div className="fake-links">
-                    <span>Help & support</span>
+                <div className="fake-links" onClick={this.goToLinkedIn}>
+                    <span>Developer's LinkedIn</span>
                 </div>
 
-                <div className="fake-links">
-                    <span>Display & accessibility</span>
+                <div className="fake-links" onClick={this.goToEmail}>
+                    <span>Email the developer</span>
                 </div>
 
-                <div className="fake-links">
-                    <span>Give feedback</span>
+                <div className="fake-links" onClick={this.goToFacebook}>
+                    <span>Visit the real Facebook</span>
                 </div>
 
                 <div onClick={this.props.logout} className="fake-links" id="logout">
