@@ -8,6 +8,7 @@ Metabook is a clone of (Facebook)[facebook.com] and aims to reproduce the profil
   * Ruby
   * Ruby on Rails
   * JavaScript
+  * jQuery
   * React
   * Redux
   * npm/webpack/babel
