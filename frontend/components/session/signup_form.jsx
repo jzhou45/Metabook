@@ -28,27 +28,34 @@ const SignupForm = props => {
     };
 
     let firstNameError, lastNameError, emailError, passwordError, birthdayError, genderError;
+    let firstNameErrorInput, lastNameErrorInput, emailErrorInput, passwordErrorInput, birthdayErrorInput, genderErrorInput = null;
 
     if (errors.length > 0){
         for (let error of errors){
             switch (error[0]) {
                 case "F":
                     firstNameError = error;
+                    firstNameErrorInput = "signup-input-error";
                     break;
                 case "L":
                     lastNameError = error;
+                    lastNameErrorInput = "signup-input-error";
                     break;
                 case "E":
                     emailError = error;
+                    emailErrorInput = "signup-input-error";
                     break;
                 case "P":
                     passwordError = error;
+                    passwordErrorInput = "signup-input-error";
                     break;
                 case "B":
                     birthdayError = error;
+                    birthdayErrorInput = "signup-input-error";
                     break;
                 case "G":
                     genderError = error;
+                    genderErrorInput = "signup-input-error";
                     break;
                 default:
                     return null;
@@ -61,7 +68,6 @@ const SignupForm = props => {
         <div className="signup-form-div">
             <form onSubmit={handleSubmit}>
                 <div>
-
                     <div>
                         <h1>Sign Up</h1>
                         <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/11W0xEwKS62.png" alt="X" onClick={closeModal}/>
@@ -77,12 +83,14 @@ const SignupForm = props => {
                             value={state.first_name}
                             onChange={handleUpdate("first_name")}
                             placeholder="First Name"
+                            className={firstNameErrorInput}
                         />
                         <input 
                             type="text" 
                             value={state.last_name}
                             onChange={handleUpdate("last_name")}
                             placeholder="Last Name"
+                            className={lastNameErrorInput}
                         />
                     </div>
 
@@ -96,6 +104,7 @@ const SignupForm = props => {
                         value={state.email}
                         onChange={handleUpdate("email")}
                         placeholder="Email"
+                        className={emailErrorInput}
                     />
 
                     {(emailError) ? <p className="signup-errors">{emailError}</p> : null}
@@ -105,6 +114,7 @@ const SignupForm = props => {
                         value={state.password}
                         onChange={handleUpdate("password")}
                         placeholder="Password"
+                        className={passwordErrorInput}
                     />
 
                     {(passwordError) ? <p className="signup-errors">{passwordError}</p> : null}
@@ -117,13 +127,14 @@ const SignupForm = props => {
                             value={state.birthday}
                             onChange={handleUpdate("birthday")}
                             placeholder="Birthday"
+                            className={birthdayErrorInput}
                         />
                         {(birthdayError) ? <p className="signup-errors">{birthdayError}</p> : null}
                     </label>
 
                     <label htmlFor="gender">
                         <h3>Gender</h3>
-                        <select name="gender" onChange={handleUpdate("gender")}>
+                        <select name="gender" onChange={handleUpdate("gender")} className={genderErrorInput}>
                             <option disabled defaultValue={state.gender}>Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
