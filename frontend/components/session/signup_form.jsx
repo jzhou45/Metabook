@@ -134,8 +134,8 @@ const SignupForm = props => {
 
                     <label htmlFor="gender">
                         <h3>Gender</h3>
-                        <select name="gender" onChange={handleUpdate("gender")} className={genderErrorInput}>
-                            <option disabled defaultValue={state.gender}>Gender</option>
+                        <select name="gender" onChange={handleUpdate("gender")} className={genderErrorInput} defaultValue={state.gender}>
+                            <option disabled value={""}>Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
