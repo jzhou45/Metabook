@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../navbar/navbar_container";
 import NavBarModal from "../navbar/navbar_modal_container";
-import Newsfeed from "../newsfeed/newsfeed_container";
+import Newsfeed from "../newsfeed/newsfeed";
 import LoginForm from "../session/login_form";
 
 class HomePage extends React.Component{

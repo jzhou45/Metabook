@@ -1,0 +1,51 @@
+@import "../variables.scss";
+
+.newsfeed{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.make-posts{
+    border-radius: 10px;
+    display: flex;
+    background-color: $metabook-lightblack;
+    width: 685px;
+    height: 125px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+
+    img{
+        height: 45px;
+        width: 45px;
+        object-fit: cover;
+        border-radius: 50%;
+
+        &:hover{
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+    }
+
+    input{
+        width: 600px;
+        height: 45px;
+        border-radius: 25px;
+        background-color: $input-black;
+        border: none;
+        margin-left: 8px;
+        color: $metabook-offwhite;
+        padding-left: 10px;
+
+        &:hover{
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+    }
+
+    ::placeholder{
+        padding-left: 10px;
+    }
+}
