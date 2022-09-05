@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
           login(@user)
           render "api/users/show"
         else
-          render json: ["The email you entered isn't connected to an account or the password you've entered is incorrect"], status: 401
+          render json: ["The email you entered isn't connected to an account or the password you've entered is incorrect."], status: 401
         end
       end
     
@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
           logout
           render "api/users/show"
         else
-          render json: ["Nobody signed in"], status: 404
+          render json: ["Nobody signed in."], status: 404
         end
       end
 end

@@ -136,75 +136,77 @@ const SignupForm = props => {
     };
 
     return(
-      <div className="signup-form">
-        <form onSubmit={handleSubmit}>
-            <div>
-
+      <div className="signup-form-container">
+        <div className="signup-form-div">
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <h1>Sign Up</h1>
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/11W0xEwKS62.png" alt="X" onClick={closeModal}/>
-                </div>
 
-                <h2>It's quick and easy</h2>
+                    <div>
+                        <h1>Sign Up</h1>
+                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/11W0xEwKS62.png" alt="X" onClick={closeModal}/>
+                    </div>
 
-                <hr />
+                    <h2>It's quick and easy</h2>
 
-                <div>
+                    <hr />
+
+                    <div>
+                        <input 
+                            type="text" 
+                            value={state.first_name}
+                            onChange={handleUpdate("first_name")}
+                            placeholder="First Name"
+                        />
+
+                        <input 
+                            type="text" 
+                            value={state.last_name}
+                            onChange={handleUpdate("last_name")}
+                            placeholder="Last Name"
+                        />
+                    </div>
+
                     <input 
                         type="text" 
-                        value={state.first_name}
-                        onChange={handleUpdate("first_name")}
-                        placeholder="First Name"
+                        value={state.email}
+                        onChange={handleUpdate("email")}
+                        placeholder="Email"
                     />
 
                     <input 
-                        type="text" 
-                        value={state.last_name}
-                        onChange={handleUpdate("last_name")}
-                        placeholder="Last Name"
+                        type="password"
+                        value={state.password}
+                        onChange={handleUpdate("password")}
+                        placeholder="Password"
                     />
+
+                    <label htmlFor="birthday">
+                        <h3>Birthday</h3>
+                        <input 
+                            type="date" 
+                            name="birthday"
+                            value={state.birthday}
+                            onChange={handleUpdate("birthday")}
+                            placeholder="Birthday"
+                        />
+                    </label>
+
+                    <label htmlFor="gender">
+                        <h3>Gender</h3>
+                        <select name="gender" onChange={handleUpdate("gender")}>
+                            <option disabled defaultValue={state.gender}>Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            <option value="Other">Prefer not to say</option>
+                        </select>
+                    </label>
                 </div>
-
-                <input 
-                    type="text" 
-                    value={state.email}
-                    onChange={handleUpdate("email")}
-                    placeholder="Email"
-                />
-
-                <input 
-                    type="password"
-                    value={state.password}
-                    onChange={handleUpdate("password")}
-                    placeholder="Password"
-                />
-
-                <label htmlFor="birthday">
-                    <h3>Birthday</h3>
-                    <input 
-                        type="date" 
-                        name="birthday"
-                        value={state.birthday}
-                        onChange={handleUpdate("birthday")}
-                        placeholder="Birthday"
-                    />
-                </label>
-
-                <label htmlFor="gender">
-                    <h3>Gender</h3>
-                    <select name="gender" onChange={handleUpdate("gender")}>
-                        <option disabled defaultValue={state.gender}>Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                        <option value="Other">Prefer not to say</option>
-                    </select>
-                </label>
-            </div>
-            <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>
-            <h4>By clicking Sign Up, you agree to our <span>Terms</span>, <span>Privacy Policy</span>, and <span>Cookies Policy</span> which does not exist. You will not receive SMS Notifications from us and can not opt in any time.</h4>
-            <button type="submit">Sign Up</button>
-        </form>
+                <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>
+                <h4>By clicking Sign Up, you agree to our <span>Terms</span>, <span>Privacy Policy</span>, and <span>Cookies Policy</span> which does not exist. You will not receive SMS Notifications from us and can not opt in any time.</h4>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
       </div>  
     );
 };
