@@ -3,7 +3,6 @@ import NavBar from "../navbar/navbar_container";
 import NavBarModal from "../navbar/navbar_modal_container";
 import Newsfeed from "../newsfeed/newsfeed_container";
 import LoginForm from "../session/login_form";
-import SignupForm from "../session/signup_form_container";
 
 class HomePage extends React.Component{
     constructor(props){
@@ -21,7 +20,6 @@ class HomePage extends React.Component{
                     </div>) :
                     (<div>
                         <LoginForm />
-                        <SignupForm />    
                     </div>)
                 }
             </div>

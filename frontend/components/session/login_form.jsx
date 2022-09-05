@@ -3,34 +3,14 @@ import { connect } from "react-redux";
 import { clearErrors, login } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
 
-// class LoginForm extends React.Component{
-//     openModal(){
-//         this.props.openModal("modal");
-//         const modal = document.getElementById("modal");
-//         modal.classList.remove("invisible");
-//         modal.classList.add("openModal");
-//         const whiteBackground = document.getElementById("white-background");
-//         whiteBackground.classList.remove("invisible");
-//         whiteBackground.classList.add("white-background");
-//         this.clearErrors();
-//     };
-
-
-//     handleErrors(){
-//         if (this.state.email.length === 0){
-//             document.getElementById("login-email").style.border = "1px solid #f02849";
-//             document.getElementById("login-email-error-message").innerHTML = "The email you entered isn't connected to an account.";
-//             document.getElementById("login-container").firstChild.style.height = "420px";
-//         };
-//         if (this.state.password.length === 0){
-
 const LoginForm = props => {
-    const { errors, login, openModal, clearErrors} = props;
+    const { errors, login, openModal} = props;
 
     const [state, setState] = useState({
         email: "",
         password: ""
     });
+
 
     const handleUpdate = field => (
         e => setState({
@@ -90,7 +70,7 @@ const LoginForm = props => {
 
                     <hr />
 
-                    <div onClick={openModal} className="signup-button">
+                    <div onClick={() => openModal("signup")} className="signup-button">
                         <p>Create new account</p>
                     </div>
 
