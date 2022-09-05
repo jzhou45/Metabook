@@ -121,3 +121,16 @@
         }
     }
 }
+
+.signup-errors{
+    font-size: 12px;
+    color: $error-red;
+    padding: 0px 0 5px 0;
+    margin-top: -5px;
+}
+
+.signup-name-errors{
+    p{
+        width: 198px;
+    }
+}

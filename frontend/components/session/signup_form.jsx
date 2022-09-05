@@ -86,9 +86,9 @@ const SignupForm = props => {
                         />
                     </div>
 
-                    <div>
-                        {(firstNameError) ? <p>{firstNameError}</p> : null}
-                        {(lastNameError) ? <p>{lastNameError}</p> : null}
+                    <div className="signup-name-errors">
+                        {(firstNameError) ? <p className="signup-errors">{firstNameError}</p> : <div></div>}
+                        {(lastNameError) ? <p className="signup-errors">{lastNameError}</p> : null}
                     </div>
 
                     <input 
@@ -98,7 +98,7 @@ const SignupForm = props => {
                         placeholder="Email"
                     />
 
-                    {(emailError) ? <p>{emailError}</p> : null}
+                    {(emailError) ? <p className="signup-errors">{emailError}</p> : null}
 
                     <input 
                         type="password"
@@ -107,7 +107,7 @@ const SignupForm = props => {
                         placeholder="Password"
                     />
 
-                    {(passwordError) ? <p>{passwordError}</p> : null}
+                    {(passwordError) ? <p className="signup-errors">{passwordError}</p> : null}
 
                     <label htmlFor="birthday">
                         <h3>Birthday</h3>
@@ -118,7 +118,7 @@ const SignupForm = props => {
                             onChange={handleUpdate("birthday")}
                             placeholder="Birthday"
                         />
-                        {(birthdayError) ? <p>{birthdayError}</p> : null}
+                        {(birthdayError) ? <p className="signup-errors">{birthdayError}</p> : null}
                     </label>
 
                     <label htmlFor="gender">
@@ -130,7 +130,7 @@ const SignupForm = props => {
                             <option value="Other">Other</option>
                             <option value="Other">Prefer not to say</option>
                         </select>
-                        {(genderError) ? <p>{genderError}</p> : null}
+                        {(genderError) ? <p className="signup-errors">{genderError}</p> : null}
                     </label>
                 </div>
                 <h4>This is a clone of Facebook for educational purposes, please don't sue me Mr. Mark Zuckerberg. <span>Don't Learn More.</span></h4>
