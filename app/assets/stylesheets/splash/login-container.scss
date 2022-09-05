@@ -1,0 +1,147 @@
+@import "../variables.scss";
+
+.login-signup-forms{
+    display: flex;
+    justify-content: center;
+}
+
+.greetings{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 258px;
+    position: absolute;
+    margin-top: 26vh;
+    right: 48vw;
+
+    h1{
+        font-family: $metabook-logo-font;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 55px;
+        color: $metabook-blue;
+
+        &:hover{
+            cursor: default;
+        }
+    }
+
+    h2{
+        font-family: $default-font;
+        font-size: 28px;
+        margin-top: 20px;
+    }
+}
+
+.login-container {
+    font-family: $default-font;
+    position: absolute;
+    left: 56vw;
+    top: 17vh;
+    z-index: 0;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid $border-gray;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: $input-box-shadow;
+    background-color: white;
+
+    > :first-child{
+        margin-top: 15px;
+    }
+
+    input{
+        width: 360px;
+        height: 50px;
+        border-radius: 8px;
+        border: 1px solid $border-gray;
+        margin-bottom: 15px;
+        box-shadow: inset 0 0 5px $border-gray;
+        padding-left: 14px;
+
+        &::placeholder{
+            font-size: 16px;
+            color: #8e9296c2;
+        }
+    }
+
+    hr{
+        width: 365px;
+        border: 0.5px solid $metabook-gray;
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+}
+
+.login-button{
+    background-color: $button-blue;
+    color: white;
+    font-weight: bold;
+    width: 365px;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    font-size: large;
+
+    &:hover{
+        cursor: pointer;
+        filter: brightness(0.9)
+    }
+}
+
+.demo-login{
+    margin-top: 20px;
+    color: $metabook-blue;
+    font-size: 13px;
+    margin-bottom: 0px;
+
+    &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.signup-button{
+    background-color: $metabook-brightgreen;
+    color: white;
+    height: 50px;
+    width: 195px;
+    border: none;
+    border-radius: 8px;
+    font-size: large;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+
+    &:hover{
+        cursor: pointer;
+        filter: brightness(0.9);
+    }
+
+    p{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.create-a-page{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+
+    span{
+        font-weight: bold;
+
+        &:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}

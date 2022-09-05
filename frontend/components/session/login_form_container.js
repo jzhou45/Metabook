@@ -4,11 +4,7 @@ import { clearErrors, login, logout } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = state => ({
-    user: {
-        email: '',
-        password: '',
-        sessionid: state.session.id
-    }, errors: state.errors.session
+    errors: state.errors.session
 })
 
 const mapDispatchToProps = dispatch => ({
