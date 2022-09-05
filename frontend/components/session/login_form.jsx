@@ -4,7 +4,7 @@ import { clearErrors, login } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
 
 const LoginForm = props => {
-    const { errors, login, openModal} = props;
+    const { errors, login, openModal, clearErrors} = props;
 
     const [state, setState] = useState({
         email: "",
@@ -31,7 +31,12 @@ const LoginForm = props => {
         });
     };
 
-    const loginError = errors[0] ? "login-input-errors" : null;
+    const loginError = (errors.length === 1) ? "login-input-errors" : null;
+
+    const openModalWithoutErrors = () => {
+        clearErrors();
+        openModal("signup");
+    }
 
     return(
         <div className="login-signup-forms">
@@ -60,7 +65,7 @@ const LoginForm = props => {
                         className={loginError}
                     />
 
-                    {(errors) ? (<p className="login-errors">{errors[0]}</p>) : null}
+                    {(errors.length === 1) ? (<p className="login-errors">{errors[0]}</p>) : null}
 
                     <button type="submit" className="login-button">Log In</button>
 
@@ -70,7 +75,7 @@ const LoginForm = props => {
 
                     <hr />
 
-                    <div onClick={() => openModal("signup")} className="signup-button">
+                    <div onClick={openModalWithoutErrors} className="signup-button">
                         <p>Create new account</p>
                     </div>
 
