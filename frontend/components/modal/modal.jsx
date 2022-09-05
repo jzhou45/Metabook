@@ -28,8 +28,10 @@ const Modal = props => {
         closeModal();
     };
 
+    const background = (component === <Signup/>) ? "white-background" : "black-background"
+
     return (
-        <div className="modal-background" onClick={reset}>
+        <div className={background} onClick={reset}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 {component}
             </div>
