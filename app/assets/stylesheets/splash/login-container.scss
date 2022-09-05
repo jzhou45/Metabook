@@ -68,6 +68,11 @@
             font-size: 16px;
             color: #8e9296c2;
         }
+
+        &.login-input-errors{
+            border: 1px solid $error-red;
+            box-shadow: none;
+        }
     }
 
     hr{
@@ -76,6 +81,13 @@
         margin-top: 25px;
         margin-bottom: 20px;
     }
+}
+
+.login-errors{
+    color: $error-red;
+    font-size: 13px;
+    width: 360px;
+    padding-bottom: 10px;
 }
 
 .login-button{
