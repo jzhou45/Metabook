@@ -3,7 +3,7 @@
 .signup-form-container{
     position: fixed;
     z-index: 3;
-    top: calc(50vh - 255px);
+    top: calc(50% - 36%);
     left: calc(50vw - 215px);
 }
 
@@ -28,17 +28,29 @@
             margin-bottom: 10px;
             background-color: $metabook-offwhite;
             padding-left: 14px;
+
+            &.signup-input-error{
+                border: 1px solid $error-red;
+            }
         }
 
         div{
             input, select{
-                height: 30px;
+                height: 40px;
                 border-radius: 8px;
                 border: 1px solid $metabook-gray;
+
+                &.signup-input-error{
+                    border: 1px solid $error-red;
+                }
             }
 
             input{
                 width: 390px;
+
+                &.signup-input-error{
+                    border: 1px solid $error-red;
+                }
             }
 
             div{
@@ -50,7 +62,17 @@
                     height: 40px;
                     border-radius: 8px;
                     border: 1px solid $metabook-gray;
+
+                    &.signup-input-error{
+                        border: 1px solid $error-red;
+                    }
                 }
+            }
+
+            hr{
+                width: 105%;
+                margin-left: -11px;
+                border: 0.5px solid $metabook-gray;
             }
         }
     }
