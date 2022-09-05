@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import { clearErrors } from "../../actions/session_actions";
 import Signup from "../../components/session/signup_form"
+import NewsfeedModal from "../newsfeed/newsfeed_modal";
 
 const Modal = props => {
     const {modal, closeModal, clearErrors} = props;
@@ -14,6 +15,9 @@ const Modal = props => {
     switch (modal.type) {
         case "signup":
             component = <Signup/>;
+            break;
+        case "makePosts":
+            component = <NewsfeedModal/>
             break;
         default:
             return null;
