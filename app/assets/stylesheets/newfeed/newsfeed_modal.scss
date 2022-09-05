@@ -4,15 +4,14 @@
     border-radius: 7px;
     border: 1px solid $border-lightblack;
     position: fixed;
-    bottom: 31.25vh;
     z-index: 5;
     width: 500px;
-    height: 430px;
     background-color: $metabook-lightblack;
-    margin-top: 70px;
     font-family: $default-font;
     flex-direction: column;
     align-items: center;
+    top: calc(50% - 36%);
+    left: calc(50vw - 215px);
 
     form{
         display: flex;
@@ -55,6 +54,10 @@
             }
         }
 
+        input{
+            display: none;
+        }
+
         button{
             width: 470px;
             height: 40px;
@@ -62,6 +65,7 @@
             background-color: $metabook-blue;
             border: none;
             border-radius: 7px;
+            margin-bottom: 15px;
 
             &:hover{
                 filter: brightness(1.2);

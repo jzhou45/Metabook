@@ -69,14 +69,17 @@ const NewsfeedModal = props => {
                     onChange={handleUpdate("content")}
                     placeholder={`What's on your mind, ${firstName}?`}
                 ></textarea>
+
                 <label htmlFor="create-post-file">Add image to your post</label>
                 <input 
                     type="file"
                     onChange={e => setState({
                         file: e.target.files
                     })}
-                    id="cerate-post-file"
+                    id="create-post-file"
                 />
+
+                <button type="submit">Post</button>
             </form>
         </div>
     );

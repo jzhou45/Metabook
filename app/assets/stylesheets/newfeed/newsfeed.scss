@@ -43,6 +43,10 @@
             filter: brightness(1.2);
             cursor: pointer;
         }
+
+        &:focus{
+            outline:none
+        }
     }
 
     ::placeholder{
