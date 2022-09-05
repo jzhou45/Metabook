@@ -60,7 +60,7 @@ const LoginForm = props => {
                         className={loginError}
                     />
 
-                    {(errors) ? (<p className="login-errors">{errors[0]}.</p>) : null}
+                    {(errors) ? (<p className="login-errors">{errors[0]}</p>) : null}
 
                     <button type="submit" className="login-button">Log In</button>
 
