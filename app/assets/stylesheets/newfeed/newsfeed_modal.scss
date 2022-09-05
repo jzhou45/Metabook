@@ -1,0 +1,133 @@
+@import "../variables.scss";
+
+.posts-modal{
+    border-radius: 7px;
+    border: 1px solid $border-lightblack;
+    position: fixed;
+    bottom: 31.25vh;
+    z-index: 5;
+    width: 500px;
+    height: 430px;
+    background-color: $metabook-lightblack;
+    margin-top: 70px;
+    font-family: $default-font;
+    flex-direction: column;
+    align-items: center;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        textarea{
+            width: 480px;
+            height: 155px;
+            background-color: $metabook-lightblack;
+            border: none;
+            font-family: $default-font;
+            padding: 10px;
+            font-size: 23px;
+            color: $metabook-offwhite;
+
+            &:focus{
+                outline: none;
+            }
+
+            &::placeholder{
+                font-size: 23px;
+                color: $placeholder-gray;
+            }
+        }
+
+        label{
+            width: 470px;
+            height: 60px;
+            border: 1px solid $border-lightblack;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $metabook-offwhite;
+            margin-bottom: 15px;
+            border-radius: 7px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        button{
+            width: 470px;
+            height: 40px;
+            color: white;
+            background-color: $metabook-blue;
+            border: none;
+            border-radius: 7px;
+
+            &:hover{
+                filter: brightness(1.2);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.create-post{
+    font-size: 22px;
+    color: $metabook-offwhite;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    width: 500px;
+    align-items: center;
+    border-bottom: 1px solid $border-lightblack;
+
+    :first-child{
+        width: 38px;
+    }
+
+    :last-child{
+        width: 38px;
+        height: 38px;
+        background-color: $input-black;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $x-font;
+        color: $placeholder-gray;
+        font-size: 22px;
+        margin-right: 25px;
+
+        &:hover{
+            cursor: pointer;
+            filter: brightness(1.2);
+        }
+    }
+
+    + div{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 480px;
+        color: $metabook-gray;
+        margin: 10px;
+    }
+}
+
+.posts-profile-photo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+
+    &:hover{
+        filter: brightness(1.1);
+        cursor: pointer;
+    }
+}
+
+.posts-link{
+    text-decoration: none;
+    color: $metabook-offwhite;
+}
