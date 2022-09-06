@@ -7,6 +7,7 @@ const modalsReducer = (state = {}, action) => {
     switch (action.type) {
         case OPEN_MODAL:
             nextState.type = action.modal;
+            nextState.props = action.props;
             return nextState;
         case CLOSE_MODAL:
             nextState.type = null;

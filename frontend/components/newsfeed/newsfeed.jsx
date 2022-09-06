@@ -43,7 +43,7 @@ const Newsfeed = props => {
                 <input 
                     type="text" 
                     placeholder={`What's on your mind, ${firstName}?`}
-                    onClick={() => openModal("makePosts")}
+                    onClick={() => openModal("makePosts", {rerenderNewsfeed})}
                 />
             </div>
 
@@ -75,7 +75,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     fetchPosts: () => dispatch(fetchPosts()),
-    openModal: modal => dispatch(openModal(modal)),
+    openModal: (modal, props) => dispatch(openModal(modal, props)),
     fetchPost: postId => dispatch(fetchPost(postId)),
     fetchUser: userId => dispatch(fetchUser(userId))
 });
