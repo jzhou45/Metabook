@@ -1,121 +1,138 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-class PostItem extends React.Component{
-    // constructor(props){
-    //     super(props);
+const PostItem = props => {
+    const {post, rerenderNewsfeed, fetchUser, currentUserId, fetchPost} = props;
 
-    //     this.state = {
-    //         firstName: "",
-    //         lastName: "",
-    //         profilePhoto: "",
-    //         userId: "",
-    //         modalOpened: false,
-    //         editingPost: false,
-    //         content: this.props.post.content,
-    //         previousContent: this.props.post.content,
-    //     };
+    const [state, setState] = useState({
+        firstName: "",
+        lastName: "",
+        profilePhoto: "",
+        userId: "",
+        editingPost: false
+    });
 
-    //     this.goToProfilePage = this.goToProfilePage.bind(this);
-    //     this.handleClickEdit = this.handleClickEdit.bind(this);
-    //     this.handleUpdate = this.handleUpdate.bind(this);
-    //     this.handleClickCancel = this.handleClickCancel.bind(this);
-    //     this.handleSubmit = this.handleSubmit.bind(this);
-    //     this.handleClickDelete = this.handleClickDelete.bind(this);
-    // };
+    useEffect(() => {
+        fetchUser(post.user_id).then(data => {
+            setState({
+                ...state,
+                firstName: data.user.first_name,
+                lastName: data.user.last_name,
+                profilePhoto: data.user.profilePhoto,
+                userId: data.user.id,
+                content: post.content,
+                previousContent: post.content
+            });
+        });
+    }, []);
 
-    // componentDidMount(){
-    //     this.props.fetchUser(this.props.post.user_id).then(user => {
-    //         this.setState({
-    //             firstName: user.user.first_name,
-    //             lastName: user.user.last_name,
-    //             profilePhoto: user.user.profilePhoto,
-    //             userId: user.user.id
-    //         });
-    //     });
-    // };
+    const handleClickEdit = () => {
+        setState({
+            ...state,
+            editingPost: true
+        });
+    };
 
-    // goToProfilePage(){
-    //     this.props.history.push(`/users/${this.state.userId}`);
-    // };
+    const handleClickDelete = () => {
+        $.ajax({
+            method: "DELETE",
+            url: `api/posts/${post.id}`
+        }).then(() => {
+            rerenderNewsfeed();
+        });
+    };
 
-    // handleClickEdit(){
-    //     this.setState({
-    //         editingPost: true  
-    //     });
-    // };
+    const handleClickCancel = () => {
+        setState({
+            ...state,
+            content: state.previousContent,
+            editingPost: false
+        });
+    };
 
-    // handleUpdate(field){
-    //     return e => this.setState({[field]: e.currentTarget.value});
-    // };
+    const handleUpdate = field => (
+        e => setState({
+            ...state,
+            [field]: e.currentTarget.value
+        })
+    );
 
-    // handleClickCancel(){
-    //     this.setState({
-    //         content: this.state.previousContent,
-    //         editingPost: false
-    //     });
-    // };
+    const handleSubmit = e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('post[content]', state.content);
+        $.ajax({
+            method: "PATCH",
+            url: `api/posts/${post.id}`,
+            data: formData,
+            contentType: false,
+            processData: false
+        }).then(() => 
+            fetchPost(post.id)
+        ).then(() =>
+            setState({
+                ...state,
+                editingPost: false
+            })
+        );
+    };
 
-    // handleSubmit(e){
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append('post[content]', this.state.content);
-    //     $.ajax({
-    //         method: "PATCH",
-    //         url: `api/posts/${this.props.post.id}`,
-    //         data: formData,
-    //         contentType: false,
-    //         processData: false
-    //     }).then(
-    //         this.props.fetchPost(this.props.post.id)
-    //     ).then(
-    //         this.setState({
-    //             editingPost: false
-    //         })
-    //     );
-    // };
+    return(
+        <div id={`post-content${post.id}`} className="post-content">
+            <div className="post-header">
+                <div>
+                    <Link to={`/users/${state.userId}`}>
+                        <img src={state.profilePhoto} alt="profile photo of poster" />
+                    </Link>
 
-    // handleClickDelete(){
-    //     $.ajax({
-    //         method: "DELETE",
-    //         url: `api/posts/${this.props.post.id}`
-    //     }).then(() => {
-    //         this.props.rerenderParentCallback();
-    //     });
-    // };
+                    <Link to={`/users/${state.userId}`}>
+                        <span>{state.firstName} {state.lastName}</span>
+                    </Link>
+                </div>
 
-    render(){
-        <div>Hello World</div>
-    }
+                {(currentUserId === post.user_id) ?
+                    (<div className="edit-delete-post"> 
+                        <div onClick={handleClickEdit}>
+                            <img 
+                                src="https://cdn0.iconfinder.com/data/icons/outline-icons/320/Pen-512.png" 
+                                alt="edit" 
+                            />
+                        </div>
 
-    // render(){
-    //     return(
-    //         <div id={`post-content${this.props.post.id}`} className="post-content">
-    //             <div className="post-header">
-    //                 <div>
-    //                     <img src={this.state.profilePhoto} alt="profile photo of poster" onClick={this.goToProfilePage} />
-    //                     <span onClick={this.goToProfilePage}>{this.state.firstName} {this.state.lastName}</span>
-    //                 </div>
-    //                 {(this.props.currentUser === this.props.post.user_id) ? 
-    //                     (<div id="edit-delete-post">
-    //                         <div onClick={this.handleClickEdit}><img src="https://cdn0.iconfinder.com/data/icons/outline-icons/320/Pen-512.png" alt="edit" /></div>
-    //                         <div onClick={this.handleClickDelete}><img src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" alt="trash" /></div>
-    //                     </div>) : null
-    //                 }
-    //             </div>
-    //             {(this.state.editingPost) ?  
-    //                 (<form onSubmit={this.handleSubmit}>
-    //                     <textarea value={this.state.content} onChange={this.handleUpdate("content")} placeholder="Post can't be blank!"></textarea>
-    //                     <div>
-    //                         <button onClick={this.handleClickCancel}>Cancel</button>
-    //                         <button type="submit">Save</button>
-    //                     </div>
-    //                 </form>) :
-    //                 (<p>{this.state.content}</p>)
-    //             }
-    //             {(this.props.post.photo) ? <img className="post-images" src={this.props.post.photo} /> : null}
-    //         </div>
-    //     );
-    // };
+                        <div onClick={handleClickDelete}>
+                            <img 
+                                src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" 
+                                alt="delete"
+                            />
+                        </div>
+                    </div>) : null
+                }
+            </div>
+
+            {(state.editingPost) ?
+                (<form onSubmit={handleSubmit}>
+                    <textarea
+                        value={state.content}
+                        onChange={handleUpdate("content")}
+                        placeholder="Post can't be blank!"
+                    ></textarea>
+
+                    <div>
+                        <button onClick={handleClickCancel}>Cancel</button>
+                        <button type="submit">Save</button>
+                    </div>
+                </form>) :
+                <p>{state.content}</p>
+            }
+
+            {(props.post.photo) ?
+                <img
+                    src={post.photo}
+                    className="post-images"
+                /> : null
+            }
+        </div>
+    );
 };
 
 export default PostItem;

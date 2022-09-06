@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PostItem from "./post_item";
 import { Link } from "react-router-dom";
-import { fetchPosts } from "../../actions/post_actions";
+import { fetchPosts, fetchPost } from "../../actions/post_actions";
 import { openModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
+import { fetchUser } from "../../actions/user_actions";
 
 const Newsfeed = props => {
-    const {userId, profilePhoto, firstName, fetchPosts, openModal} = props;
+    const {userId, profilePhoto, firstName, fetchPosts, openModal, fetchPost, 
+        fetchUser} = props;
 
     const [state, setState] = useState({
         userId: userId,
@@ -51,6 +53,9 @@ const Newsfeed = props => {
                         post={post}
                         key={post.id}
                         rerenderNewsfeed={rerenderNewsfeed}
+                        fetchUser={fetchUser}
+                        currentUserId={userId}
+                        fetchPost={fetchPost}
                     />
                 ))}
             </div>
@@ -70,7 +75,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     fetchPosts: () => dispatch(fetchPosts()),
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
+    fetchPost: postId => dispatch(fetchPost(postId)),
+    fetchUser: userId => dispatch(fetchUser(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Newsfeed);

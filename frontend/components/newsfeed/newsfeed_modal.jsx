@@ -40,7 +40,7 @@ const NewsfeedModal = props => {
             });
         });
         closeModal();
-    }
+    };
 
     return(
         <div className="posts-modal">
