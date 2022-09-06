@@ -3,10 +3,11 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const OPEN_NAVBAR = 'OPEN_NAVBAR';
 export const CLOSE_NAVBAR = 'CLOSE_NAVBAR';
 
-export const openModal = modal => {
+export const openModal = (modal, props=null) => {
     return {
         type: OPEN_MODAL,
-        modal
+        modal,
+        props
     };
 };
 
