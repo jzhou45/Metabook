@@ -1,65 +1,73 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { openNavbar, closeNavbar } from "../../actions/modal_actions";
 
-class NavBar extends React.Component{
-    constructor(props){
-        super(props);
+const NavBar = props => {
+    const {profilePhoto, navbar, openNavbar, closeNavbar} = props;
 
-        document.getElementsByTagName("html")[0].style.backgroundColor = "#1c1e21";
-
-        this.modalControls = this.modalControls.bind(this);
-        this.goToHomePage = this.goToHomePage.bind(this);
-    };
-
-    componentDidMount(){
-        this.props.closeNavbar();
-    }
-
-    openLinkedIn(){
-        window.open("https://www.linkedin.com/in/jonathanzhou77/");
-    };
-
-    openGithub(){
-        window.open("https://github.com/jzhou45/Metabook");
-    };
-
-    modalControls(){
-        if (this.props.navbar.navbar){
-            this.closeModal();
+    const modalControls = () => {
+        if (navbar.navbar){
+            closeNavbar();
         } else{
-            this.openModal();
+            openNavbar();
         };
     };
 
-    openModal(){
-        document.getElementById("navbar-modal").style.display = "flex";
-        this.props.openNavbar();
-    }
-
-    closeModal(){
-        document.getElementById("navbar-modal").style.display = "none";
-        this.props.closeNavbar();
-    }
-
-    goToHomePage(){
-        this.props.history.push("/");
-        this.closeModal();
-    }
-
-    render(){
-        return(
-            <header id="navbar">
-                <h1 onClick={this.goToHomePage}>metabook</h1>
-                <input type="text" id="search-bar" placeholder="Metabook"/>
-                <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/2048px-LinkedIn_icon_circle.svg.png" alt="linkedin link" onClick={this.openLinkedIn} />
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github link" onClick={this.openGithub}/>
-                    <div id="profile-button" className="square" onClick={this.modalControls}>
-                        <img src={this.props.profilePhoto} alt="profile photo" />
-                    </div>
-                </div>
-            </header>
-        )
+    const openExternalSite = site => {
+        window.open(site);
     };
+
+    return(
+        <div className="navbar">
+            <Link to="/" className="navbar-home">
+                <h1>metabook</h1>
+            </Link>
+
+            <input 
+                type="text" 
+                className="search-bar" 
+                placeholder="Metabook"
+            />
+
+            <div>
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/2048px-LinkedIn_icon_circle.svg.png" 
+                    alt="linkedin"
+                    onClick={() => openExternalSite("https://www.linkedin.com/in/jonathanzhou77/")}
+                />
+
+                <img 
+                    src="https://cdn-icons-png.flaticon.com/512/25/25231.png" 
+                    alt="github"  
+                    onClick={() => openExternalSite("https://github.com/jzhou45/Metabook")}
+                />
+
+                <img 
+                    src="https://cdn1.iconfinder.com/data/icons/logos-and-brands-3/512/20_Angellist_logo_logos-512.png" 
+                    alt="angellist"
+                    className="angellist"
+                />
+
+                <div className="profile-button" onClick={modalControls}>
+                    <img src={profilePhoto} alt="profile photo" />
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default NavBar;
+const mapStateToProps = state => {
+    const currentUserId = state.session.id;
+    return({
+        profilePhoto: state.entities.users[currentUserId].profilePhoto,
+        navbar: state.ui.navbar
+    });
+};
+
+const mapDispatchToProps = dispatch =>({
+    openNavbar: () => dispatch(openNavbar()),
+    closeNavbar: () => dispatch(closeNavbar())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

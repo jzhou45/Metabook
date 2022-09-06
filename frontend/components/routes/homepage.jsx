@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../navbar/navbar_container";
+import NavBar from "../navbar/navbar";
 import NavBarModal from "../navbar/navbar_modal_container";
 import Newsfeed from "../newsfeed/newsfeed";
 import LoginForm from "../session/login_form";

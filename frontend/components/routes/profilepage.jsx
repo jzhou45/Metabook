@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../navbar/navbar_container";
+import NavBar from "../navbar/navbar";
 import NavBarModal from "../navbar/navbar_modal_container";
 import AboutMe from "../profile/about_me_container";
 import Profile from "../profile/profile_container";
