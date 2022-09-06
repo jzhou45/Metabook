@@ -81,11 +81,11 @@ const PostItem = props => {
         <div id={`post-content${post.id}`} className="post-content">
             <div className="post-header">
                 <div>
-                    <Link to={`/users/${state.userId}`}>
+                    <Link to={`/users/${state.userId}`} className="post-links">
                         <img src={state.profilePhoto} alt="profile photo of poster" />
                     </Link>
 
-                    <Link to={`/users/${state.userId}`}>
+                    <Link to={`/users/${state.userId}`} className="post-links">
                         <span>{state.firstName} {state.lastName}</span>
                     </Link>
                 </div>
@@ -122,7 +122,11 @@ const PostItem = props => {
                         <button type="submit">Save</button>
                     </div>
                 </form>) :
-                <p>{state.content}</p>
+                (
+                <div className="post-content">
+                    <p>{state.content}</p>
+                </div>
+                )
             }
 
             {(props.post.photo) ?

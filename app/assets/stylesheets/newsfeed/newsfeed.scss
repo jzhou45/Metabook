@@ -53,3 +53,8 @@
         padding-left: 10px;
     }
 }
+
+.all-posts{
+    display: flex;
+    flex-direction: column-reverse;
+}
