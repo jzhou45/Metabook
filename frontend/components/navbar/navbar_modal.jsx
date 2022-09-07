@@ -25,7 +25,7 @@ const NavBarModal = props => {
     };
 
     return(
-        <div id="navbar-modal">
+        <div className="navbar-modal">
             <div>
                 <div className="navbar-modal-name" onClick={goToProfilePage}>
                     <div id="profile-image" className="square">                        
@@ -37,7 +37,7 @@ const NavBarModal = props => {
 
                 <hr />
 
-                <p onClick={() => openExternalSite("https://www.facebook.com/")}>Visit the real Facebook</p>
+                <p onClick={() => openExternalSite("https://www.facebook.com/")}>Visit the real Facebook!</p>
             </div>
 
             <div className="fake-links" onClick={() => openExternalSite("https://github.com/jzhou45/Metabook")}>

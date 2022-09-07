@@ -9,7 +9,6 @@ const NavBar = props => {
     const {profilePhoto, navbar, openNavbar, closeNavbar} = props;
 
     const modalControls = () => {
-        console.log(navbar)
         if (navbar.type === "navbar"){
             closeNavbar();
         } else{
