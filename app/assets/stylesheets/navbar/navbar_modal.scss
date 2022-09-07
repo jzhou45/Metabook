@@ -1,0 +1,124 @@
+@import "../variables.scss";
+
+.navbar-modal{
+    overflow: hidden;
+    position: fixed;
+    top: 55px;
+    right: 20px;
+    width: 360px;
+    height: 443px;
+    background-color: $metabook-lightblack;
+    color: $metabook-offwhite;
+    font-family: $default-font;
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    z-index: 5;
+
+    > div{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        > p{
+            color: $metabook-lightblue;
+            width: 90%;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: smaller;
+
+            &:hover{
+                cursor: pointer;
+                background-color: $highlight-gray;
+            }
+        }
+    }
+
+    > :first-child{
+        width: 90%;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);;
+        height: 120px;
+        border-radius: 10px;
+        margin: 15px;
+    }
+
+    div{
+        hr{
+            width: 90%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid $metabook-darkergray;
+        }
+    }
+
+    img{
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+    }
+}
+
+.navbar-modal-name{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 60px;
+    border-radius: 5px;
+    font-weight: 550;
+
+    &:hover{
+        background-color: $highlight-gray;
+        cursor: pointer;
+    }
+}
+
+.square{
+    margin-left: 5px;
+
+    + p{
+        margin-left: 7px;
+    }
+}
+
+.fake-links{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+
+    &:hover{
+        cursor: pointer;
+        background-color: $highlight-gray;
+    }
+
+    span{
+        width: 90%;
+        font-size: smaller;
+    }
+}
+
+div.fake-text{
+    display: inline;
+    font-size: small;
+    width: 90%;
+    margin-left: 15px;
+    line-height: 1.3;
+    color: $metabook-brightgray;
+
+    span{
+        &:hover{
+            cursor: not-allowed;
+            text-decoration: underline;
+        }
+
+        &:last-child{
+            &:hover{
+                cursor: text;
+                text-decoration: none;
+            }
+        }
+    }
+}
