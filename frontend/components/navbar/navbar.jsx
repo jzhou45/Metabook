@@ -4,10 +4,13 @@ import { connect } from "react-redux";
 import { openNavbar, closeNavbar } from "../../actions/modal_actions";
 
 const NavBar = props => {
+    document.documentElement.style.backgroundColor = "#1c1e21"
+
     const {profilePhoto, navbar, openNavbar, closeNavbar} = props;
 
     const modalControls = () => {
-        if (navbar.navbar){
+        console.log(navbar)
+        if (navbar.type === "navbar"){
             closeNavbar();
         } else{
             openNavbar();
@@ -47,6 +50,7 @@ const NavBar = props => {
                     src="https://cdn1.iconfinder.com/data/icons/logos-and-brands-3/512/20_Angellist_logo_logos-512.png" 
                     alt="angellist"
                     className="angellist"
+                    onClick={() => openExternalSite("https://angel.co/u/jonathan-zhou-5")}
                 />
 
                 <div className="profile-button" onClick={modalControls}>
@@ -61,7 +65,7 @@ const mapStateToProps = state => {
     const currentUserId = state.session.id;
     return({
         profilePhoto: state.entities.users[currentUserId].profilePhoto,
-        navbar: state.ui.navbar
+        navbar: state.ui.modal
     });
 };
 

@@ -4,6 +4,8 @@ import { closeModal } from "../../actions/modal_actions";
 import { clearErrors } from "../../actions/session_actions";
 import Signup from "../../components/session/signup_form"
 import NewsfeedModal from "../newsfeed/newsfeed_modal";
+import NavBarModal from "../navbar/navbar_modal";
+
 
 const Modal = props => {
     const {modal, closeModal, clearErrors} = props;
@@ -11,13 +13,20 @@ const Modal = props => {
     if (!modal) return null;
 
     let component;
+    let background;
 
     switch (modal.type) {
         case "signup":
             component = <Signup/>;
+            background == "white-background";
             break;
         case "makePosts":
-            component = <NewsfeedModal/>
+            component = <NewsfeedModal/>;
+            background = "black-background";
+            break;
+        case "navbar":
+            component = <NavBarModal/>;
+            background = null;
             break;
         default:
             return null;
@@ -27,8 +36,6 @@ const Modal = props => {
         clearErrors();
         closeModal();
     };
-
-    const background = (component === <Signup/>) ? "white-background" : "black-background"
 
     return (
         <div className={background} onClick={reset}>
