@@ -36,7 +36,9 @@ const LoginForm = props => {
     const openModalWithoutErrors = () => {
         clearErrors();
         openModal("signup");
-    }
+    };
+
+    document.documentElement.style.backgroundColor = "#eff2f5";
 
     return(
         <div className="login-signup-forms">
