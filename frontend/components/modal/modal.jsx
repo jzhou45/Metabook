@@ -26,7 +26,7 @@ const Modal = props => {
             break;
         case "navbar":
             component = <NavBarModal/>;
-            background = null;
+            background = "invisible-background";
             break;
         default:
             return null;

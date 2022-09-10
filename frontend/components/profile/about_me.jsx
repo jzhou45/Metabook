@@ -75,7 +75,7 @@ class AboutMe extends React.Component{
     render(){
         return(
             <div id="about-me">
-                <div>
+                {/* <div>
                     <h1>Intro</h1>
                     <div>
                         <h2 id="bio">{this.state.aboutMe}</h2>
@@ -88,7 +88,7 @@ class AboutMe extends React.Component{
                         </div>
                         {(this.props.currentUserId === this.props.usersId) ? (<button id="about-me-button" onClick={this.handleSubmit}></button>) : null}
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     };
