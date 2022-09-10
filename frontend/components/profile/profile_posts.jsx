@@ -89,7 +89,7 @@ class ProfilePosts extends React.Component{
     render(){
         return(
             <div id="profile-posts">
-                {(this.props.currentUserId === this.props.usersId) ?
+                {/* {(this.props.currentUserId === this.props.usersId) ?
                     (<div id="profile-make-posts">
                         <img src={this.props.profilePhoto} alt="profile photo" onClick={this.goToProfilePage}/>
                         <input type="text" placeholder={`What's on your mind, ${this.props.firstName}?`} onClick={this.modalControls} value={this.state.content} />
@@ -122,7 +122,7 @@ class ProfilePosts extends React.Component{
                     {Object.values(this.state.posts).map(post => (
                         <PostItem key={post.id} post={post} fetchUser={this.props.fetchUser} history={this.props.history} editPost={this.props.editPost} fetchPost={this.props.fetchPost} rerenderParentCallback={this.rerenderParentCallback} currentUser={this.props.currentUserId} />
                     ))}
-                </div>
+                </div> */}
             </div>
         );
     };
