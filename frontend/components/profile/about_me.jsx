@@ -17,15 +17,15 @@ class AboutMe extends React.Component{
         this.closeModal = this.closeModal.bind(this);
     };
 
-    componentDidMount(){
-        this.props.fetchUser(this.props.usersId).then(user => {
-            this.setState({
-                aboutMe: user.user.about_me,
-                id: user.user.id
-            });
-            (this.state.aboutMe) ? document.getElementById("about-me-button").innerHTML = "Edit bio" : document.getElementById("about-me-button").innerHTML = "Add bio";
-        });
-    };
+    // componentDidMount(){
+    //     this.props.fetchUser(this.props.usersId).then(user => {
+    //         this.setState({
+    //             aboutMe: user.user.about_me,
+    //             id: user.user.id
+    //         });
+    //         (this.state.aboutMe) ? document.getElementById("about-me-button").innerHTML = "Edit bio" : document.getElementById("about-me-button").innerHTML = "Add bio";
+    //     });
+    // };
 
     handleUpdate(field){
         return e => this.setState({[field]: e.currentTarget.value});

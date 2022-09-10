@@ -16,8 +16,9 @@ const Profile = props => {
     });
 
     useEffect(() => {
-        fetchUser().then(data => {
+        fetchUser(usersId).then(data => {
             setState({
+                ...state,
                 id: data.user.id,
                 aboutMe: data.user.about_me,
                 email: data.user.email,
@@ -85,7 +86,12 @@ const Profile = props => {
                                     id="profile-photo-input"
                                     onChange={handleSubmitProfilePhoto}
                                 />
-                                <label htmlFor="profile-photo-change">{state.firstName} {state.lastName}</label>
+                                <label htmlFor="profile-photo-change">
+                                    <img 
+                                        src="https://cdn-icons-png.flaticon.com/512/83/83574.png" 
+                                        alt="change profile photo" 
+                                    />
+                                </label>
                             </div>) : 
                         null}
                     </div>
