@@ -174,3 +174,57 @@
     max-width: 685px;
     margin-bottom: 20px;
 }
+
+.like-and-comment-amount{
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    color: $secondary-text;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.create-comment{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 95%;
+
+    form{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        width: 92%;
+        margin-left: 10px;
+
+        input{
+            padding-left: 10px;
+            height: 37px;
+            width: 100%;
+            border-radius: 25px;
+            background-color: $highlight-gray;
+            border: none;
+            color: $metabook-offwhite;
+            outline: none;
+
+            &::placeholder{
+                color: $placeholder-gray;
+            }
+        }
+    }
+}
+
+.create-comment-photo{
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+
+    &:hover{
+        filter: brightness(1.1);
+    }
+}
+
+.all-comments{
+    display: flex;
+    flex-direction: column-reverse;
+}

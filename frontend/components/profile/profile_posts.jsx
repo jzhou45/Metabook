@@ -6,7 +6,7 @@ import PostItem from "../newsfeed/post_item";
 import { openModal } from "../../actions/modal_actions";
 
 const ProfilePosts = props => {
-    const {currentUserId, usersId, profilePhoto, firstName, lastName, fetchPost,
+    const {currentUserId, usersId, profilePhoto, firstName, fetchPost,
     fetchPosts, fetchUser, openModal} = props;
 
     const [state, setState] = useState({
@@ -67,6 +67,7 @@ const ProfilePosts = props => {
                         fetchUser={fetchUser}
                         currentUserId={currentUserId}
                         fetchPost={fetchPost}
+                        profilePhoto={profilePhoto}
                     />
                 ))}
             </div>
@@ -84,7 +85,6 @@ const mapStateToProps = (state, ownProps) => {
         usersId,
         profilePhoto: user.profilePhoto,
         firstName : user.first_name,
-        lastName: user.last_name
     });
 };
 
