@@ -1,23 +1,22 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
 #  id         :bigint           not null, primary key
 #  user_id    :integer          not null
-#  content    :text             not null
+#  post_id    :integer          not null
+#  comment    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Post < ApplicationRecord
-    validates :user_id, :content, presence: true
+class Comment < ApplicationRecord
+    validates :user_id, :post_id, :comment, presence: true
 
-    has_one_attached :photo
-    
-    belongs_to :poster,
+    belongs_to :user,
         foreign_key: :user_id,
         class_name: :User
 
-    has_many :comments,
+    belongs_to :post,
         foreign_key: :post_id,
-        class_name: :Comment
+        class_name: :Post
 end

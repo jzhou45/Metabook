@@ -14,8 +14,6 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
-
-#figvaper
 class User < ApplicationRecord
     after_initialize :ensure_session_token
 
@@ -29,6 +27,10 @@ class User < ApplicationRecord
     has_many :posts,
         foreign_key: :user_id,
         class_name: :Post
+
+    has_many :comments,
+        foreign_key: :user_id,
+        class_name: :Comment
 
     attr_reader :password
 
