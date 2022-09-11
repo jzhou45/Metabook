@@ -1,0 +1,78 @@
+@import "../variables.scss";
+
+.profile-posts{
+    margin-top: -360px;
+    display: flex;
+    justify-content: center;
+    margin-left: 30em;
+    font-family: $default-font;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-make-posts{
+    z-index: 2;
+    background-color: $metabook-lightblack;
+    width: 617px;
+    height: 123px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+
+    >img{
+        height: 50px;
+        width: 50px;
+        margin-left: 15px;
+        border-radius: 50%;
+
+        &:hover{
+            filter: brightness(1.1);
+            cursor: pointer;
+        }
+    }
+
+    input{
+        width: 520px;
+        height: 40px;
+        margin-left: 10px;
+        border-radius: 25px;
+        border: none;
+        background-color: $input-black;
+        color: white;
+        padding-left: 10px;
+
+        &::placeholder{
+            padding-left: 10px;
+            color: $placeholder-gray;
+        }
+    }
+}
+
+.profile-all-posts{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 15px;
+    align-items: center;
+    position: relative;
+    
+    > div, div.post-header, .post-content, .post-content form, 
+    .post-content form > div, .post-content > p + img{
+        width: 617px;
+    }
+
+    .post-content > img{
+        max-width: 617px;
+    }
+
+    .post-content > p{
+        width: 577px;
+    }
+
+    .post-content form textarea{
+        width: 587px;
+    }
+
+    .post-content > p + img{
+        background-color: black;
+    }
+}
