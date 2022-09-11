@@ -28,7 +28,7 @@ const Profile = props => {
                 lastName: data.user.last_name
             });
         });
-    });
+    }, [state.profilePhoto, state.coverPhoto]);
 
     const handleSubmitProfilePhoto = e => {
         e.preventDefault();
@@ -41,6 +41,19 @@ const Profile = props => {
             data: formData,
             contentType: false,
             processData: false
+        });
+
+        fetchUser(usersId).then(data => {
+            setState({
+                ...state,
+                id: data.user.id,
+                aboutMe: data.user.about_me,
+                email: data.user.email,
+                coverPhoto: data.user.coverPhoto,
+                profilePhoto: data.user.profilePhoto,
+                firstName: data.user.first_name,
+                lastName: data.user.last_name
+            });
         });
     };
 
@@ -55,6 +68,17 @@ const Profile = props => {
             data: formData,
             contentType: false,
             processData: false
+        }).then(() => {
+            fetchUser(usersId).then(data => {
+                setState({
+                    ...state,
+                    id: data.user.id,
+                    aboutMe: data.user.about_me,
+                    email: data.user.email,
+                    coverPhoto: data.user.coverPhoto,
+                    profilePhoto: data.user.profilePhoto,
+                });
+            });
         });
     };
 
