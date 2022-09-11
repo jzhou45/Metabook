@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchPost, fetchPosts } from "../../actions/post_actions";
 import { fetchUser } from "../../actions/user_actions";
 import PostItem from "../newsfeed/post_item";
+import { openModal } from "../../actions/modal_actions";
 
 const ProfilePosts = props => {
     const {currentUserId, usersId, profilePhoto, firstName, lastName, fetchPost,
@@ -27,7 +28,7 @@ const ProfilePosts = props => {
         });
     }, []);
 
-    const rerenderProfilePosts = () => {
+    const rerenderParent = () => {
         fetchPosts().then(data => {
             const userPosts = {};
             for (let post of Object.values(data.posts)){
@@ -52,7 +53,7 @@ const ProfilePosts = props => {
                 <input 
                     type="text" 
                     placeholder={`What's on your mind, ${firstName}?`}
-                    onClick={() => openModal("makePosts", {rerenderNewsfeed})}
+                    onClick={() => openModal("makePosts", {rerenderParent})}
                 />
             </div>) :
             null}
@@ -62,7 +63,7 @@ const ProfilePosts = props => {
                     <PostItem 
                         key={post.id}
                         post={post}
-                        rerenderProfilePosts={rerenderProfilePosts}
+                        rerenderParent={rerenderParent}
                         fetchUser={fetchUser}
                         currentUserId={currentUserId}
                         fetchPost={fetchPost}
