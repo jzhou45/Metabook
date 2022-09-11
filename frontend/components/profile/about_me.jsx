@@ -8,14 +8,17 @@ const AboutMe = props => {
     const [state, setState] = useState({
         aboutMe: "",
         previousAboutMe: "",
-        editing: false
+        editing: false,
+        id: 0
     });
 
     useEffect(() => {
         fetchUser(usersId).then(data => {
             setState({
                 ...state,
-                aboutMe: data.user.about_me
+                aboutMe: data.user.about_me,
+                previousAboutMe: data.user.about_me,
+                id: usersId
             });
         });
     }, []);
@@ -45,8 +48,11 @@ const AboutMe = props => {
             method: "PATCH",
             data: {
                 "user[about_me]" : state.aboutMe,
-                editing: false
             }
+        });
+        setState({
+            ...state,
+            editing: false
         });
     };
 
@@ -55,7 +61,6 @@ const AboutMe = props => {
             <div>
                 <h1>Intro</h1>
                 <div>
-                    <h2>{state.aboutMe}</h2>
                     {(state.editing) ?
                         (<div className="biomodal">
                             <textarea
@@ -65,16 +70,17 @@ const AboutMe = props => {
                             >
                             </textarea>
                             <div>
-                                <div onClick={handleCancelSubmit}>Cancel</div>
-                                <div onClick={handleSaveSubmit}>Save</div>
+                                <button onClick={handleCancelSubmit}>Cancel</button>
+                                <button onClick={handleSaveSubmit}>Save</button>
                             </div>
                         </div>) :
-                    null}
-                    {(currentUserId === usersId) ? 
+                        (<h2>{state.aboutMe}</h2>)}
+                    {(currentUserId === usersId && !state.editing) ? 
                     (<button 
                         className="about-me-button"
                         onClick={handleSubmit}
                     >
+                        {(state.previousAboutMe.length === 0) ? "Add bio" : "Edit bio"}
                     </button>):
                     null}
                 </div>
