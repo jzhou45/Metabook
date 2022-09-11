@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../navbar/navbar";
-import AboutMe from "../profile/about_me_container";
+import AboutMe from "../profile/about_me";
 import Profile from "../profile/profile";
 import ProfilePosts from "../profile/profile_posts_container";
 
