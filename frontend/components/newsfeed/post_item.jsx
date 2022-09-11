@@ -9,7 +9,9 @@ const PostItem = props => {
         lastName: "",
         profilePhoto: "",
         userId: "",
-        editingPost: false
+        editingPost: false,
+        comment: "",
+        comments: []
     });
 
     useEffect(() => {
@@ -21,7 +23,8 @@ const PostItem = props => {
                 profilePhoto: data.user.profilePhoto,
                 userId: data.user.id,
                 content: post.content,
-                previousContent: post.content
+                previousContent: post.content,
+                comments: post.comments
             });
         });
     }, []);
@@ -75,6 +78,28 @@ const PostItem = props => {
                 editingPost: false
             })
         );
+    };
+
+    const createComment = e => {
+        e.preventDefault();
+        const commentData = new FormData();
+        commentData.append("comment[comment]", state.comment);
+        commentData.append("comment[user_id]", currentUserId);
+        commentData.append("comment[post_id]", post.id);
+        $.ajax({
+            method: "POST",
+            url: "api/comments",
+            data: commentData,
+            contentType: false,
+            processData: false
+        }).then(() => {
+            fetchPost(post.id).then(data => {
+                setState({
+                    ...state,
+                    comments: data.post.comments
+                });
+            });
+        });
     };
 
     return(
@@ -135,6 +160,21 @@ const PostItem = props => {
                     className="post-images"
                 /> : null
             }
+
+            <form onSubmit={createComment}>
+                <input 
+                    type="text"
+                    value={state.comment}
+                    onChange={handleUpdate("comment")}
+                />
+                <button type="submit">Submit</button>
+            </form>
+
+            <div className="all-comments">
+                {state.comments.map((comment, i) => (
+                    <div key={i}>{comment.comment}</div>
+                ))}
+            </div>
         </div>
     );
 };
