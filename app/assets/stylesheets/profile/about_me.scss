@@ -1,0 +1,98 @@
+@import "../variables.scss";
+
+.about-me{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    margin-right: 37.5em;
+    font-family: $default-font;
+    position: sticky;
+    overflow: hidden;
+    height: 360px;
+    top: 60px;
+
+    > div{
+        height: 360px;
+        width: 430px;
+        color: $metabook-offwhite;
+        background-color: $metabook-lightblack;
+        border-radius: 10px;
+
+        > div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 250px;
+        }
+    }
+
+    h1{
+        font-size: 20px;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+    textarea{
+        background-color: $highlight-gray;
+        width: 395px;
+        height: 200px;
+        border: none;
+        border-radius: 10px;
+        font-family: $default-font;
+        color: white;
+        text-align: center;
+        padding: 5px;
+        font-size: 15px;
+
+        &:hover{
+            filter: brightness(1.2);
+        }
+
+        &::placeholder{
+            color: $placeholder-gray
+        }
+    }
+}
+
+.about-me-button{
+    width: 400px;
+    height: 40px;
+    background-color: $highlight-gray;
+    border: none;
+    border-radius: 10px;
+    color: $metabook-offwhite;
+    font-size: 16px;
+
+    &:hover{
+        cursor: pointer;
+        filter: brightness(1.2);
+    }
+}
+
+.biomodal{
+    align-items: center;
+    flex-direction: column;
+
+    > div{
+        width: 400px;
+        display: flex;
+        justify-content: flex-end;
+
+        > button{
+            height: 40px;
+            width: 75px;
+            background-color: $highlight-gray;
+            border: none;
+            border-radius: 5px;
+            color: #e3e6ea;
+            margin-left: 5px;
+
+            &:hover{
+                filter: brightness(1.2);
+                cursor: pointer;
+            }
+        }
+    }
+}
