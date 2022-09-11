@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const NewsfeedModal = props => {
-    const {closeModal, profilePhoto, userId, firstName, lastName, rerenderNewsfeed} = props;
+    const {closeModal, profilePhoto, userId, firstName, lastName, rerenderParent} = props;
 
     const [state, setState] = useState({
         content: "",
@@ -39,7 +39,7 @@ const NewsfeedModal = props => {
                 content: ""
             });
         }).then(() => {
-            rerenderNewsfeed()
+            rerenderParent()
         });
         closeModal();
     };
@@ -95,7 +95,7 @@ const mapStateToProps = state => {
         profilePhoto: currentUserInfo.profilePhoto,
         firstName: currentUserInfo.first_name,
         lastName: currentUserInfo.last_name,
-        rerenderNewsfeed: state.ui.modal.props.rerenderNewsfeed
+        rerenderParent: state.ui.modal.props.rerenderParent
     };
 };
 

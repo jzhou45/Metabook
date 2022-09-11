@@ -25,7 +25,7 @@ const Newsfeed = props => {
             });
     }, []);
 
-    const rerenderNewsfeed = () => {
+    const rerenderParent = () => {
         fetchPosts().then(posts => {
             setState({
                 ...state,
@@ -43,7 +43,7 @@ const Newsfeed = props => {
                 <input 
                     type="text" 
                     placeholder={`What's on your mind, ${firstName}?`}
-                    onClick={() => openModal("makePosts", {rerenderNewsfeed})}
+                    onClick={() => openModal("makePosts", {rerenderParent})}
                 />
             </div>
 
@@ -52,7 +52,7 @@ const Newsfeed = props => {
                     <PostItem
                         post={post}
                         key={post.id}
-                        rerenderNewsfeed={rerenderNewsfeed}
+                        rerenderParent={rerenderParent}
                         fetchUser={fetchUser}
                         currentUserId={userId}
                         fetchPost={fetchPost}
