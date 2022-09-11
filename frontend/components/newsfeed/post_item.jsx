@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const PostItem = props => {
-    const {post, rerenderNewsfeed, fetchUser, currentUserId, fetchPost} = props;
+    const {post, rerenderNewsfeed, fetchUser, currentUserId, fetchPost,
+    profilePhoto} = props;
 
     const [state, setState] = useState({
         firstName: "",
@@ -96,10 +97,21 @@ const PostItem = props => {
             fetchPost(post.id).then(data => {
                 setState({
                     ...state,
-                    comments: data.post.comments
+                    comments: data.post.comments,
+                    comment: ""
                 });
             });
         });
+    };
+
+    const commentAmount = () => {
+        if (state.comments.length === 0){
+            return "";
+        } else if (state.comments.length === 1){
+            return "1 Comment";
+        } else{
+            return `${state.comments.length} Comments`;
+        };
     };
 
     return(
@@ -161,19 +173,33 @@ const PostItem = props => {
                 /> : null
             }
 
-            <form onSubmit={createComment}>
-                <input 
-                    type="text"
-                    value={state.comment}
-                    onChange={handleUpdate("comment")}
-                />
-                <button type="submit">Submit</button>
-            </form>
+            <div className="like-and-comment-amount">
+                <div className="like-amount"></div>
+                <div className="comment-amount">{commentAmount()}</div>
+            </div>
 
             <div className="all-comments">
                 {state.comments.map((comment, i) => (
                     <div key={i}>{comment.comment}</div>
                 ))}
+            </div>
+
+            <div className="create-comment">
+                <Link to={`users/${currentUserId}`}>
+                    <img 
+                        src={profilePhoto}
+                        alt="profile photo"
+                        className="create-comment-photo"
+                    />
+                </Link>
+                <form onSubmit={createComment}>
+                    <input 
+                        type="text"
+                        value={state.comment}
+                        onChange={handleUpdate("comment")}
+                        placeholder="Write a comment..."
+                        />
+                </form>
             </div>
         </div>
     );

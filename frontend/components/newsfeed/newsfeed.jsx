@@ -56,6 +56,7 @@ const Newsfeed = props => {
                         fetchUser={fetchUser}
                         currentUserId={userId}
                         fetchPost={fetchPost}
+                        profilePhoto={profilePhoto}
                     />
                 ))}
             </div>
