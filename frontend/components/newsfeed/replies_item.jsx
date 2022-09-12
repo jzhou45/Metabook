@@ -65,6 +65,14 @@ const Reply = props => {
         })
     );
 
+    const cancelEdit = () => {
+        setState({
+            ...state,
+            comment: state.previousComment,
+            editing: false
+        });
+    };
+
     return(
         <div className="reply">
             <div className="reply-header">
@@ -88,6 +96,7 @@ const Reply = props => {
                             value={state.comment} 
                             onChange={handleUpdate("comment")}
                             autoFocus
+                            onBlur={cancelEdit}
                         />
                     </form>) : 
                     reply}
@@ -103,7 +112,11 @@ const Reply = props => {
                 </div>
 
                 {(state.dropdown) ?
-                (<div className="reply-dropdown-menu">
+                    (<div className="invisible-background" onClick={handleClick}></div>) :
+                null}
+
+                {(state.dropdown) ?
+                (<div className="reply-dropdown-menu" tabIndex={0} onBlur={handleClick}>
                     <span onClick={handleEdit}>Edit</span>
                     <span>Delete</span>
                 </div>) :
