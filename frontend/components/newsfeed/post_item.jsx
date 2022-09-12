@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Comment from "./comment_item";
 
@@ -118,6 +118,12 @@ const PostItem = props => {
         };
     };
 
+    const focusComment = () => {
+        commentInputRef.current.focus();
+    };
+
+    const commentInputRef = useRef(null);
+
     return(
         <div id={`post-content${post.id}`} className="post-content">
             <div className="post-header">
@@ -182,6 +188,19 @@ const PostItem = props => {
                 <div className="comment-amount">{commentAmount()}</div>
             </div>
 
+            <div className="comment-and-likes-buttons">
+                <div></div>
+
+                <div className="comment-button" onClick={focusComment}>
+                    <img 
+                        src="https://static.thenounproject.com/png/1314304-200.png" 
+                        alt="comment" 
+                        className="comment-icon"
+                    />
+                    <span>Comment</span>
+                </div>
+            </div>
+
             <div className="all-comments">
                 {state.comments.map((comment, i) => {
                     if (comment.commentable_type === "Post"){
@@ -212,6 +231,7 @@ const PostItem = props => {
                         value={state.comment}
                         onChange={handleUpdate("comment")}
                         placeholder="Write a comment..."
+                        ref={commentInputRef}
                         />
                 </form>
             </div>
