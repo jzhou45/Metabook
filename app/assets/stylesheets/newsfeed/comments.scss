@@ -1,0 +1,33 @@
+@import "../variables.scss";
+
+.comment-item{
+    display: flex;
+    width: 95%;
+    margin-bottom: 10px;
+}
+
+.comment-profile-photo{
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+}
+
+.comment-box{
+    line-height: 1.3333;
+    margin-left: 5px;
+    background-color: $highlight-gray;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 15px;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+.comment-name{
+    color: $metabook-offwhite;
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
