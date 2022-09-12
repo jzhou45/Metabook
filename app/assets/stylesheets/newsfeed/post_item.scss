@@ -231,3 +231,43 @@
     width: 100%;
     align-items: center;
 }
+
+.comment-and-likes-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 92%;
+    height: 44px;
+    border-top: 1px solid $highlight-gray;
+    border-bottom: 1px solid $highlight-gray;
+    margin-bottom: 10px;
+}
+
+.comment-button{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $secondary-text;
+    font-size: 15px;
+    background-color: $metabook-lightblack;
+    height: 35px;
+    border-radius: 10px;
+
+    &:hover{
+        filter: brightness(1.3);
+        cursor: pointer;
+    }
+
+    span{
+        height: 15px;
+        padding-left: 10px;
+        padding-bottom: 3px;
+    }
+}
+
+.comment-icon{
+    height: 24px;
+    width: 24px;
+    filter: invert(78%) sepia(5%) saturate(266%) hue-rotate(179deg) brightness(94%) contrast(83%);
+}
