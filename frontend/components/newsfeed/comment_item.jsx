@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchComment } from "../../actions/comment_actions"
@@ -13,6 +13,7 @@ const Comment = props => {
         profilePhoto: "",
         comment: "",
         comments: [],
+        replying: false
     });
 
     useEffect(() => {
@@ -63,6 +64,15 @@ const Comment = props => {
         });
     };
 
+    const replyRef = useRef(null);
+
+    const openReply = () => {
+        setState({
+            ...state,
+            replying: true
+        });
+    };
+
     return(
         <div className="comment-item">
             <div className="parent-comment">
@@ -80,31 +90,40 @@ const Comment = props => {
                 </div>
             </div>        
 
+            <span onClick={openReply} className="open-reply">Reply</span>
+
             <div className="replies-box">
                 {(state.comments.map((reply, i) => {
-                    console.log(reply)
-                    return(<Reply 
-                        key={i} 
-                        reply={reply.comment}
-                        fetchUser={fetchUser}
-                        replierId={reply.user_id}
-                    />)
+                    return(
+                        <div>
+                            <Reply 
+                                key={i} 
+                                reply={reply.comment}
+                                fetchUser={fetchUser}
+                                replierId={reply.user_id}
+                                />
+                            <span onClick={openReply} className="open-reply">Reply</span>
+                        </div>);
                 }))}
 
-                <form onSubmit={handleSubmit} className="reply-form">
-                    <Link to={`users/${currentUserId}`}>
-                        <img 
-                            src={profilePhoto} 
-                            alt="profile photo" 
+                {(state.replying) ?
+                    (<form onSubmit={handleSubmit} className="reply-form">
+                        <Link to={`users/${currentUserId}`}>
+                            <img 
+                                src={profilePhoto} 
+                                alt="profile photo" 
+                                />
+                        </Link>
+                        <input 
+                            type="text" 
+                            value={state.comment} 
+                            onChange={handleUpdate("comment")} 
+                            placeholder="Write a reply..."
+                            ref={replyRef}
+                            autoFocus
                         />
-                    </Link>
-                    <input 
-                        type="text" 
-                        value={state.comment} 
-                        onChange={handleUpdate("comment")} 
-                        placeholder="Write a reply..."
-                    />
-                </form>
+                    </form>) :
+                null}
             </div>
         </div>
     );
