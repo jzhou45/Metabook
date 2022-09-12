@@ -4,6 +4,14 @@
     display: flex;
     width: 95%;
     margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.parent-comment{
+    display: flex;
+    width: 100%;
 }
 
 .comment-profile-photo{
@@ -34,5 +42,45 @@
 
     &:hover{
         text-decoration: underline;
+    }
+}
+
+.replies-box{
+    width: 85%;
+}
+
+.reply-form{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    img{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+
+        &:hover{
+            filter: brightness(1.1);
+        }
+    }
+
+    input{
+        border-radius: 25px;
+        border: none;
+        height: 30px;
+        width: 78.8%;
+        margin-left: 10px;
+        padding-left: 10px;
+        background-color: $highlight-gray;
+        outline: none;
+        color: $metabook-offwhite;
+    }
+}
+
+.comment-item .reply-form {
+    width: 107%;
+
+    input{
+        width: 100%;
     }
 }

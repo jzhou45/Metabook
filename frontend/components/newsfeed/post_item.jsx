@@ -191,6 +191,7 @@ const PostItem = props => {
                                 comment={comment}
                                 fetchUser={fetchUser}
                                 currentUserId={currentUserId}
+                                profilePhoto={profilePhoto}
                             />
                         );
                     };
