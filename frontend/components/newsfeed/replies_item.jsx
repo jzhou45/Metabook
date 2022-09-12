@@ -73,6 +73,22 @@ const Reply = props => {
         });
     };
 
+    const handleDelete = e => {
+        e.preventDefault();
+
+        setState({
+            ...state,
+            dropdown: false
+        });
+
+        $.ajax({
+            method: "DELETE",
+            url: `api/comments/${commentObj.id}`,
+        }).then(() => {
+            rerenderParent();
+        });
+    };
+
     return(
         <div className="reply">
             <div className="reply-header">
@@ -118,7 +134,7 @@ const Reply = props => {
                 {(state.dropdown) ?
                 (<div className="reply-dropdown-menu" tabIndex={0} onBlur={handleClick}>
                     <span onClick={handleEdit}>Edit</span>
-                    <span>Delete</span>
+                    <span onClick={handleDelete}>Delete</span>
                 </div>) :
                 null}
             </div>
