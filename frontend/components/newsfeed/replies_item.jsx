@@ -102,21 +102,23 @@ const Reply = props => {
             </div>
 
             <div className="reply-align">
-                <div className="reply-body">
-                    <Link to={`users/${replierId}`}>{state.firstName} {state.lastName}</Link>
-
+                <div>
                     {(state.editing) ?
-                    
-                    (<form onSubmit={handleSubmitEdit}>
-                        <input type="text" 
-                            value={state.comment} 
-                            onChange={handleUpdate("comment")}
-                            autoFocus
-                            onBlur={cancelEdit}
-                        />
-                    </form>) : 
-                    reply}
+                        (<form onSubmit={handleSubmitEdit}>
+                            <input type="text" 
+                                value={state.comment} 
+                                onChange={handleUpdate("comment")}
+                                autoFocus
+                                onBlur={cancelEdit}
+                                className="edit-reply"
+                            />
+                        </form>) : 
 
+                        (<div className="reply-body">
+                            <Link to={`users/${replierId}`}>{state.firstName} {state.lastName}</Link>
+                            {reply}
+                        </div>)
+                    }
                 </div>
 
                 <div className="comments-dropdown-div" onClick={handleClick}>
@@ -126,18 +128,22 @@ const Reply = props => {
                         className="comments-dropdown"
                         />
                 </div>
-
-                {(state.dropdown) ?
-                    (<div className="invisible-background" onClick={handleClick}></div>) :
-                null}
-
-                {(state.dropdown) ?
-                (<div className="reply-dropdown-menu" tabIndex={0} onBlur={handleClick}>
-                    <span onClick={handleEdit}>Edit</span>
-                    <span onClick={handleDelete}>Delete</span>
-                </div>) :
-                null}
             </div>
+            {(state.dropdown) ?
+                (<div className="invisible-background" onClick={handleClick}></div>) :
+            null}
+
+            {(state.dropdown) ?
+            (<div className="reply-dropdown-menu" tabIndex={0} onBlur={handleClick}>
+                <div onClick={handleEdit}>
+                    <span>Edit</span>
+                </div>
+
+                <div onClick={handleDelete}>
+                    <span>Delete</span>
+                </div>
+            </div>) :
+            null}
         </div>
     );
 };
