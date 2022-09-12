@@ -7,7 +7,9 @@ const Comment = props => {
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
-        profilePhoto: ""
+        profilePhoto: "",
+        comment: "",
+        comments: []
     });
 
     useEffect(() => {
@@ -16,10 +18,22 @@ const Comment = props => {
                 ...state,
                 profilePhoto: data.user.profilePhoto,
                 firstName: data.user.first_name,
-                lastName: data.user.last_name
+                lastName: data.user.last_name,
+                comments: []
             });
         });
     }, []);
+
+    const handleUpdate = field => {
+        e => setState({
+            ...state,
+            [field]: e.currentTarget.value
+        });
+    };
+
+    const handleSubmit = field => {
+        
+    }
 
     return(
         <div className="comment-item">
@@ -35,6 +49,8 @@ const Comment = props => {
                 <Link to={`users/${comment.user_id}`} className="comment-name">{state.firstName} {state.lastName}</Link>
                 <p>{comment.comment}</p>
             </div>
+
+
         </div>
     );
 };

@@ -87,7 +87,8 @@ const PostItem = props => {
         const commentData = new FormData();
         commentData.append("comment[comment]", state.comment);
         commentData.append("comment[user_id]", currentUserId);
-        commentData.append("comment[post_id]", post.id);
+        commentData.append("comment[commentable_id]", post.id);
+        commentData.append("comment[commentable_type]", "Post");
         $.ajax({
             method: "POST",
             url: "api/comments",
@@ -180,13 +181,18 @@ const PostItem = props => {
             </div>
 
             <div className="all-comments">
-                {state.comments.map((comment, i) => (
-                    <Comment 
-                        key={i}
-                        comment={comment}
-                        fetchUser={fetchUser}
-                    />
-                ))}
+                {state.comments.map((comment, i) => {
+                    console.log(comment)
+                    if (comment.commentable_type === "Post"){
+                        return(
+                            <Comment 
+                                key={i}
+                                comment={comment}
+                                fetchUser={fetchUser}
+                            />
+                        );
+                    };
+                })}
             </div>
 
             <div className="create-comment">

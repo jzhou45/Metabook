@@ -18,6 +18,6 @@ class Post < ApplicationRecord
         class_name: :User
 
     has_many :comments,
-        foreign_key: :post_id,
-        class_name: :Comment
+        as: :commentable,
+        dependent: :destroy 
 end
