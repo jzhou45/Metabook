@@ -14,11 +14,17 @@
     width: 100%;
 }
 
+.comments-align, .reply-align{
+    display: flex;
+    align-items: center;
+}
+
 .comment-profile-photo{
     height: 37px;
     width: 37px;
     border-radius: 50%;
     object-fit: cover;
+    justify-self: flex-start;
 
     &:hover{
         filter: brightness(1.1);
@@ -85,4 +91,26 @@
     input{
         width: 100%;
     }
+}
+
+.comments-dropdown-div{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: $metabook-lightblack;
+    display: flex;
+    margin-left: 10px;
+
+    &:hover{
+        filter: brightness(1.3);
+        cursor: pointer;
+    }
+}
+
+.comments-dropdown{
+    height: 50%;
+    width: 50%;
+    filter: invert(78%) sepia(5%) saturate(266%) hue-rotate(179deg) brightness(94%) contrast(83%);;
 }

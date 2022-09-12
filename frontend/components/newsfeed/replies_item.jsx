@@ -33,9 +33,19 @@ const Reply = props => {
                 </Link>
             </div>
 
-            <div className="reply-body">
-                <Link to={`users/${replierId}`}>{state.firstName} {state.lastName}</Link>
-                {reply}
+            <div className="reply-align">
+                <div className="reply-body">
+                    <Link to={`users/${replierId}`}>{state.firstName} {state.lastName}</Link>
+                    {reply}
+                </div>
+
+                <div className="comments-dropdown-div">
+                    <img 
+                        src="https://miro.medium.com/max/512/1*Js0Y20MwjcTnVAe7KjDXNg.png" 
+                        alt="open comment dropdown" 
+                        className="comments-dropdown"
+                        />
+                </div>
             </div>
         </div>
     );

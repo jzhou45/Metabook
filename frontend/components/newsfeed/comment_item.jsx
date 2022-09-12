@@ -83,10 +83,20 @@ const Comment = props => {
                         className="comment-profile-photo"
                         />
                 </Link>
+                
+                <div className="comments-align">
+                    <div className="comment-box">
+                        <Link to={`users/${comment.user_id}`} className="comment-name">{state.firstName} {state.lastName}</Link>
+                        <p>{comment.comment}</p>
+                    </div>
 
-                <div className="comment-box">
-                    <Link to={`users/${comment.user_id}`} className="comment-name">{state.firstName} {state.lastName}</Link>
-                    <p>{comment.comment}</p>
+                    <div className="comments-dropdown-div">
+                        <img 
+                            src="https://miro.medium.com/max/512/1*Js0Y20MwjcTnVAe7KjDXNg.png" 
+                            alt="open comment dropdown" 
+                            className="comments-dropdown"
+                            />
+                    </div>
                 </div>
             </div>        
 
@@ -102,6 +112,7 @@ const Comment = props => {
                                 fetchUser={fetchUser}
                                 replierId={reply.user_id}
                                 />
+
                             <span onClick={openReply} className="open-reply">Reply</span>
                         </div>);
                 }))}
