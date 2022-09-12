@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Comment from "./comment_item";
 
 const PostItem = props => {
     const {post, rerenderNewsfeed, fetchUser, currentUserId, fetchPost,
@@ -180,7 +181,14 @@ const PostItem = props => {
 
             <div className="all-comments">
                 {state.comments.map((comment, i) => (
-                    <div key={i}>{comment.comment}</div>
+                    <Comment 
+                        key={i}
+                        profilePhoto={profilePhoto}
+                        firstName={state.firstName}
+                        lastName={state.lastName}
+                        userId={state.userId}
+                        comment={comment}
+                    />
                 ))}
             </div>
 
