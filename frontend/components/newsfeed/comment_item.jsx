@@ -61,7 +61,7 @@ const Comment = props => {
                 });
             });
         });
-    }
+    };
 
     return(
         <div className="comment-item">
