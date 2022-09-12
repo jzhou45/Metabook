@@ -16,7 +16,7 @@ const Comment = props => {
                 ...state,
                 profilePhoto: data.user.profilePhoto,
                 firstName: data.user.first_name,
-                lastName: data.user.lastName
+                lastName: data.user.last_name
             });
         });
     }, []);
