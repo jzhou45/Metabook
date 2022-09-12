@@ -45,3 +45,19 @@
         text-decoration: underline;
     }
 }
+
+.reply-dropdown-menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 350px;
+    height: 95px;
+    margin-top: 100px;
+    background-color: $metabook-lightblack;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.2));
+    z-index: 2;
+
+    span{
+        height: 50%;
+    }
+}

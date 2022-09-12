@@ -13,7 +13,8 @@ const Comment = props => {
         profilePhoto: "",
         comment: "",
         comments: [],
-        replying: false
+        replying: false,
+        dropdown: false
     });
 
     useEffect(() => {
@@ -73,6 +74,19 @@ const Comment = props => {
         });
     };
 
+    const handleClick = () => {
+        (state.dropdown) ? (setState({...state, dropdown: false})) : (setState({...state, dropdown: true}));
+    };
+
+    const rerenderParent = () => {
+        fetchComment(comment.id).then(data => {
+            setState({
+                ...state,
+                comments: data.comment.comments
+            });
+        });
+    };
+
     return(
         <div className="comment-item">
             <div className="parent-comment">
@@ -90,13 +104,21 @@ const Comment = props => {
                         <p>{comment.comment}</p>
                     </div>
 
-                    <div className="comments-dropdown-div">
+                    <div className="comments-dropdown-div" onClick={handleClick}>
                         <img 
                             src="https://miro.medium.com/max/512/1*Js0Y20MwjcTnVAe7KjDXNg.png" 
                             alt="open comment dropdown" 
                             className="comments-dropdown"
                             />
                     </div>
+
+                    {(state.dropdown) ?
+                        (<div className="reply-dropdown-menu">
+                            <span>Edit</span>
+                            <span>Delete</span>
+                        </div>) :
+                    null}
+
                 </div>
             </div>        
 
@@ -111,6 +133,8 @@ const Comment = props => {
                                 reply={reply.comment}
                                 fetchUser={fetchUser}
                                 replierId={reply.user_id}
+                                commentObj={reply}
+                                rerenderParent={rerenderParent}
                                 />
 
                             <span onClick={openReply} className="open-reply">Reply</span>
