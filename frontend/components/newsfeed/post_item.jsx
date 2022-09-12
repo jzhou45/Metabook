@@ -183,10 +183,8 @@ const PostItem = props => {
                 {state.comments.map((comment, i) => (
                     <Comment 
                         key={i}
-                        profilePhoto={profilePhoto}
-                        firstName={state.firstName}
-                        lastName={state.lastName}
                         comment={comment}
+                        fetchUser={fetchUser}
                     />
                 ))}
             </div>
