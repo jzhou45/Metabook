@@ -24,7 +24,9 @@ const SignupForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        signup(state);
+        signup(state).then(() => {
+            closeModal();
+        });
     };
 
     let firstNameError, lastNameError, emailError, passwordError, birthdayError, genderError;
