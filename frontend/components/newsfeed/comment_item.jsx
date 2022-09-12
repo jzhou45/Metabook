@@ -31,18 +31,12 @@ const Comment = props => {
         fetchData();
     }, []);
 
-
-
     const handleUpdate = field => (
         e => setState({
             ...state,
             [field]: e.currentTarget.value
         })
     );
-
-    const rerenderParentComment = () => {
-        fetchComment(comment.id)
-    };
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -62,6 +56,7 @@ const Comment = props => {
                 setState({
                     ...state,
                     comments: data.comment.comments,
+                    comment: ""
                 });
             });
         });
@@ -90,11 +85,8 @@ const Comment = props => {
 
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={state.comment} onChange={handleUpdate("comment")} />
-                    <button type="submit"></button>
                 </form>
             </div>
-
-            <button onClick={() => console.log(state)}>STATE</button>
         </div>
     );
 };
