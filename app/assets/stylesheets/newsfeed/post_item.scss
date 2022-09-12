@@ -218,6 +218,7 @@
     height: 37px;
     width: 37px;
     border-radius: 50%;
+    object-fit: cover;
 
     &:hover{
         filter: brightness(1.1);

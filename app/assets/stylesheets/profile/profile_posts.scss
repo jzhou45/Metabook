@@ -24,6 +24,7 @@
         width: 50px;
         margin-left: 15px;
         border-radius: 50%;
+        object-fit: cover;
 
         &:hover{
             filter: brightness(1.1);
