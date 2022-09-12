@@ -186,7 +186,6 @@ const PostItem = props => {
                         profilePhoto={profilePhoto}
                         firstName={state.firstName}
                         lastName={state.lastName}
-                        userId={state.userId}
                         comment={comment}
                     />
                 ))}
