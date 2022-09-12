@@ -17,6 +17,15 @@
 .comments-align, .reply-align{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.newsfeed .comments-align{
+    width: 572px;
+}
+
+.newsfeed .reply-align{
+    width: 540px;
 }
 
 .comment-profile-photo{
@@ -52,8 +61,8 @@
     }
 }
 
-.replies-box{
-    width: 85%;
+.newsfeed .replies-box{
+    width: 580px;
 }
 
 .reply-form{
@@ -107,6 +116,10 @@
         filter: brightness(1.3);
         cursor: pointer;
     }
+}
+
+.profile-posts .comments-dropdown-div{
+    margin-left: 0;
 }
 
 .comments-dropdown{
