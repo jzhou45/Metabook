@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Comment from "./comment_item";
 
 const PostItem = props => {
-    const {post, rerenderNewsfeed, fetchUser, currentUserId, fetchPost,
+    const {post, rerenderParent, fetchUser, currentUserId, fetchPost,
     profilePhoto} = props;
 
     const [state, setState] = useState({
@@ -13,7 +13,8 @@ const PostItem = props => {
         userId: "",
         editingPost: false,
         comment: "",
-        comments: []
+        comments: [],
+        replies: []
     });
 
     useEffect(() => {
@@ -26,7 +27,8 @@ const PostItem = props => {
                 userId: data.user.id,
                 content: post.content,
                 previousContent: post.content,
-                comments: post.comments
+                comments: post.comments,
+                replies: post.comments.comments
             });
         });
     }, []);
@@ -43,7 +45,7 @@ const PostItem = props => {
             method: "DELETE",
             url: `api/posts/${post.id}`
         }).then(() => {
-            rerenderNewsfeed();
+            rerenderParent();
         });
     };
 
@@ -182,13 +184,13 @@ const PostItem = props => {
 
             <div className="all-comments">
                 {state.comments.map((comment, i) => {
-                    console.log(comment)
                     if (comment.commentable_type === "Post"){
                         return(
                             <Comment 
                                 key={i}
                                 comment={comment}
                                 fetchUser={fetchUser}
+                                currentUserId={currentUserId}
                             />
                         );
                     };
