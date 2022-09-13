@@ -11,8 +11,9 @@ const Comment = props => {
         firstName: "",
         lastName: "",
         profilePhoto: "",
-        comment: comment.comment || "",
+        comment: comment.comment,
         previousComment: comment.comment,
+        newComment: "",
         comments: [],
         replying: false,
         dropdown: false,
@@ -46,7 +47,7 @@ const Comment = props => {
     const handleSubmit = e => {
         e.preventDefault();
         const commentData = new FormData();
-        commentData.append("comment[comment]", state.comment);
+        commentData.append("comment[comment]", state.newComment);
         commentData.append("comment[user_id]", currentUserId);
         commentData.append("comment[commentable_id]", comment.id);
         commentData.append("comment[commentable_type]", "Comment");
@@ -61,7 +62,7 @@ const Comment = props => {
                 setState({
                     ...state,
                     comments: data.comment.comments,
-                    comment: ""
+                    newComment: ""
                 });
             });
         });
@@ -172,13 +173,16 @@ const Comment = props => {
                         </div>)
                     }
 
-                    <div className="comments-dropdown-div" onClick={handleClick}>
-                        <img 
-                            src="https://miro.medium.com/max/512/1*Js0Y20MwjcTnVAe7KjDXNg.png" 
-                            alt="open comment dropdown" 
-                            className="comments-dropdown"
+                    {(comment.user_id === currentUserId) ? 
+
+                        (<div className="comments-dropdown-div" onClick={handleClick}>
+                            <img 
+                                src="https://miro.medium.com/max/512/1*Js0Y20MwjcTnVAe7KjDXNg.png" 
+                                alt="open comment dropdown" 
+                                className="comments-dropdown"
                             />
-                    </div>
+                        </div>) :
+                    null}
 
                     {(state.dropdown) ?
                         (<div className="invisible-background" onClick={handleClick}></div>) :
@@ -212,6 +216,7 @@ const Comment = props => {
                                 replierId={reply.user_id}
                                 commentObj={reply}
                                 rerenderParent={rerenderParent}
+                                currentUserId={currentUserId}
                                 />
 
                             <span onClick={openReply} className="open-reply">Reply</span>
@@ -228,8 +233,8 @@ const Comment = props => {
                         </Link>
                         <input 
                             type="text" 
-                            value={state.comment} 
-                            onChange={handleUpdate("comment")} 
+                            value={state.newComment} 
+                            onChange={handleUpdate("newComment")} 
                             placeholder="Write a reply..."
                             ref={replyRef}
                             autoFocus

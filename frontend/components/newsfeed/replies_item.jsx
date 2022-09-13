@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Reply = props => {
-    const {reply, fetchUser, replierId, commentObj, rerenderParent} = props
+    const {reply, fetchUser, replierId, commentObj, rerenderParent, currentUserId} = props
 
     const [state, setState] = useState({
         profilePhoto: "",
@@ -106,7 +106,7 @@ const Reply = props => {
                     {(state.editing) ?
                         (<form onSubmit={handleSubmitEdit}>
                             <input type="text" 
-                                value={state.comment} 
+                                value={state.comment}
                                 onChange={handleUpdate("comment")}
                                 autoFocus
                                 onBlur={cancelEdit}
@@ -121,13 +121,18 @@ const Reply = props => {
                     }
                 </div>
 
-                <div className="comments-dropdown-div" onClick={handleClick}>
-                    <img 
-                        src="https://miro.medium.com/max/512/1*Js0Y20MwjcTnVAe7KjDXNg.png" 
-                        alt="open comment dropdown" 
-                        className="comments-dropdown"
-                        />
-                </div>
+                {(commentObj.user_id === currentUserId) ? 
+
+                    (<div className="comments-dropdown-div" onClick={handleClick}>
+                        <img 
+                            src="https://miro.medium.com/max/512/1*Js0Y20MwjcTnVAe7KjDXNg.png" 
+                            alt="open comment dropdown" 
+                            className="comments-dropdown"
+                            />
+                    </div>) :
+
+                null}
+
             </div>
             {(state.dropdown) ?
                 (<div className="invisible-background" onClick={handleClick}></div>) :

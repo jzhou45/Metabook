@@ -74,6 +74,16 @@
     width: 580px;
 }
 
+.profile-posts .replies-box{
+    width: 540px;
+}
+
+.profile-posts .comments-align{
+    width: 89%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .reply-form{
     display: flex;
     align-items: center;
@@ -109,6 +119,12 @@
     input{
         width: 100%;
     }
+}
+
+.profile-posts .reply-align{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .comments-dropdown-div{
