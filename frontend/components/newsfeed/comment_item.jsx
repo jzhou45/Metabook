@@ -5,32 +5,34 @@ import { fetchComment } from "../../actions/comment_actions"
 import Reply from "./replies_item";
 
 const Comment = props => {
-    const {fetchUser, comment, currentUserId, fetchComment, profilePhoto} = props;
+    const {fetchUser, comment, currentUserId, fetchComment, profilePhoto, rerenderPost} = props;
 
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
         profilePhoto: "",
-        comment: "",
+        comment: comment.comment || "",
+        previousComment: comment.comment,
         comments: [],
         replying: false,
-        dropdown: false
+        dropdown: false,
+        editing: false
     });
 
+    const fetchData = async () => {
+        const userData = await fetchUser(comment.user_id);
+        const commentData = await fetchComment(comment.id);
+
+        setState({
+            ...state,
+            profilePhoto: userData.user.profilePhoto,
+            firstName: userData.user.first_name,
+            lastName: userData.user.last_name,
+            comments: commentData.comment.comments
+        });
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            const userData = await fetchUser(comment.user_id);
-            const commentData = await fetchComment(comment.id);
-
-            setState({
-                ...state,
-                profilePhoto: userData.user.profilePhoto,
-                firstName: userData.user.first_name,
-                lastName: userData.user.last_name,
-                comments: commentData.comment.comments
-            });
-        };
-
         fetchData();
     }, []);
 
@@ -87,6 +89,59 @@ const Comment = props => {
         });
     };
 
+    const handleEdit = () => {
+        setState({
+            ...state,
+            dropdown: false,
+            editing: true
+        });
+    };
+
+    const handleSubmitEdit = e => {
+        e.preventDefault();
+        const commentData = new FormData();
+        commentData.append("comment[comment]", state.comment);
+
+        $.ajax({
+            method: "PATCH",
+            url: `api/comments/${comment.id}`,
+            data: commentData,
+            contentType: false,
+            processData: false
+        }).then(() => {
+            setState({
+                ...state,
+                editing: false
+            });
+            rerenderPost();
+        });
+    };
+
+    const cancelEdit = () => {
+        setState({
+            ...state,
+            comment: state.previousComment,
+            editing: false
+        });
+    };
+
+    const handleDelete = e => {
+        e.preventDefault();
+
+        setState({
+            ...state,
+            dropdown: false
+        });
+
+        $.ajax({
+            method: "DELETE",
+            url: `api/comments/${comment.id}`,
+        }).then(() => {
+            rerenderPost();
+            // fetchData();
+        });
+    };
+
     return(
         <div className="comment-item">
             <div className="parent-comment">
@@ -99,10 +154,23 @@ const Comment = props => {
                 </Link>
                 
                 <div className="comments-align">
-                    <div className="comment-box">
-                        <Link to={`users/${comment.user_id}`} className="comment-name">{state.firstName} {state.lastName}</Link>
-                        <p>{comment.comment}</p>
-                    </div>
+
+                    {(state.editing) ?
+                        (<form onSubmit={handleSubmitEdit}>
+                            <input type="text" 
+                                value={state.comment} 
+                                onChange={handleUpdate("comment")}
+                                autoFocus
+                                onBlur={cancelEdit}
+                                className="edit-reply"
+                            />
+                        </form>) : 
+
+                        (<div className="comment-box">
+                            <Link to={`users/${comment.user_id}`}>{state.firstName} {state.lastName}</Link>
+                            <p>{comment.comment}</p>
+                        </div>)
+                    }
 
                     <div className="comments-dropdown-div" onClick={handleClick}>
                         <img 
@@ -113,9 +181,18 @@ const Comment = props => {
                     </div>
 
                     {(state.dropdown) ?
-                        (<div className="reply-dropdown-menu">
-                            <span>Edit</span>
-                            <span>Delete</span>
+                        (<div className="invisible-background" onClick={handleClick}></div>) :
+                    null}
+
+                    {(state.dropdown) ?
+                        (<div className="reply-dropdown-menu" tabIndex={0} onBlur={handleClick}>
+                            <div onClick={handleEdit}>
+                                <span>Edit</span>
+                            </div>
+
+                            <div onClick={handleDelete}>
+                                <span>Delete</span>
+                            </div>
                         </div>) :
                     null}
 
