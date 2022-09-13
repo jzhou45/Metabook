@@ -124,6 +124,15 @@ const PostItem = props => {
 
     const commentInputRef = useRef(null);
 
+    const rerenderPost = () => {
+        fetchPost(post.id).then(data => {
+            setState({
+                ...state,
+                comments: data.post.comments
+            });
+        });
+    };
+
     return(
         <div id={`post-content${post.id}`} className="post-content">
             <div className="post-header">
@@ -211,6 +220,7 @@ const PostItem = props => {
                                 fetchUser={fetchUser}
                                 currentUserId={currentUserId}
                                 profilePhoto={profilePhoto}
+                                rerenderPost={rerenderPost}
                             />
                         );
                     };

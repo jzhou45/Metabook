@@ -50,6 +50,15 @@
     max-width: 90%;
     word-wrap: break-word;
     margin-bottom: 5px;
+
+    a{
+        color: $metabook-offwhite;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
 
 .comment-name{
@@ -126,4 +135,9 @@
     height: 50%;
     width: 50%;
     filter: invert(78%) sepia(5%) saturate(266%) hue-rotate(179deg) brightness(94%) contrast(83%);;
+}
+
+.comment-item .edit-reply{
+    width: 515px;
+    height: 37px;
 }
