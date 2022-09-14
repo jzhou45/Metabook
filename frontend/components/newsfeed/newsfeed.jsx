@@ -5,6 +5,7 @@ import { fetchPosts, fetchPost } from "../../actions/post_actions";
 import { openModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import { fetchUser } from "../../actions/user_actions";
+import Loading from "../loading/loading";
 
 const Newsfeed = props => {
     const {userId, profilePhoto, firstName, fetchPosts, openModal, fetchPost, 
@@ -15,14 +16,15 @@ const Newsfeed = props => {
         posts: {}
     });
 
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        fetchPosts()
-            .then(posts => {
-                setState({
-                    ...state,
-                    posts: posts.posts
-                });
+        fetchPosts().then(posts => {
+            setState({
+                ...state,
+                posts: posts.posts
             });
+        }).then(() => setLoading(false))
     }, []);
 
     const rerenderParent = () => {
@@ -34,34 +36,38 @@ const Newsfeed = props => {
         });
     };
 
-    return(
-        <div className="newsfeed">
-            <div className="make-posts">
-                <Link to={`/users/${userId}`}>
-                    <img src={profilePhoto} alt="profile photo" />
-                </Link>
-                <input 
-                    type="text" 
-                    placeholder={`What's on your mind, ${firstName}?`}
-                    onClick={() => openModal("makePosts", {rerenderParent})}
-                />
-            </div>
-
-            <div className="all-posts">
-                {Object.values(state.posts).map(post => (
-                    <PostItem
-                        post={post}
-                        key={post.id}
-                        rerenderParent={rerenderParent}
-                        fetchUser={fetchUser}
-                        currentUserId={userId}
-                        fetchPost={fetchPost}
-                        profilePhoto={profilePhoto}
+    const content = () => {
+        return(
+            <div className="newsfeed">
+                <div className="make-posts">
+                    <Link to={`/users/${userId}`}>
+                        <img src={profilePhoto} alt="profile photo" />
+                    </Link>
+                    <input 
+                        type="text" 
+                        placeholder={`What's on your mind, ${firstName}?`}
+                        onClick={() => openModal("makePosts", {rerenderParent})}
                     />
-                ))}
+                </div>
+
+                <div className="all-posts">
+                    {Object.values(state.posts).map(post => (
+                        <PostItem
+                            post={post}
+                            key={post.id}
+                            rerenderParent={rerenderParent}
+                            fetchUser={fetchUser}
+                            currentUserId={userId}
+                            fetchPost={fetchPost}
+                            profilePhoto={profilePhoto}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
+
+    return loading ? <Loading/> : content();
 };
 
 const mapStateToProps = state => {

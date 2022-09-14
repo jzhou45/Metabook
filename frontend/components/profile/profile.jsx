@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchUser } from "../../actions/user_actions";
 import { connect } from "react-redux";
+import Loading from "../loading/loading";
 
 const Profile = props => {
     const { usersId, currentUserId, fetchUser } = props;
@@ -15,6 +16,8 @@ const Profile = props => {
         lastName: ""
     });
 
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         fetchUser(usersId).then(data => {
             setState({
@@ -27,7 +30,7 @@ const Profile = props => {
                 firstName: data.user.first_name,
                 lastName: data.user.last_name
             });
-        });
+        }).then(() => setLoading(false));
     }, [state.profilePhoto, state.coverPhoto]);
 
     const handleSubmitProfilePhoto = e => {
@@ -82,7 +85,7 @@ const Profile = props => {
         });
     };
 
-    return(
+    const content = () => (
         <div>
             <div className="profile-header">
                 <div className="cover-photo">
@@ -124,6 +127,8 @@ const Profile = props => {
             </div>
         </div>
     );
+
+    return loading ? <Loading/> : content();
 };
 
 const mapStateToProps = (state, ownProps) => {

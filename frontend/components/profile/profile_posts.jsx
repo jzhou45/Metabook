@@ -4,6 +4,7 @@ import { fetchPost, fetchPosts } from "../../actions/post_actions";
 import { fetchUser } from "../../actions/user_actions";
 import PostItem from "../newsfeed/post_item";
 import { openModal } from "../../actions/modal_actions";
+import Loading from "../loading/loading";
 
 const ProfilePosts = props => {
     const {currentUserId, usersId, profilePhoto, firstName, fetchPost,
@@ -12,6 +13,8 @@ const ProfilePosts = props => {
     const [state, setState] = useState({
         posts: {}
     });
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchPosts().then(data => {
@@ -25,7 +28,9 @@ const ProfilePosts = props => {
                 ...state,
                 posts: userPosts
             });
-        });
+        }).then(() => setTimeout(() => {
+            setLoading(false);
+        }, 1000));
     }, []);
 
     const rerenderParent = () => {
@@ -43,7 +48,7 @@ const ProfilePosts = props => {
         });
     };
 
-    return(
+    const content = () => (
         <div className="profile-posts">
             {(currentUserId === usersId) ?
             (<div className="profile-make-posts">
@@ -73,6 +78,8 @@ const ProfilePosts = props => {
             </div>
         </div>
     );
+
+    return loading ? <Loading/> : content();
 };
 
 const mapStateToProps = (state, ownProps) => {

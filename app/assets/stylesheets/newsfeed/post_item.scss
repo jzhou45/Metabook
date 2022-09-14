@@ -285,3 +285,14 @@
 .liked-icon{
     filter: invert(32%) sepia(98%) saturate(1406%) hue-rotate(200deg) brightness(96%) contrast(98%);
 }
+
+.like-amount{
+    display: flex;
+    align-items: center;
+}
+
+.like-amount-icon{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}

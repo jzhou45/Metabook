@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../actions/user_actions";
+import Loading from "../loading/loading";
 
 const AboutMe = props => {
     const {usersId, currentUserId, fetchUser} = props;
@@ -12,6 +13,8 @@ const AboutMe = props => {
         id: 0
     });
 
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         fetchUser(usersId).then(data => {
             setState({
@@ -20,7 +23,7 @@ const AboutMe = props => {
                 previousAboutMe: data.user.about_me,
                 id: usersId
             });
-        });
+        }).then(() => setLoading(false));
     }, []);
 
     const handleUpdate = field => (
@@ -56,7 +59,7 @@ const AboutMe = props => {
         });
     };
 
-    return(
+    const content = () => (
         <div className="about-me">
             <div>
                 <h1>Intro</h1>
@@ -87,6 +90,8 @@ const AboutMe = props => {
             </div>
         </div>
     );
+
+    return loading ? <Loading/> : content();
 };
 
 const mapStateToProps = (state, ownProps) => {

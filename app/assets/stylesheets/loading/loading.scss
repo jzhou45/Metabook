@@ -1,0 +1,19 @@
+.loading{
+    background-color: #1c1e21;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img{
+        height: 95x;
+        width: 95px;
+        margin-bottom: 75px;
+    }
+}
