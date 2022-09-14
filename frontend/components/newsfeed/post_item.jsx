@@ -213,7 +213,7 @@ const PostItem = props => {
         for (let like of state.likes){
             if (like.user_id === currentUserId){
                 return "liked-icon";
-            }
+            };
         };
         return "like-icon";
     };
@@ -222,7 +222,7 @@ const PostItem = props => {
         for (let like of state.likes){
             if (like.user_id === currentUserId){
                 return "liked-button";
-            }
+            };
         };
         return "like-button";
     };
@@ -287,7 +287,17 @@ const PostItem = props => {
             }
 
             <div className="like-and-comment-amount">
-                <div className="like-amount">{likeAmount()}</div>
+                <div className="like-amount">
+                    {(state.likes.length > 0) ?
+                        (<img 
+                            src="https://i.pinimg.com/originals/39/44/6c/39446caa52f53369b92bc97253d2b2f1.png" 
+                            alt="like amount"
+                            className="like-amount-icon"
+                        />) :
+                    null}
+
+                    {likeAmount()}
+                </div>
                 <div className="comment-amount">{commentAmount()}</div>
             </div>
 
