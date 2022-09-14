@@ -210,7 +210,7 @@ const Comment = props => {
             <div className="replies-box">
                 {(state.comments.map((reply, i) => {
                     return(
-                        <div>
+                        <div key={i}>
                             <Reply 
                                 key={i} 
                                 reply={reply.comment}
