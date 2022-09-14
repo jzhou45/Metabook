@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchComment } from "../../actions/comment_actions"
 import Reply from "./replies_item";
+import Loading from "../loading/loading";
 
 const Comment = props => {
     const {fetchUser, comment, currentUserId, fetchComment, profilePhoto, rerenderPost} = props;
@@ -33,8 +34,10 @@ const Comment = props => {
         });
     };
 
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        fetchData();
+        fetchData().then(() => setLoading(false));
     }, []);
 
     const handleUpdate = field => (
@@ -139,11 +142,10 @@ const Comment = props => {
             url: `api/comments/${comment.id}`,
         }).then(() => {
             rerenderPost();
-            // fetchData();
         });
     };
 
-    return(
+    const content = () => (
         <div className="comment-item">
             <div className="parent-comment">
                 <Link to={`users/${comment.user_id}`}>
@@ -244,6 +246,8 @@ const Comment = props => {
             </div>
         </div>
     );
+
+    return loading ? <Loading/> : content();
 };
 
 const mapDispatchToProps = dispatch => ({
