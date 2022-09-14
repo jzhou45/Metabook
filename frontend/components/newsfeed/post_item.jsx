@@ -14,7 +14,8 @@ const PostItem = props => {
         editingPost: false,
         comment: "",
         comments: [],
-        replies: []
+        replies: [],
+        likes: 0
     });
 
     useEffect(() => {
@@ -28,10 +29,22 @@ const PostItem = props => {
                 content: post.content,
                 previousContent: post.content,
                 comments: post.comments,
-                replies: post.comments.comments
+                replies: post.comments.comments,
+                likes: post.likes
             });
         });
     }, []);
+
+    useEffect(() => {
+        if (state.likes[0]){
+            fetchUser(state.likes[0].user_id).then(data => {
+                setFirstLiker({
+                    ...firstLiker,
+                    firstLiker: `${data.user.first_name} ${data.user.last_name}`
+                });
+            });
+        };
+    }, [state]);
 
     const handleClickEdit = () => {
         setState({
@@ -118,6 +131,21 @@ const PostItem = props => {
         };
     };
 
+    const [firstLiker, setFirstLiker] = useState({
+        firstLiker: ""
+    });
+
+    const likeAmount = () => {
+        if (state.likes.length === 0){
+            return "";
+        } else if (state.likes.length === 1){
+            return firstLiker.firstLiker;
+        } else{
+            const otherLikes = state.likes.length - 1;
+            return `${firstLiker.firstLiker} and ${otherLikes} others`;
+        };
+    };
+
     const focusComment = () => {
         commentInputRef.current.focus();
     };
@@ -131,6 +159,52 @@ const PostItem = props => {
                 comments: data.post.comments
             });
         });
+    };
+
+    const likePost = () => {
+        const likeData = new FormData();
+        likeData.append("like[user_id]", currentUserId);
+        likeData.append("like[likeable_id]", post.id);
+        likeData.append("like[likeable_type]", "Post");
+
+        $.ajax({
+            method: "POST",
+            url: "api/likes",
+            data: likeData,
+            contentType: false,
+            processData: false
+        }).then(() => {
+            fetchPost(post.id).then(data => {
+                setState({
+                    ...state,
+                    likes: data.post.likes
+                });
+            });
+        });
+    };
+
+    const unlike = likeId => {
+        $.ajax({
+            method: "DELETE",
+            url: `api/likes/${likeId}`
+        }).then(() => {
+            fetchPost(post.id).then(data => {
+                setState({
+                    ...state,
+                    likes: data.post.likes
+                });
+            });
+        });
+    };
+
+    const handleLikes = () => {
+        for (let like of state.likes){
+            if (like.user_id === currentUserId){
+                unlike(like.id);
+                return;
+            };
+        };
+        likePost();
     };
 
     return(
@@ -193,12 +267,14 @@ const PostItem = props => {
             }
 
             <div className="like-and-comment-amount">
-                <div className="like-amount"></div>
+                <div className="like-amount">{likeAmount()}</div>
                 <div className="comment-amount">{commentAmount()}</div>
             </div>
 
             <div className="comment-and-likes-buttons">
-                <div></div>
+                <div className="like-button" onClick={handleLikes}>
+                    <span>Like</span>
+                </div>
 
                 <div className="comment-button" onClick={focusComment}>
                     <img 
