@@ -15,7 +15,7 @@ const PostItem = props => {
         comment: "",
         comments: [],
         replies: [],
-        likes: 0
+        likes: []
     });
 
     useEffect(() => {
@@ -140,6 +140,8 @@ const PostItem = props => {
             return "";
         } else if (state.likes.length === 1){
             return firstLiker.firstLiker;
+        } else if (state.likes.length === 2){
+            return `${firstLiker.firstLiker} and 1 other`;
         } else{
             const otherLikes = state.likes.length - 1;
             return `${firstLiker.firstLiker} and ${otherLikes} others`;
@@ -207,6 +209,24 @@ const PostItem = props => {
         likePost();
     };
 
+    const likeIcon = () => {
+        for (let like of state.likes){
+            if (like.user_id === currentUserId){
+                return "liked-icon";
+            }
+        };
+        return "like-icon";
+    };
+
+    const likeButton = () => {
+        for (let like of state.likes){
+            if (like.user_id === currentUserId){
+                return "liked-button";
+            }
+        };
+        return "like-button";
+    };
+
     return(
         <div id={`post-content${post.id}`} className="post-content">
             <div className="post-header">
@@ -272,7 +292,12 @@ const PostItem = props => {
             </div>
 
             <div className="comment-and-likes-buttons">
-                <div className="like-button" onClick={handleLikes}>
+                <div className={likeButton()} onClick={handleLikes}>
+                    <img 
+                        src="https://cdn-icons-png.flaticon.com/512/126/126473.png" 
+                        alt="like" 
+                        className={likeIcon()}
+                    />
                     <span>Like</span>
                 </div>
 

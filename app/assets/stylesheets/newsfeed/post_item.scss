@@ -242,7 +242,7 @@
     margin-bottom: 10px;
 }
 
-.comment-button{
+.comment-button, .like-button, .liked-button{
     width: 50%;
     display: flex;
     align-items: center;
@@ -265,8 +265,23 @@
     }
 }
 
+.liked-button{
+    color: $metabook-blue;
+}
+
 .comment-icon{
     height: 24px;
     width: 24px;
     filter: invert(78%) sepia(5%) saturate(266%) hue-rotate(179deg) brightness(94%) contrast(83%);
+}
+
+.like-icon, .liked-icon{
+    height: 16px;
+    width: 16px;
+    margin-bottom: 3px;
+    filter: invert(78%) sepia(5%) saturate(266%) hue-rotate(179deg) brightness(94%) contrast(83%);
+}
+
+.liked-icon{
+    filter: invert(32%) sepia(98%) saturate(1406%) hue-rotate(200deg) brightness(96%) contrast(98%);
 }
