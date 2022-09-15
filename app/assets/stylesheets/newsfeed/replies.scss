@@ -34,17 +34,29 @@
     }
 }
 
-.comment-item span.open-reply{
+.comment-item span.open-reply, .comment-like{
     font-size: 12px;
     color: $secondary-text;
     align-self: flex-start;
-    margin-left: 40px;
     margin-bottom: 10px;
 
     &:hover{
         cursor: pointer;
         text-decoration: underline;
     }
+}
+
+.open-reply{
+    margin-left: 20px;
+}
+
+.comment-like{
+    margin-left: 40px;
+}
+
+.like-and-comments-div{
+    width: 100%;
+    margin-bottom: 3px;
 }
 
 .reply-dropdown-menu{
