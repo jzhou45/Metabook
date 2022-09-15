@@ -2,7 +2,7 @@
 [Live Link](http://metabookclone.herokuapp.com/#/)
 
 ## Brief Overview
-Metabook is a clone of [Facebook](facebook.com) and aims to reproduce the profile, wall/newsfeed, and friend functionality of Facebook. Users are able to view other people's post, make/edit/delete posts from their newsfeed and profile page, and update thier profile.
+Metabook is a clone of [Facebook](https://facebook.com) and aims to reproduce the profile, wall/newsfeed, and friend functionality of Facebook. Users are able to view other people's post, make/edit/delete posts from their newsfeed and profile page, and update thier profile.
 
 ## Technologies Used
   * Ruby
