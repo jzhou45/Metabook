@@ -193,11 +193,16 @@ const Comment = props => {
         likeComment();
     };
 
+    const likeAmount = () => {
+        if (state.likes.length < 2){
+            return "";
+        } else {
+            return state.likes.length;
+        };
+    };
+
     const content = () => (
         <div className="comment-item">
-
-            <button onClick={() => console.log(state)}>STATE</button>
-
             <div className="parent-comment">
                 <Link to={`users/${comment.user_id}`}>
                     <img 
@@ -223,15 +228,18 @@ const Comment = props => {
                         (<div className="comment-box">
                             <Link to={`users/${comment.user_id}`}>{state.firstName} {state.lastName}</Link>
                             <div className="comment-text">{comment.comment}
-                                <div className="comment-like-icon">
-                                    <img 
-                                        src="https://i.pinimg.com/originals/39/44/6c/39446caa52f53369b92bc97253d2b2f1.png" 
-                                        alt="like" 
-                                    />
-                                    <span>
-                                        7
-                                    </span>
-                                </div>
+
+                                {(state.likes.length > 0) ?
+                                    (<div className="comment-like-icon">
+                                        <img 
+                                            src="https://i.pinimg.com/originals/39/44/6c/39446caa52f53369b92bc97253d2b2f1.png" 
+                                            alt="like" 
+                                        />
+                                        <span>
+                                            {likeAmount()}
+                                        </span>
+                                    </div>) :
+                                null}
                             </div>
 
 
