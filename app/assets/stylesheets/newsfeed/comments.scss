@@ -157,3 +157,22 @@
     width: 515px;
     height: 37px;
 }
+
+.comment-like-icon{
+    position: absolute;
+    bottom: -20px;
+    right: -30px;
+    display: flex;
+    align-items: center;
+    color: $secondary-text;
+
+    img{
+        height: 25px;
+        width: 25px;
+    }
+}
+
+.comment-text{
+    display: flex;
+    position: relative;
+}

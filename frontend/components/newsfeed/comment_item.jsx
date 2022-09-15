@@ -18,7 +18,8 @@ const Comment = props => {
         comments: [],
         replying: false,
         dropdown: false,
-        editing: false
+        editing: false,
+        likes: []
     });
 
     const fetchData = async () => {
@@ -30,7 +31,8 @@ const Comment = props => {
             profilePhoto: userData.user.profilePhoto,
             firstName: userData.user.first_name,
             lastName: userData.user.last_name,
-            comments: commentData.comment.comments
+            comments: commentData.comment.comments,
+            likes: commentData.comment.likes
         });
     };
 
@@ -145,8 +147,57 @@ const Comment = props => {
         });
     };
 
+    const likeComment = () => {
+        const likeData = new FormData();
+        likeData.append("like[user_id]", currentUserId);
+        likeData.append("like[likeable_id]", comment.id);
+        likeData.append("like[likeable_type]", "Comment");
+
+        $.ajax({
+            method: "POST",
+            url: "api/likes",
+            data: likeData,
+            contentType: false,
+            processData: false
+        }).then(() => {
+            fetchComment(comment.id).then(data => {
+                setState({
+                    ...state,
+                    likes: data.comment.likes
+                });
+            });
+        });
+    };
+
+    const unlike = likeId => {
+        $.ajax({
+            method: "DELETE",
+            url: `api/likes/${likeId}`
+        }).then(() => {
+            fetchComment(comment.id).then(data => {
+                setState({
+                    ...state,
+                    likes: data.comment.likes
+                });
+            });
+        });
+    };
+
+    const handleLikes = () => {
+        for (let like of state.likes){
+            if (like.user_id === currentUserId){
+                unlike(like.id);
+                return;
+            };
+        };
+        likeComment();
+    };
+
     const content = () => (
         <div className="comment-item">
+
+            <button onClick={() => console.log(state)}>STATE</button>
+
             <div className="parent-comment">
                 <Link to={`users/${comment.user_id}`}>
                     <img 
@@ -171,7 +222,19 @@ const Comment = props => {
 
                         (<div className="comment-box">
                             <Link to={`users/${comment.user_id}`}>{state.firstName} {state.lastName}</Link>
-                            <p>{comment.comment}</p>
+                            <div className="comment-text">{comment.comment}
+                                <div className="comment-like-icon">
+                                    <img 
+                                        src="https://i.pinimg.com/originals/39/44/6c/39446caa52f53369b92bc97253d2b2f1.png" 
+                                        alt="like" 
+                                    />
+                                    <span>
+                                        7
+                                    </span>
+                                </div>
+                            </div>
+
+
                         </div>)
                     }
 
@@ -205,7 +268,10 @@ const Comment = props => {
                 </div>
             </div>        
 
-            <span onClick={openReply} className="open-reply">Reply</span>
+            <div className="like-and-comments-div">
+                <span className="comment-like" onClick={handleLikes}>Like</span>
+                <span onClick={openReply} className="open-reply">Reply</span>
+            </div>
 
             <div className="replies-box">
                 {(state.comments.map((reply, i) => {
