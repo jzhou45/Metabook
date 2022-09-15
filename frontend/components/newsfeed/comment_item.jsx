@@ -201,6 +201,15 @@ const Comment = props => {
         };
     };
 
+    const commentLike = () => {
+        for (let like of state.likes){
+            if (like.user_id === currentUserId){
+                return "comment-like comment-liked";
+            };
+        };
+        return "comment-like";
+    };
+
     const content = () => (
         <div className="comment-item">
             <div className="parent-comment">
@@ -277,26 +286,25 @@ const Comment = props => {
             </div>        
 
             <div className="like-and-comments-div">
-                <span className="comment-like" onClick={handleLikes}>Like</span>
+                <span className={commentLike()} onClick={handleLikes}>Like</span>
                 <span onClick={openReply} className="open-reply">Reply</span>
             </div>
 
             <div className="replies-box">
                 {(state.comments.map((reply, i) => {
                     return(
-                        <div key={i}>
-                            <Reply 
-                                key={i} 
-                                reply={reply.comment}
-                                fetchUser={fetchUser}
-                                replierId={reply.user_id}
-                                commentObj={reply}
-                                rerenderParent={rerenderParent}
-                                currentUserId={currentUserId}
-                                />
-
-                            <span onClick={openReply} className="open-reply">Reply</span>
-                        </div>);
+                        <Reply 
+                            key={i} 
+                            reply={reply.comment}
+                            fetchUser={fetchUser}
+                            replierId={reply.user_id}
+                            commentObj={reply}
+                            rerenderParent={rerenderParent}
+                            currentUserId={currentUserId}
+                            openReply={openReply}
+                            fetchComment={fetchComment}
+                        />
+                    );
                 }))}
 
                 {(state.replying) ?

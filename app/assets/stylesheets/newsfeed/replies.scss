@@ -3,6 +3,7 @@
 .reply{
     margin: 5px;
     display: flex;
+    flex-direction: column;
 }
 
 .reply-profile-photo{
@@ -52,6 +53,10 @@
 
 .comment-like{
     margin-left: 40px;
+}
+
+.comment-liked{
+    color: $metabook-blue;
 }
 
 .like-and-comments-div{
@@ -109,4 +114,8 @@
 
 .reply .edit-reply{
     width: 515px;
+}
+
+.reply-top-half{
+    display: flex;
 }
