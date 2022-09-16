@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { fetchUsers } from "../../actions/user_actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 const SearchBar = props => {
-    const {fetchUsers} = props;
+    const {fetchUsers, history} = props;
 
     const [state, setState] = useState({
         users: []
@@ -20,6 +19,11 @@ const SearchBar = props => {
     }, []);
 
     const [query, setQuery] = useState("");
+
+    const goToProfile = userId => {
+        history.push(`/users/${userId}`);
+        setQuery("");
+    };
 
     return (
         <div>
@@ -44,20 +48,18 @@ const SearchBar = props => {
                             return userNames;
                         };
                     }).map((user, i) => (
-                        <div key={i} className="searchbar-names">
+                        <div onClick={() => goToProfile(user.id)} key={i} className="searchbar-names">
                             <img 
                                 src={user.profilePhoto}
                                 alt="profile photo" 
                             />
-                            <Link to={`users/${user.id}`}>
-                                <p>{`${user.first_name} ${user.last_name}`}</p>
-                            </Link>
+                            <p>{`${user.first_name} ${user.last_name}`}</p>
                         </div>
                     ))) :
                 null}
 
                 {(query.length > 0) ? 
-                    (<p>No more results</p>) :
+                    (<div className="no-more-results"><p>No more results</p></div>) :
                 null}
             </div>
         </div>

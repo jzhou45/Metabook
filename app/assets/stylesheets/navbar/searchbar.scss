@@ -49,28 +49,43 @@
     background-color:$metabook-lightblack;
     border-radius: 8px;
     width: 98%;
+    text-decoration: none;
 
     &:hover{
         filter: brightness(1.3);
     }
 
-    > a{
+    p{
+        font-family: $default-font;
+        color: $secondary-text;
         filter: none;
-        text-decoration: none;
 
-        p{
-            margin-left: 15px;
-            font-family: $default-font;
-            color: $secondary-text;
+        &:hover{
             filter: none;
         }
     }
-
+    
     > img{
+        margin-left: 15px;
         border-radius: 50%;
 
         &:hover{
             filter: none;
         }
+    }
+}
+
+.navbar div.no-more-results{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    filter: none;
+    background-color:$metabook-lightblack;
+    border-radius: 8px;
+    width: 98%;
+
+    p{
+        color: $metabook-blue;
+        font-family: $default-font;
     }
 }

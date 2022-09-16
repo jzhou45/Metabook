@@ -8,10 +8,28 @@ import Loading from "../loading/loading";
 
 const ProfilePosts = props => {
     const {currentUserId, usersId, profilePhoto, firstName, fetchPost,
-    fetchPosts, fetchUser, openModal} = props;
+    fetchPosts, fetchUser, openModal, location, prevPathname, resetPrevPathname} = props;
 
     const [state, setState] = useState({
         posts: {}
+    });
+
+    useEffect(() => {
+        if (location.pathname !== prevPathname){
+            fetchPosts().then(data => {
+                const userPosts = {};
+                for (let post of Object.values(data.posts)){
+                    if (post.user_id === usersId){
+                        userPosts[post.id] = post;
+                    };
+                };
+                setState({
+                    ...state,
+                    posts: userPosts
+                });
+                resetPrevPathname(location.pathname);
+            });
+        };
     });
 
     const [loading, setLoading] = useState(true);
