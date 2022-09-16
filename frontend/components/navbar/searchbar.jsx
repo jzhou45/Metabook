@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchUsers } from "../../actions/user_actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SearchBar = props => {
     const {fetchUsers} = props;
@@ -11,15 +12,9 @@ const SearchBar = props => {
 
     useEffect(() => {
         fetchUsers().then(data => {
-            let userNames = [];
-
-            for (let user of Object.values(data.users)){
-                userNames.push(`${user.first_name} ${user.last_name}`);
-            };
-
             setState({
                 ...state,
-                users: userNames
+                users: Object.values(data.users)
             });
         });
     }, []);
@@ -35,20 +30,26 @@ const SearchBar = props => {
                 onChange={e => setQuery(e.target.value)}
             />
 
-            {state.users.filter(user => {
-                if (query === ""){
-                    return user;
-                } else if (user.toLowerCase().includes(query.toLowerCase())){
-                    return user;
-                };
-            }).map((user, i) => (
-                <div key={i} className={"searchbar-names"}>
-                    <p>{user}</p>
-                </div>
-            ))}
+            <div className="search-result">
+                {(query.length > 0) ?
+                    (state.users.filter(user => {
+                        const userNames = `${user.first_name} ${user.last_name}`
+                        if (query === ""){
+                            return userNames;
+                        } else if (userNames.toLowerCase().includes(query.toLowerCase())){
+                            return userNames;
+                        };
+                    }).map((user, i) => (
+                        <Link key={i} className="searchbar-names" to={`users/${user.id}`}>
+                            <p>{`${user.first_name} ${user.last_name}`}</p>
+                        </Link>
+                    ))) :
+                null}
 
-            <button onClick={() => console.log(state)}></button>
-
+                {(query.length > 0) ? 
+                    (<p>No more results</p>) :
+                null}
+            </div>
         </div>
     );
 };

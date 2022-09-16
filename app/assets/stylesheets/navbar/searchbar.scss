@@ -1,0 +1,38 @@
+@import "../variables.scss";
+
+.search-bar{
+    color: $secondary-text;
+    width: 670px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: $input-black;
+    border: none;
+    padding-left: 15px;
+    margin-left: 20px;
+
+    &:hover{
+        filter: brightness(1.2);
+        cursor: pointer;
+    }
+
+    &::placeholder{
+        font-weight: normal;
+        font-size: 15px;
+    }
+}
+
+.navbar div.search-result{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    top: 56px;
+    z-index: 10;
+    background-color: red;
+    filter: none;
+    overflow: visible;
+
+    &:hover{
+        filter: none;
+    }
+}

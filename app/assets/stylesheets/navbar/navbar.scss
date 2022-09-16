@@ -26,25 +26,6 @@
         }
     }
 
-    input{
-        width: 680px;
-        height: 40px;
-        border-radius: 25px;
-        background-color: $input-black;
-        border: none;
-
-        &:hover{
-            filter: brightness(1.2);
-            cursor: not-allowed;
-        }
-    }
-
-    ::placeholder{
-        font-weight: normal;
-        font-size: 15px;
-        padding-left: 15px;
-    }
-
     img{
         height: 35px;
         width: 35px;
