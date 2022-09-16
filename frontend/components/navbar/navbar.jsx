@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { openNavbar, closeNavbar } from "../../actions/modal_actions";
+import SearchBar from "./searchbar";
 
 const NavBar = props => {
     document.documentElement.style.backgroundColor = "#1c1e21"
@@ -26,11 +27,7 @@ const NavBar = props => {
                 <h1>metabook</h1>
             </Link>
 
-            <input 
-                type="text" 
-                className="search-bar" 
-                placeholder="Metabook"
-            />
+            <SearchBar />
 
             <div>
                 <img 
