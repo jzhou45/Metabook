@@ -23,7 +23,7 @@ const NewsfeedModal = props => {
 
         const formData = new FormData();
         formData.append("post[content]", state.content);
-        formData.append("post[user_id]", state.userId);
+        formData.append("post[user_id]", userId);
         if (e.target[1].files[0]){
             formData.append("post[photo]", e.target[1].files[0]);
         };
@@ -76,6 +76,7 @@ const NewsfeedModal = props => {
                 <input 
                     type="file"
                     onChange={e => setState({
+                        ...state,
                         file: e.target.files
                     })}
                     id="create-post-file"
