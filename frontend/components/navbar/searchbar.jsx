@@ -30,6 +30,10 @@ const SearchBar = props => {
                 onChange={e => setQuery(e.target.value)}
             />
 
+            {(query.length > 0) ?
+                (<div className="invisible-background" onClick={() => setQuery("")}></div>) :
+            null}
+
             <div className="search-result">
                 {(query.length > 0) ?
                     (state.users.filter(user => {

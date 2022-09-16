@@ -31,8 +31,16 @@
     background-color: red;
     filter: none;
     overflow: visible;
+    width: 687px;
+    border-radius: 8px;
 
     &:hover{
         filter: none;
     }
+}
+
+.searchbar-names{
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
