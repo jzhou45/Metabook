@@ -1,0 +1,91 @@
+@import "../variables.scss";
+
+.search-bar{
+    color: $secondary-text;
+    width: 670px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: $input-black;
+    border: none;
+    padding-left: 15px;
+    margin-left: 20px;
+
+    &:hover{
+        filter: brightness(1.2);
+        cursor: pointer;
+    }
+
+    &::placeholder{
+        font-weight: normal;
+        font-size: 15px;
+    }
+}
+
+.navbar div.search-result{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    align-items: center;
+    top: 56px;
+    z-index: 10;
+    background-color: $metabook-lightblack;
+    filter: none;
+    overflow: scroll;
+    width: 687px;
+    border-radius: 8px;;
+    max-height: 470px;
+
+    &:hover{
+        filter: none;
+    }
+}
+
+.navbar div.searchbar-names{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    filter: none;
+    background-color:$metabook-lightblack;
+    border-radius: 8px;
+    width: 98%;
+    text-decoration: none;
+
+    &:hover{
+        filter: brightness(1.3);
+    }
+
+    p{
+        font-family: $default-font;
+        color: $secondary-text;
+        filter: none;
+
+        &:hover{
+            filter: none;
+        }
+    }
+    
+    > img{
+        margin-left: 15px;
+        border-radius: 50%;
+
+        &:hover{
+            filter: none;
+        }
+    }
+}
+
+.navbar div.no-more-results{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    filter: none;
+    background-color:$metabook-lightblack;
+    border-radius: 8px;
+    width: 98%;
+
+    p{
+        color: $metabook-blue;
+        font-family: $default-font;
+    }
+}

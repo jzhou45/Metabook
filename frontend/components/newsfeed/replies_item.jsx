@@ -111,7 +111,6 @@ const Reply = props => {
             processData: false
         }).then(() => {
             fetchComment(commentObj.id).then(data => {
-                console.log(data)
                 setState({
                     ...state,
                     likes: data.comment.likes

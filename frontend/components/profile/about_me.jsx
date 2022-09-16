@@ -4,7 +4,23 @@ import { fetchUser } from "../../actions/user_actions";
 import Loading from "../loading/loading";
 
 const AboutMe = props => {
-    const {usersId, currentUserId, fetchUser} = props;
+    const {usersId, currentUserId, fetchUser, prevPathname, resetPrevPathname, location
+    } = props;
+    
+
+    useEffect(() => {
+        if (location.pathname !== prevPathname){
+            fetchUser(usersId).then(data => {
+                setState({
+                    ...state,
+                    aboutMe: data.user.about_me,
+                    previousAboutMe: data.user.about_me,
+                    id: usersId
+                });
+                resetPrevPathname(location.pathname);
+            });
+        };
+    });
 
     const [state, setState] = useState({
         aboutMe: "",

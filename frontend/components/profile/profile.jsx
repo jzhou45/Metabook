@@ -4,7 +4,26 @@ import { connect } from "react-redux";
 import Loading from "../loading/loading";
 
 const Profile = props => {
-    const { usersId, currentUserId, fetchUser } = props;
+    const { usersId, currentUserId, fetchUser, location, resetPrevPathname,
+    prevPathname } = props;
+
+    useEffect(() => {
+        if (location.pathname !== prevPathname){
+            fetchUser(usersId).then(data => {
+                setState({
+                    ...state,
+                    id: data.user.id,
+                    aboutMe: data.user.about_me,
+                    email: data.user.email,
+                    coverPhoto: data.user.coverPhoto,
+                    profilePhoto: data.user.profilePhoto,
+                    firstName: data.user.first_name,
+                    lastName: data.user.last_name
+                });
+                resetPrevPathname(location.pathname);
+            });
+        };
+    });
 
     const [state, setState] = useState({
         id: "",

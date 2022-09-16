@@ -2,7 +2,7 @@ import React from "react";
 import { ProtectedRoute } from "../util/route_util";
 import { Redirect, Route, Switch } from "react-router-dom";
 import HomePage from "./routes/homepage_container";
-import ProfilePage from "./routes/profilepage_container";
+import ProfilePage from "./routes/profilepage";
 import Modal from "./modal/modal";
 
 const App = () => (

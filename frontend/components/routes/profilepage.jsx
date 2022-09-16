@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../navbar/navbar";
 import AboutMe from "../profile/about_me";
 import Profile from "../profile/profile";
 import ProfilePosts from "../profile/profile_posts";
 
-class ProfilePage extends React.Component{
-    constructor(props){
-        super(props);
+const ProfilePage = props => {
+    const {history, location} = props;
+
+    const [state, setState] = useState({
+        prevPathname: history.location.pathname
+    });
+
+    const resetPrevPathname = pathname => {
+        setState({
+            prevPathname: pathname
+        });
     };
 
-    render(){
-        return(
-            <div>
-                <NavBar history={this.props.history} />
-                <Profile location={this.props.location} history={this.props.history}/>
-                <AboutMe location={this.props.location} history={this.props.history}/>
-                <ProfilePosts location={this.props.location} history={this.props} />
-            </div>
-        );
-    };
+    return (
+        <div>
+            <NavBar history={history} />
+            <Profile location={location} history={history} prevPathname={state.prevPathname} resetPrevPathname={resetPrevPathname}/>
+            <AboutMe location={location} history={history} prevPathname={state.prevPathname} resetPrevPathname={resetPrevPathname}/>
+            <ProfilePosts location={location} history={history} prevPathname={state.prevPathname} resetPrevPathname={resetPrevPathname}/>
+        </div>
+    );
 };
 
 export default ProfilePage;
