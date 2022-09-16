@@ -59,7 +59,7 @@ const SearchBar = props => {
                 null}
 
                 {(query.length > 0) ? 
-                    (<div className="no-more-results"><p>No more results</p></div>) :
+                    (<div className="no-more-results"><p>End of results</p></div>) :
                 null}
             </div>
         </div>
