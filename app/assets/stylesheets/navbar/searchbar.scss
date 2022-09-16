@@ -26,21 +26,51 @@
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    align-items: center;
     top: 56px;
     z-index: 10;
-    background-color: red;
+    background-color: $metabook-lightblack;
     filter: none;
-    overflow: visible;
+    overflow: scroll;
     width: 687px;
-    border-radius: 8px;
+    border-radius: 8px;;
+    max-height: 470px;
 
     &:hover{
         filter: none;
     }
 }
 
-.searchbar-names{
+.navbar div.searchbar-names{
     height: 50px;
     display: flex;
     align-items: center;
+    filter: none;
+    background-color:$metabook-lightblack;
+    border-radius: 8px;
+    width: 98%;
+
+    &:hover{
+        filter: brightness(1.3);
+    }
+
+    > a{
+        filter: none;
+        text-decoration: none;
+
+        p{
+            margin-left: 15px;
+            font-family: $default-font;
+            color: $secondary-text;
+            filter: none;
+        }
+    }
+
+    > img{
+        border-radius: 50%;
+
+        &:hover{
+            filter: none;
+        }
+    }
 }

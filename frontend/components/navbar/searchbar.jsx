@@ -44,9 +44,15 @@ const SearchBar = props => {
                             return userNames;
                         };
                     }).map((user, i) => (
-                        <Link key={i} className="searchbar-names" to={`users/${user.id}`}>
-                            <p>{`${user.first_name} ${user.last_name}`}</p>
-                        </Link>
+                        <div key={i} className="searchbar-names">
+                            <img 
+                                src={user.profilePhoto}
+                                alt="profile photo" 
+                            />
+                            <Link to={`users/${user.id}`}>
+                                <p>{`${user.first_name} ${user.last_name}`}</p>
+                            </Link>
+                        </div>
                     ))) :
                 null}
 
