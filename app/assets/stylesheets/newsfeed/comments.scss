@@ -12,6 +12,14 @@
 .parent-comment{
     display: flex;
     width: 100%;
+
+    > div{
+        > img{
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .comments-align, .reply-align{
@@ -175,4 +183,11 @@
 .comment-text{
     display: flex;
     position: relative;
+}
+
+.comment-box-name{
+    &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
 }

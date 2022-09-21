@@ -119,3 +119,17 @@
 .reply-top-half{
     display: flex;
 }
+
+.reply-header-image{
+    &:hover{
+        cursor: pointer;
+        filter: brightness(1.1);
+    }
+}
+
+.reply-body-name{
+    &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

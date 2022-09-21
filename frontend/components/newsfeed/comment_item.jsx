@@ -5,7 +5,8 @@ import { fetchComment } from "../../actions/comment_actions"
 import Reply from "./replies_item";
 
 const Comment = props => {
-    const {fetchUser, comment, currentUserId, fetchComment, profilePhoto, rerenderPost} = props;
+    const {fetchUser, comment, currentUserId, fetchComment, profilePhoto, rerenderPost,
+    history} = props;
 
     const [state, setState] = useState({
         firstName: "",
@@ -207,16 +208,20 @@ const Comment = props => {
         return "comment-like";
     };
 
+    const goToProfile = userId => {
+        history.push(`/users/${userId}`);
+    };
+
     return(
         <div className="comment-item">
             <div className="parent-comment">
-                <Link to={`users/${comment.user_id}`}>
+                <div onClick={() => goToProfile(comment.user_id)}>
                     <img 
                         src={state.profilePhoto} 
                         alt="profile photo" 
                         className="comment-profile-photo"
                         />
-                </Link>
+                </div>
                 
                 <div className="comments-align">
 
@@ -232,7 +237,7 @@ const Comment = props => {
                         </form>) : 
 
                         (<div className="comment-box">
-                            <Link to={`users/${comment.user_id}`}>{state.firstName} {state.lastName}</Link>
+                            <div onClick={() => goToProfile(comment.user_id)} className="comment-box-name">{state.firstName} {state.lastName}</div>
                             <div className="comment-text">{comment.comment}
 
                                 {(state.likes.length > 0) ?
@@ -300,6 +305,7 @@ const Comment = props => {
                             currentUserId={currentUserId}
                             openReply={openReply}
                             fetchComment={fetchComment}
+                            history={history}
                         />
                     );
                 }))}

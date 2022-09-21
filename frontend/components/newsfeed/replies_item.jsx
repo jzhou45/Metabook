@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const Reply = props => {
     const {reply, fetchUser, replierId, commentObj, rerenderParent, currentUserId,
-    openReply, fetchComment} = props
+    openReply, fetchComment, history} = props
 
     const [state, setState] = useState({
         profilePhoto: "",
@@ -160,17 +159,21 @@ const Reply = props => {
         return "comment-like";
     };
 
+    const goToProfile = userId => {
+        history.push(`/users/${userId}`);
+    };
+
     return(
         <div className="reply">
             <div className="reply-top-half">
                 <div className="reply-header">
-                    <Link to={`users/${replierId}`}>
+                    <div onClick={() => goToProfile(replierId)} className="reply-header-image">
                         <img 
                             src={state.profilePhoto}
                             alt="profile photo" 
                             className="reply-profile-photo"
                         />
-                    </Link>
+                    </div>
                 </div>
 
                 <div className="reply-align">
@@ -187,7 +190,13 @@ const Reply = props => {
                             </form>) : 
 
                             (<div className="reply-body">
-                                <Link to={`users/${replierId}`}>{state.firstName} {state.lastName}</Link>
+                                <div 
+                                    onClick={() => goToProfile(replierId)} 
+                                    className="reply-body-name"
+                                >
+                                    {state.firstName} {state.lastName}
+                                </div>
+
                                 <div className="comment-text">{reply}
                                     {(state.likes.length > 0) ?
                                         (<div className="comment-like-icon">
