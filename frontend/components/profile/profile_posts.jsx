@@ -8,7 +8,8 @@ import Loading from "../loading/loading";
 
 const ProfilePosts = props => {
     const {currentUserId, usersId, profilePhoto, firstName, fetchPost,
-    fetchPosts, fetchUser, openModal, location, prevPathname, resetPrevPathname} = props;
+    fetchPosts, fetchUser, openModal, location, prevPathname, resetPrevPathname,
+    history} = props;
 
     const [state, setState] = useState({
         posts: {}
@@ -91,6 +92,7 @@ const ProfilePosts = props => {
                         currentUserId={currentUserId}
                         fetchPost={fetchPost}
                         profilePhoto={profilePhoto}
+                        history={history}
                     />
                 ))}
             </div>

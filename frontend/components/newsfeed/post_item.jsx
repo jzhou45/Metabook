@@ -5,7 +5,7 @@ import Loading from "../loading/loading";
 
 const PostItem = props => {
     const {post, rerenderParent, fetchUser, currentUserId, fetchPost,
-    profilePhoto} = props;
+    profilePhoto, history} = props;
 
     const [loading, setLoading] = useState(true);
 
@@ -336,6 +336,7 @@ const PostItem = props => {
                                     currentUserId={currentUserId}
                                     profilePhoto={profilePhoto}
                                     rerenderPost={rerenderPost}
+                                    history={history}
                                 />
                             );
                         };

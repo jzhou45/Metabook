@@ -9,7 +9,7 @@ import Loading from "../loading/loading";
 
 const Newsfeed = props => {
     const {userId, profilePhoto, firstName, fetchPosts, openModal, fetchPost, 
-        fetchUser} = props;
+        fetchUser, history} = props;
 
     const [state, setState] = useState({
         userId: userId,
@@ -60,6 +60,7 @@ const Newsfeed = props => {
                             currentUserId={userId}
                             fetchPost={fetchPost}
                             profilePhoto={profilePhoto}
+                            history={history}
                         />
                     ))}
                 </div>
