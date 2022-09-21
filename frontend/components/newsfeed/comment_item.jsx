@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchComment } from "../../actions/comment_actions"
 import Reply from "./replies_item";
+import Loading from "../loading/loading";
 
 const Comment = props => {
     const {fetchUser, comment, currentUserId, fetchComment, profilePhoto, rerenderPost,
     history} = props;
+
+    const [loading, setLoading] = useState(true);
 
     const [state, setState] = useState({
         firstName: "",
@@ -37,7 +40,7 @@ const Comment = props => {
     };
 
     useEffect(() => {
-        fetchData();
+        fetchData().then(() => setLoading(false));
     }, []);
 
     const handleUpdate = field => (
@@ -212,7 +215,7 @@ const Comment = props => {
         history.push(`/users/${userId}`);
     };
 
-    return(
+    const content = () => (
         <div className="comment-item">
             <div className="parent-comment">
                 <div onClick={() => goToProfile(comment.user_id)}>
@@ -331,6 +334,8 @@ const Comment = props => {
             </div>
         </div>
     );
+
+    return loading ? <Loading/> : content();
 };
 
 const mapDispatchToProps = dispatch => ({
