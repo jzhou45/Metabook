@@ -63,18 +63,16 @@ const Profile = props => {
             data: formData,
             contentType: false,
             processData: false
-        });
-
-        fetchUser(usersId).then(data => {
-            setState({
-                ...state,
-                id: data.user.id,
-                aboutMe: data.user.about_me,
-                email: data.user.email,
-                coverPhoto: data.user.coverPhoto,
-                profilePhoto: data.user.profilePhoto,
-                firstName: data.user.first_name,
-                lastName: data.user.last_name
+        }).then(() => {
+            fetchUser(usersId).then(data => {
+                setState({
+                    ...state,
+                    id: data.user.id,
+                    aboutMe: data.user.about_me,
+                    email: data.user.email,
+                    coverPhoto: data.user.coverPhoto,
+                    profilePhoto: data.user.profilePhoto,
+                });
             });
         });
     };
@@ -132,7 +130,7 @@ const Profile = props => {
                                     id="profile-photo-input"
                                     onChange={handleSubmitProfilePhoto}
                                 />
-                                <label htmlFor="profile-photo-change">
+                                <label htmlFor="profile-photo-input">
                                     <img 
                                         src="https://cdn-icons-png.flaticon.com/512/83/83574.png" 
                                         alt="change profile photo" 
