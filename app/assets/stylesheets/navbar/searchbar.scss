@@ -31,11 +31,17 @@
     z-index: 10;
     background-color: $metabook-lightblack;
     filter: none;
-    overflow: scroll;
     width: 687px;
     border-radius: 8px;;
     max-height: 470px;
     box-shadow: $input-box-shadow;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+
+    ::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
 
     &:hover{
         filter: none;
