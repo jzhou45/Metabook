@@ -34,3 +34,6 @@ bundle.js*
 .DS_Store
 npm-debug.log
 .gitignore
+Gemfile.lock
+package-lock.json
+.sass-cache
