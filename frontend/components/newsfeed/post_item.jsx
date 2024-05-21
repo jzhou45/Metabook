@@ -255,7 +255,7 @@ const PostItem = props => {
 
                             <div onClick={handleClickDelete}>
                                 <img 
-                                    src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png" 
+                                    src="https://cdn3.iconfinder.com/data/icons/font-awesome-regular-1/512/trash-can-512.png" 
                                     alt="delete"
                                 />
                             </div>
