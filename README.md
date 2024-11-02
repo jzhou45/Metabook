@@ -1,7 +1,7 @@
 # Metabook
 
 ## Brief Overview
-[Metabook](http://metabookclone.herokuapp.com/#/) is a clone of [Facebook](https://facebook.com) and has the functionality for profiles, newsfeeds, posts, comments, and likes.
+Metabook is a clone of [Facebook](https://facebook.com) and has the functionality for profiles, newsfeeds, posts, comments, and likes.
 
 ## Technologies Used
   * Ruby
